@@ -57,6 +57,17 @@
     <div id="store-category-nav"></div>
     <ul id="store-list" class="store-list"></ul>
   </section>
+
+  <section id="tab-coupons" class="tab-panel">
+    <p class="hint">お店で会計する前にひと目でわかるよう、知っているクーポンを登録しておけます(福利厚生サービス等のクーポンはログインが必要で自動取得できないため、手入力用です)。登録した店を検索すると自動で表示されます。</p>
+    <form id="coupon-add-form" class="coupon-add-box">
+      <input id="coupon-store-input" type="text" list="store-suggestions" placeholder="店名(例: 鎌倉パスタ)" autocomplete="off" required>
+      <input id="coupon-discount-input" type="text" placeholder="割引内容(例: 10%引き)" autocomplete="off" required>
+      <input id="coupon-source-input" type="text" placeholder="入手元(任意、例: ベネフィット・ワン)" autocomplete="off">
+      <button type="submit" class="btn-primary">クーポンを追加</button>
+    </form>
+    <ul id="coupon-list" class="result-list"></ul>
+  </section>
 </main>
 
 <nav class="tabs" role="tablist">
@@ -71,6 +82,10 @@
   <button class="tab-btn" data-tab="stores" role="tab" aria-selected="false">
     <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"></path><path d="M3 9a2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0"></path><path d="M5 9v10h14V9"></path></svg>
     <span>店舗一覧</span>
+  </button>
+  <button class="tab-btn" data-tab="coupons" role="tab" aria-selected="false">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41 12 22l-9-9V4a1 1 0 0 1 1-1h9l7.59 7.59a2 2 0 0 1 0 2.82z"></path><circle cx="7.5" cy="7.5" r="1.5"></circle></svg>
+    <span>クーポン</span>
   </button>
 </nav>
 

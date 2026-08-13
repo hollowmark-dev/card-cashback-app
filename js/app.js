@@ -10,6 +10,7 @@ const state = {
   storeIndex: new Map(), // normalized name -> {name, category}
   categoryToStores: new Map(), // normalized category -> [store, ...]
   storeCategoryFilter: null, // 店舗一覧タブで選択中のカテゴリ(nullならカテゴリ選択画面)
+  coupons: [], // ユーザーが手入力したクーポン {id, storeName, discount, source}
 };
 
 const TOP_STORES_LIMIT = 30;
@@ -17,6 +18,7 @@ const SEARCH_HISTORY_LIMIT = 8;
 const OWNERSHIP_KEY = 'cardOwnership';
 const LEGACY_OWNED_CARDS_KEY = 'ownedCardIds';
 const SEARCH_HISTORY_KEY = 'searchHistory';
+const COUPONS_KEY = 'coupons';
 
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (ch) => ({
@@ -186,6 +188,90 @@ function renderSearchHistory() {
   });
 }
 
+// クーポン(福利厚生サービス等)はログイン必須のサービスが多く自動取得できないため、
+// ユーザー本人が知っているクーポンを手入力しておく機能。データは端末内のみに保存され、
+// 登録した店舗を検索した時に還元率の結果と一緒に表示される(割引とカード還元は併用できる
+// ことが多いため、両方見えるようにする)。
+function loadCoupons() {
+  try {
+    const raw = localStorage.getItem(COUPONS_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch {
+    // ignore malformed value
+  }
+  return [];
+}
+
+function saveCoupons() {
+  localStorage.setItem(COUPONS_KEY, JSON.stringify(state.coupons));
+}
+
+function addCoupon(storeName, discount, source) {
+  state.coupons.push({
+    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    storeName,
+    discount,
+    source: source || null,
+  });
+  saveCoupons();
+  renderCouponList();
+}
+
+function deleteCoupon(id) {
+  state.coupons = state.coupons.filter((c) => c.id !== id);
+  saveCoupons();
+  renderCouponList();
+}
+
+function findCouponForStore(normalizedStoreName) {
+  return state.coupons.find((c) => normalizeText(c.storeName) === normalizedStoreName) || null;
+}
+
+function renderCouponList() {
+  const list = document.getElementById('coupon-list');
+  if (!list) return;
+  list.innerHTML = '';
+
+  if (state.coupons.length === 0) {
+    list.innerHTML = '<li class="empty-state">登録済みのクーポンはまだありません</li>';
+    return;
+  }
+
+  state.coupons.forEach((coupon) => {
+    const li = document.createElement('li');
+    li.className = 'result-item';
+    li.innerHTML = `
+      <div>
+        <span class="item-name">${escapeHtml(coupon.storeName)}</span>
+        <div class="item-note">${escapeHtml(coupon.discount)}${coupon.source ? ` ・ ${escapeHtml(coupon.source)}` : ''}</div>
+      </div>
+      <button type="button" class="coupon-delete-btn" data-id="${coupon.id}" aria-label="削除">×</button>
+    `;
+    li.querySelector('.coupon-delete-btn').addEventListener('click', () => deleteCoupon(coupon.id));
+    list.appendChild(li);
+  });
+}
+
+function initCouponForm() {
+  const form = document.getElementById('coupon-add-form');
+  if (!form) return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const storeInput = document.getElementById('coupon-store-input');
+    const discountInput = document.getElementById('coupon-discount-input');
+    const sourceInput = document.getElementById('coupon-source-input');
+
+    const storeName = storeInput.value.trim();
+    const discount = discountInput.value.trim();
+    const source = sourceInput.value.trim();
+    if (!storeName || !discount) return;
+
+    addCoupon(storeName, discount, source);
+    form.reset();
+    storeInput.focus();
+  });
+}
+
 function rateForCard(card, normalizedQuery, normalizedCategory, isSpecificStoreQuery) {
   const storeMatch = card.storeIndex.get(normalizedQuery);
   if (storeMatch) {
@@ -259,6 +345,20 @@ function renderResults(query) {
   // 入力そのものが特定の店名に一致しなかった場合(=カテゴリ名として解釈された場合)のみ、
   // そのカテゴリに属する店舗一覧をチップで表示する。特定の店を検索した時は不要。
   renderCategoryStores(storeEntry ? '' : normalizedCategory);
+
+  const coupon = findCouponForStore(normalizedQuery);
+  if (coupon) {
+    const couponLi = document.createElement('li');
+    couponLi.className = 'coupon-banner';
+    couponLi.innerHTML = `
+      <span class="coupon-banner-icon" aria-hidden="true">🎫</span>
+      <div>
+        <div class="coupon-banner-title">${escapeHtml(coupon.discount)}</div>
+        <div class="coupon-banner-note">${escapeHtml(coupon.storeName)}のクーポン${coupon.source ? `(${escapeHtml(coupon.source)})` : ''} ・ カード還元と併用できる場合があります</div>
+      </div>
+    `;
+    list.appendChild(couponLi);
+  }
 
   const results = ownedCards.map((card) => ({ card, ...rateForCard(card, normalizedQuery, normalizedCategory, !!storeEntry) }));
   const hasRealMatch = results.some((r) => r.matched !== 'base');
@@ -574,10 +674,12 @@ async function main() {
   saveOwnership();
 
   state.searchHistory = loadSearchHistory();
+  state.coupons = loadCoupons();
 
   initTabs();
   initSearch();
   initStoreFilter();
+  initCouponForm();
   populateSuggestions();
   computeCardOrder();
   renderCardList();
@@ -585,6 +687,7 @@ async function main() {
   renderStoreList();
   renderResults('');
   renderSearchHistory();
+  renderCouponList();
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js').catch(() => {});
