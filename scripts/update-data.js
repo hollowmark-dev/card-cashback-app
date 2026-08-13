@@ -1,5 +1,5 @@
 // 各カード会社の公式ページから店舗別ポイント優待を取得し、
-// data/cards.json (epos-card / paypay-card のみ) と data/stores.json を更新する。
+// data/cards.json (epos-card / paypay-card / jcb-card のみ) と data/stores.json を更新する。
 // 対象は robots.txt でクロールが許可されている、ログイン不要の公開ページのみ。
 //
 // 実行: npm run update-data
@@ -27,6 +27,8 @@ const INDEX_LETTERS = ['a', 'ka', 'sa', 'ta', 'na', 'ha', 'ma', 'ya', 'ra', 'wa'
 // エポスカード(たまるマーケット)とJCBカード(J-POINTモール)は同系統のポイントモールASPで
 // 運営されており、店舗名+倍率を五十音インデックスページ(shop_list/indexed/{letter}/)で
 // 一覧取得できる点が共通している。セレクタだけ差し替えて共通ロジックで処理する。
+// これらはすべて「先にモールを経由してからその店で買い物する」ことが条件のオンライン優待なので、
+// channel: 'mall' を付けて、実店舗でカードを提示するだけの優待(channel: 'store')と区別する。
 async function scrapeShopMall({ baseUrl, baseRate, cardSelector, nameSelector, bannerImgSelector, rateSelector, unitSelector }) {
   const stores = {};
   for (const letter of INDEX_LETTERS) {
@@ -46,7 +48,7 @@ async function scrapeShopMall({ baseUrl, baseRate, cardSelector, nameSelector, b
       const multiplier = Number(rateText);
       if (!Number.isFinite(multiplier)) return;
 
-      stores[name] = Math.round(baseRate * multiplier * 100) / 100;
+      stores[name] = { rate: Math.round(baseRate * multiplier * 100) / 100, channel: 'mall' };
     });
 
     await sleep(SLEEP_MS);
@@ -87,7 +89,7 @@ async function scrapeJcb() {
 }
 
 // PayPayカード: PayPayポイントアップ店 (https://paypay.ne.jp/guide/point-up/)
-// 通常還元率への上乗せ(+X%)が店舗ごとに掲載されている。
+// 通常還元率への上乗せ(+X%)が店舗ごとに掲載されている。モール経由不要(直接支払うだけ)なのでchannel: 'store'。
 const PAYPAY_URL = 'https://paypay.ne.jp/guide/point-up/';
 const PAYPAY_BASE_RATE = 1.0;
 
@@ -111,7 +113,7 @@ async function scrapePayPay() {
     const bonus = Number(match[1]);
     if (!Number.isFinite(bonus)) return;
 
-    stores[name] = Math.round((PAYPAY_BASE_RATE + bonus) * 100) / 100;
+    stores[name] = { rate: Math.round((PAYPAY_BASE_RATE + bonus) * 100) / 100, channel: 'store' };
     const note = [conditionLine, noteText].filter(Boolean).join(' / ');
     if (note) notes[name] = note;
   });
@@ -128,6 +130,23 @@ function mergeCardRates(cards, cardId, storesRates, notes = {}) {
   card.source = 'auto';
 }
 
+// 自動取得した店舗はほとんどが「未分類」のままだと店舗一覧のカテゴリ検索が効かないため、
+// 店名のキーワードから大まかなカテゴリを推定する。完全ではないベストエフォートの分類。
+const CATEGORY_RULES = [
+  [/オンライン|ネットショップ|ドットコム|\.com|web ?store|online ?shop|ストア$|ショップ$/i, 'ネット通販'],
+  [/ホテル|トラベル|航空|ツアー|エクスペディア|エアトリ|じゃらん|agoda|expedia|travel|hotel/i, '旅行'],
+  [/アプリペイストア|ミニアプリ/i, 'アプリ'],
+  [/コスメ|化粧品|beauty|cosme|オーガニック/i, '美容'],
+  [/ゲーム|game/i, 'ゲーム'],
+];
+
+function guessCategory(name) {
+  for (const [pattern, category] of CATEGORY_RULES) {
+    if (pattern.test(name)) return category;
+  }
+  return '未分類';
+}
+
 // stores.json は手動登録の店舗(コンビニ等)と、自動取得で見つかった店舗が混在する。
 // 自動取得分(source: "auto")は毎回まるごと入れ替える。手動登録分はそのまま残す。
 function mergeDiscoveredStores(stores, newStoreNames) {
@@ -135,7 +154,7 @@ function mergeDiscoveredStores(stores, newStoreNames) {
   const manualNames = new Set(manual.map((s) => s.name));
   const auto = [...new Set(newStoreNames)]
     .filter((name) => !manualNames.has(name))
-    .map((name) => ({ name, category: '未分類', source: 'auto' }));
+    .map((name) => ({ name, category: guessCategory(name), source: 'auto' }));
   return [...manual, ...auto];
 }
 

@@ -15,13 +15,16 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
   background: var(--bg);
   color: var(--text);
-  padding-bottom: 2rem;
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom));
 }
 
 .app-header {
   background: var(--primary);
   color: #fff;
   padding: 1rem;
+  padding-top: calc(1rem + env(safe-area-inset-top));
+  padding-left: calc(1rem + env(safe-area-inset-left));
+  padding-right: calc(1rem + env(safe-area-inset-right));
   text-align: center;
 }
 
@@ -37,6 +40,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
+  padding-top: env(safe-area-inset-top);
 }
 
 .tab-btn {
@@ -64,12 +68,37 @@ main {
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
 
+.search-box {
+  margin-bottom: 0.6rem;
+}
+
 .search-box input {
   width: 100%;
   padding: 0.75rem;
   font-size: 1rem;
   border: 1px solid var(--border);
   border-radius: 8px;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.chip-row:empty {
+  margin-bottom: 0;
+}
+
+.chip {
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  cursor: pointer;
 }
 
 .hint {
@@ -143,6 +172,52 @@ main {
   margin-left: 0.4rem;
 }
 
+.mall-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  background: #dd6b20;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  margin-left: 0.4rem;
+}
+
+.base-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  background: var(--border);
+  color: var(--muted);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  margin-left: 0.4rem;
+}
+
+.notice-inline {
+  background: #fffbea;
+  border: 1px solid #f6d55c;
+  border-radius: 10px;
+  color: #8a6d1a;
+  font-size: 0.85rem;
+  padding: 0.75rem 1rem;
+}
+
+.retry-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.card-top-stores-note {
+  font-size: 0.7rem;
+  color: #b7791f;
+  margin: 0 0 0.5rem;
+}
+
 .card-swatch {
   width: 10px;
   height: 10px;
@@ -155,13 +230,6 @@ main {
   text-align: center;
   color: var(--muted);
   padding: 2rem 0;
-}
-
-.app-footer {
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.75rem;
-  margin-top: 1rem;
 }
 
 .card-item.not-owned {
