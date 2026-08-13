@@ -127,6 +127,72 @@ async function scrapePayPay() {
   return { stores, notes };
 }
 
+// ライフカード: L-Mall (https://lmall.jp/shop_list/pointup/?page=1..)
+// 旧世代のモールASP(エポス/JCB/オリコ/dカードとはHTML構造が異なる)。
+// 倍率(.up + .up_text)がそのまま基本還元率0.5%への倍数。
+// .pointTxt.pointFlat は「購入額に関わらずXポイント」という定額還元なので%に換算できず対象外。
+const LIFE_CARD_BASE_RATE = 0.5;
+const LIFE_CARD_MAX_PAGES = 10;
+
+async function scrapeLifeCardMall() {
+  const stores = {};
+  for (let page = 1; page <= LIFE_CARD_MAX_PAGES; page++) {
+    const url = `https://lmall.jp/shop_list/pointup/?page=${page}`;
+    const html = await fetchHtml(url);
+    const $ = cheerio.load(html);
+    const columns = $('.shopList .column');
+    if (columns.length === 0) break;
+
+    columns.each((_, el) => {
+      const pointTxt = $(el).find('.pointTxt').first();
+      if (pointTxt.hasClass('pointFlat')) return;
+
+      const altName = $(el).find('.banner img').first().attr('alt')?.trim();
+      const name = altName || $(el).find('.title a').first().text().trim();
+      const rateText = pointTxt.find('.up').first().text().trim();
+      const unitText = pointTxt.find('.up_text').first().text().trim();
+      if (!name || !rateText || unitText !== '倍') return;
+
+      const multiplier = Number(rateText);
+      if (!Number.isFinite(multiplier)) return;
+
+      stores[name] = { rate: Math.round(LIFE_CARD_BASE_RATE * multiplier * 100) / 100, channel: 'mall' };
+    });
+
+    await sleep(SLEEP_MS);
+  }
+  return stores;
+}
+
+// TS CUBICカード(トヨタファイナンス): TS3ポイントモール (https://www.ts3pum.com/shop_list/indexed/{letter}/)
+// エポスと同系統のモールASPで、倍率(.up + 隣接テキスト"倍")が基本還元率0.5%への倍数。
+const TS3_BASE_RATE = 0.5;
+
+async function scrapeTs3Mall() {
+  const stores = {};
+  for (const letter of INDEX_LETTERS) {
+    const url = `https://www.ts3pum.com/shop_list/indexed/${letter}/`;
+    const html = await fetchHtml(url);
+    const $ = cheerio.load(html);
+
+    $('a.box_opacity').each((_, el) => {
+      const altName = $(el).find('.img img').first().attr('alt')?.trim();
+      const name = altName || $(el).find('.shop_name').first().text().trim();
+      const rateText = $(el).find('.point .up').first().text().trim();
+      const unitText = $(el).find('.point .text').first().text().trim();
+      if (!name || !rateText || unitText !== '倍') return;
+
+      const multiplier = Number(rateText);
+      if (!Number.isFinite(multiplier)) return;
+
+      stores[name] = { rate: Math.round(TS3_BASE_RATE * multiplier * 100) / 100, channel: 'mall' };
+    });
+
+    await sleep(SLEEP_MS);
+  }
+  return stores;
+}
+
 // オリコカード: オリコモール (https://www.oricomall.com/shop_list/indexed/)
 // エポス/JCBと違い五十音ページに分かれておらず、1ページに全店舗が掲載されている。
 // 還元率も倍率ではなく最終的な%がそのまま書かれている。
@@ -153,11 +219,49 @@ async function scrapeOrico() {
   return stores;
 }
 
-function mergeCardRates(cards, cardId, storesRates, notes = {}) {
+// dカード: dカード ポイントモール (https://pointmall.dcard.docomo.ne.jp/shop_list/indexed/{letter}/)
+// エポス/JCBと同系統のモールASPだが、倍率ではなく最終的な%がそのまま書かれている(オリコと同じ形式)。
+// dカードには手入力の実店舗データ(マクドナルド等)もあるので、mergeCardRatesはpreserveManualで呼ぶ。
+async function scrapeDcardMall() {
+  const stores = {};
+  for (const letter of INDEX_LETTERS) {
+    const url = `https://pointmall.dcard.docomo.ne.jp/shop_list/indexed/${letter}/`;
+    const html = await fetchHtml(url);
+    const $ = cheerio.load(html);
+
+    $('.shop-list-item').each((_, el) => {
+      const altName = $(el).find('.shop-list-item-banner img').first().attr('alt')?.trim();
+      const name = altName || $(el).find('.shop-list-item-name').first().text().trim();
+      const rateText = $(el).find('.point-num').first().text().trim();
+      const unitText = $(el).find('.point-unit').first().text().trim();
+      if (!name || !rateText || (unitText !== '%' && unitText !== '％')) return;
+
+      const rate = Number(rateText);
+      if (!Number.isFinite(rate)) return;
+
+      stores[name] = { rate, channel: 'mall' };
+    });
+
+    await sleep(SLEEP_MS);
+  }
+  return stores;
+}
+
+function mergeCardRates(cards, cardId, storesRates, notes = {}, { preserveManual = false } = {}) {
   const card = cards.find((c) => c.id === cardId);
   if (!card) throw new Error(`card not found: ${cardId}`);
-  card.rates.stores = storesRates;
-  card.notes = notes;
+  if (preserveManual) {
+    // このカードは手入力の実店舗データ(channel: 'store')とモールのスクレイピング結果が
+    // 混在する。モール由来(channel: 'mall')の分だけ入れ替え、手入力分は保持する。
+    const manualStores = Object.fromEntries(
+      Object.entries(card.rates.stores).filter(([, entry]) => entry.channel !== 'mall')
+    );
+    card.rates.stores = { ...manualStores, ...storesRates };
+    card.notes = { ...card.notes, ...notes };
+  } else {
+    card.rates.stores = storesRates;
+    card.notes = notes;
+  }
   card.updatedAt = new Date().toISOString().slice(0, 10);
   card.source = 'auto';
 }
@@ -198,6 +302,9 @@ const SOURCES = [
   { name: 'PayPayカード', cardId: 'paypay-card', scrape: scrapePayPay },
   { name: 'JCBカード', cardId: 'jcb-card', scrape: scrapeJcb },
   { name: 'オリコカード', cardId: 'orico-card', scrape: scrapeOrico },
+  { name: 'dカードモール', cardId: 'd-card', scrape: scrapeDcardMall, preserveManual: true },
+  { name: 'ライフカード', cardId: 'life-card', scrape: scrapeLifeCardMall },
+  { name: 'TS CUBICカード', cardId: 'ts3-card', scrape: scrapeTs3Mall },
 ];
 
 // JCB CARD Wは通常のJCBカードと同じJ-POINTモールを使うが、基本還元率が0.5%ではなく
@@ -226,7 +333,7 @@ async function main() {
       const storesRates = result.stores || result;
       const notes = result.notes || {};
       console.log(`  -> ${Object.keys(storesRates).length}件取得`);
-      mergeCardRates(cards, source.cardId, storesRates, notes);
+      mergeCardRates(cards, source.cardId, storesRates, notes, { preserveManual: source.preserveManual });
       allNewStoreNames.push(...Object.keys(storesRates));
       if (source.cardId === 'jcb-card') jcbStoresRates = storesRates;
     } catch (err) {
