@@ -15,6 +15,9 @@
   --warning-text: #8a6d1a;
   --warning-bg: #fffbea;
   --warning-border: #f6d55c;
+  --coupon: #97266d;
+  --coupon-bg: #fce8f3;
+  --coupon-border: #ecb8dc;
   --shadow: 0 1px 3px rgba(20, 30, 45, 0.08);
 }
 
@@ -36,6 +39,9 @@
     --warning-text: #f0d382;
     --warning-bg: #2e2a12;
     --warning-border: #6b5a1f;
+    --coupon: #f0a1d3;
+    --coupon-bg: #331f2c;
+    --coupon-border: #6b3d5a;
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   }
 }
@@ -360,7 +366,7 @@ main.is-loading .tab-panel {
   padding: 0.75rem 1rem;
 }
 
-.retry-btn {
+.retry-btn, .btn-primary {
   margin-top: 1rem;
   padding: 0.6rem 1.2rem;
   border: none;
@@ -368,6 +374,62 @@ main.is-loading .tab-panel {
   background: var(--primary);
   color: #fff;
   font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.coupon-add-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.coupon-add-box input {
+  padding: 0.65rem 0.75rem;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+.coupon-add-box .btn-primary {
+  margin-top: 0.2rem;
+}
+
+.coupon-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: var(--coupon-bg);
+  border: 1px solid var(--coupon-border);
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+}
+
+.coupon-banner-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.coupon-banner-title {
+  font-weight: 700;
+  color: var(--coupon);
+}
+
+.coupon-banner-note {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+.coupon-delete-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 0.2rem 0.4rem;
   cursor: pointer;
 }
 
