@@ -1,0 +1,12 @@
+{
+  "name": "card-cashback-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "update-data": "node scripts/update-data.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  }
+}

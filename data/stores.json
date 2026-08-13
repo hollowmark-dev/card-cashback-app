@@ -1,0 +1,2824 @@
+[
+  {
+    "name": "セブンイレブン",
+    "category": "コンビニ"
+  },
+  {
+    "name": "ファミリーマート",
+    "category": "コンビニ"
+  },
+  {
+    "name": "ローソン",
+    "category": "コンビニ"
+  },
+  {
+    "name": "イオン",
+    "category": "スーパー"
+  },
+  {
+    "name": "西友",
+    "category": "スーパー"
+  },
+  {
+    "name": "楽天市場",
+    "category": "ネット通販"
+  },
+  {
+    "name": "Amazon",
+    "category": "ネット通販"
+  },
+  {
+    "name": "Yahoo!ショッピング",
+    "category": "ネット通販"
+  },
+  {
+    "name": "マクドナルド",
+    "category": "飲食"
+  },
+  {
+    "name": "スターバックス",
+    "category": "飲食"
+  },
+  {
+    "name": "ビックカメラ",
+    "category": "家電量販店"
+  },
+  {
+    "name": "ヨドバシカメラ",
+    "category": "家電量販店"
+  },
+  {
+    "name": "ENEOS",
+    "category": "ガソリンスタンド"
+  },
+  {
+    "name": "セイコーマート",
+    "category": "コンビニ"
+  },
+  {
+    "name": "ポプラ",
+    "category": "コンビニ"
+  },
+  {
+    "name": "ミニストップ",
+    "category": "コンビニ"
+  },
+  {
+    "name": "モスバーガー",
+    "category": "飲食"
+  },
+  {
+    "name": "ケンタッキーフライドチキン",
+    "category": "飲食"
+  },
+  {
+    "name": "吉野家",
+    "category": "飲食"
+  },
+  {
+    "name": "フレッシュネスバーガー",
+    "category": "飲食"
+  },
+  {
+    "name": "サイゼリヤ",
+    "category": "飲食"
+  },
+  {
+    "name": "ガスト",
+    "category": "飲食"
+  },
+  {
+    "name": "バーミヤン",
+    "category": "飲食"
+  },
+  {
+    "name": "しゃぶ葉",
+    "category": "飲食"
+  },
+  {
+    "name": "ジョナサン",
+    "category": "飲食"
+  },
+  {
+    "name": "夢庵",
+    "category": "飲食"
+  },
+  {
+    "name": "すき家",
+    "category": "飲食"
+  },
+  {
+    "name": "はま寿司",
+    "category": "飲食"
+  },
+  {
+    "name": "ココス",
+    "category": "飲食"
+  },
+  {
+    "name": "ドトールコーヒー",
+    "category": "飲食"
+  },
+  {
+    "name": "エクセルシオールカフェ",
+    "category": "飲食"
+  },
+  {
+    "name": "かっぱ寿司",
+    "category": "飲食"
+  },
+  {
+    "name": "イオンモール",
+    "category": "スーパー"
+  },
+  {
+    "name": "ダイエー",
+    "category": "スーパー"
+  },
+  {
+    "name": "マックスバリュ",
+    "category": "スーパー"
+  },
+  {
+    "name": "ウエルシア",
+    "category": "ドラッグストア"
+  },
+  {
+    "name": "イオンシネマ",
+    "category": "娯楽"
+  },
+  {
+    "name": "au PAY マーケット",
+    "category": "ネット通販"
+  },
+  {
+    "name": "ioPLAZA",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "iHerb（アイハーブ）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アイリスプラザ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "【OUTLET】ベイクルーズストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "AOKI公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "青山花茂本店　オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "青山フラワーマーケット オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アカチャンホンポ Online Shop",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アガルートアカデミー",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アキレスウェブショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アクセーヌオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ACTUS online",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "UGG（R） Australia 公式サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Agoda",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アサヒカルピスウェルネスショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ASICS WALKING【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ASBeeオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "asoview!(アソビュー)",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "@cosme SHOPPING",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アットコンタクト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アットスタイル",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Apple公式サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Apple Books",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ATIDIMU公式ストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "adidas ONLINE SHOP",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "atmos公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "anatae",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アニメイトオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Anny（アニー） ギフト専門のセレクトショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アパホテルズ＆リゾーツ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "American eagle（アメリカンイーグル）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アモスタイル バイ トリンプ オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "AliExpress",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Alinoma（アリノマ）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アルマードオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Angellir（アンジェリール）公式サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アンティナギフトスタジオ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "and ST",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アンファーストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アヴェダ公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アートネイチャー・オンライン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "URBAN RESEARCH",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "R∞PCダイレクト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "e87.com（千趣会　イイハナ）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "おうちでイオン イオンショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "イソップオンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "一番くじONLINE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ITOKIN ONLINE STORE 【イトキンオフィシャルサイト】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "IPSA 公式サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "印鑑・はんこ専門店ハンコヤドットコム",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "インスタベース",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "イヴ・サンローラン・ボーテ公式オンラインブティック",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "イーカプコン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "イーフローラ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ウェブポ（年賀状総合サービス）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "USAGI ONLINE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "エアクロモール（airCloset Mall）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "エアトリ（海外航空券・海外ホテル）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "エアトリ国内航空券予約",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "エア・リゾーム インテリア本店",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ASUS Store",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "EIZOダイレクト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "HIS（エイチアイエス）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "H&M",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "HMV & BOOKS online",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "HP Directplus",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「18TRIP（エイティーントリップ）」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "EXETIME",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「SKE48の大富豪はおわらない！」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "エスティローダー公式オンライン ショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「STU48の7ならべ」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "est（エスト）公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "X-girl【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "F ORGANICS(エッフェオーガニック)公式ウェブサイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「えとはなっ！～干支っ娘・花札バトル～」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "NEC Direct（NECダイレクト）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "NEC　得選街",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「NMB48のカジュアルパーティー」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "NY.ONLINE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ENOTECA online",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "FMV Store",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "エプソンダイレクト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "エマ・スリープ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "MTG ONLINESHOP",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "aimerfeel(エメフィール）公式通販サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "airalo",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "L.L.Beanオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ELLE SHOP",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "【ANA公式】 ANAトラベラーズホテル＆レンタカー",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ANAの国内・海外ツアー【ANAトラベラーズ】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「AKB48のどっぼーん！ひとりじめ！」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「A3!」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ABC-MARTオンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "au PAY マーケット（旧au wowma）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Oisix（おいしっくす）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "オシャレウォーカー",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "OZmall",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "小樽洋菓子舗ルタオ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Onitsuka Tiger【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ORIHICA（オリヒカ）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "オリーブヤング公式ストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "オルビス",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "オージオ ネット",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "オーダーチーズ・ドットコム",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "【海外・国内航空券】旅行予約のエクスペディア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "【海外・国内ホテル】旅行予約のエクスペディア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "貝印公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "カインズ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "格安航空券モール",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "CAGUUU",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "【カゴメの通信販売】カゴメ健康直送便",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "カタログギフトのリンベル",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "カタログギフトのハーモニック公式サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "カタログ通販ベルーナ（Belluna）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "カニ通販.com",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "カメラのキタムラ ネットショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "カンペール オフィシャルオンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「學園文豪ストレイドッグス」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "キタムラグループ　ネットプリントサービス",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "紀伊國屋書店ウェブストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "きもの365",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "キャロウェイ オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "キューサイ公式ショッピングサイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Qoo10",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "京都・宇治 伊藤久右衛門",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "近畿日本ツーリストの交通+宿泊",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "近畿日本ツーリストの国内宿泊",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "近畿日本ツーリストの国内ツアー",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "キールズ公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "KEEN公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "祇園辻利",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ギフトモール 日本最大級のギフト専門ショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Gapオンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "GILT",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "久原本家通販サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "くまポンbyGMO",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「クラッシュフィーバー」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "クリニーク公式 オンライン ショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Klook",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "クロックス オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「グランドサマナーズ」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "グレディブリリアン公式通販",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "グローバルWiFi",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "グンゼストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "GOOPASS",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「けものフレンズ3」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "KEYUCA　オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「剣と魔法のログレス いにしえの女神」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "KKday",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "CASETiFY",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ケーズデンキオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「ケータイ国盗り合戦」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ゲオオンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "GetYourGuide",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "湖池屋オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "【航空券＋宿泊の同時予約】旅行予約のエクスペディア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "神戸屋オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "神戸レタス：Kobe　Lettuce",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ココデカウ【日用品通販】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "cocorostore",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "コジマネット",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "COS（コス）公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "コロンビアスポーツウェア 公式サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "コンタクトレンズ通販 レンズアップル",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "コンビ公式ブランドストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "coen ONLINE STORE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "COLE HAAN 公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ゴディバ（GODIVA）公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "【ゴルフショップ】ゴルフダイジェスト・オンライン：GDO",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "サイクルベースあさひ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "サッカーショップ加茂",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "サニーヘルスショッピング",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Surprice!（サプライス）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "SABON（サボン）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Samsungオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "サムソナイト公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "サロモン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "サントリーウエルネスオンライン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "サンプル百貨店",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "サンワダイレクト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "サーモスオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "SHEL'TTER WEB STORE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "資生堂オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "資生堂パーラーオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "SHIPS",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "シャディ　ギフトモール",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "シュウ ウエムラ公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "生涯学習のユーキャン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ショップジャパン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Shoplist",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "白樺リゾート 池の平ホテル【THE LAKE RESORT】長野県",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "白鳩/京都発インナーショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "SHEIN",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "JAタウン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "JTB【海外旅行】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "JTB【国内】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "JTBショッピング",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "JTOPIA",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ジェイトリップツアー",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "gelato pique【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "JR東海ツアーズ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "JTB旅物語公式サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "じゃらん　遊び体験予約",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "じゃらんnet",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "じゃらんパック",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "じゃらんレンタカー",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "JAL 日本航空 国際線航空券",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ジャルパック　海外ツアー",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ジャルパック　国内ツアー",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「女子プロゴルフ ヒロインコレクション」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「ジョーカー～ギャングロード～」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Joshin Webショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ジョー マローン ロンドン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ジーユー オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Skyscanner",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "skyticket",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "スカイチケット（国内格安レンタカー予約）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "スカイパックツアーズ　航空券+宿泊「たす旅」",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "すかいらーくの宅配",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "SQUARE ENIX　e-STORE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Stylora Store（スタイロラ ストア）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "STUDIOUSオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "SNIDELBEAUTY(スナイデルビューティ)公式ウェブサイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "スポーツデポ・ゴルフ5・アルペン公式ストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "スーパースポーツゼビオ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ZUTTO",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "成城石井.com",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Theory（セオリー）の公式通販サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "セカンドストリート",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "セシール　オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "セフィーヌ　公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "セブンネットショッピング",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "セルフジェルネイル「ohora」",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Celvoke（セルヴォーク）ウェブサイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「蒼焔の艦隊」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ソニーストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Sony Music Shop",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ソフマップ・ドットコム",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ソースネクスト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Zoff Online Store (ゾフ オンラインストア)",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "タイヤ＆ホイール専門店 カーポートマルゼン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "TIREHOOD",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "タカシマヤファッションスクエア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "［タカラトミー公式］タカラトミーモール",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "匠本舗 かに本舗",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "宅麺.com",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "TATRAS CONCEPT STORE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "たまひよSHOP",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "TOWER RECORDS ONLINE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ダイエーネットショッピング",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ダイソン公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ダイソーネットストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Dynabook Direct",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ダイレクトテレショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Daniel Wellington JP",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ダンロップスポーツストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "チケットぴあ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "CHACOTT【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "CHARLES & KEITH 公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "中古パソコンショップ PCWRAP（ピーシーラップ）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ツインバード公式ストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "蔦屋書店オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "TSUNAGU 内祝い専門店 by senshukai",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ツヴィリング　公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Teva公式サイト（テバ公式サイト）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "TeMOT",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "テレ東アトミックゴルフ本店",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "テンピュール(R) 公式ネットストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "テーラーメイドゴルフ公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ディズニーストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "DECENCIA(ディセンシア）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ディノスオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "DHCオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "DCMオンライン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "DIESEL（ディーゼル）公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "DHOLIC STYLE【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "devirock",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Dell（個人向け）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Dell（法人向け）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "電子書籍ストア ブックライブ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "電動アシスト自転車＆子供自転車－ｗｉｍｏ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "トイザらス・ベビーザらス オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "トゥミ公式サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "TOKYOlife（トウキョウライフ）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「東方LostWord」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「刻のイシュタリア」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Traveloka（アクティビティ予約）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Traveloka（ホテル予約）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Trip.com（遊び・体験）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Trip.com（航空券）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Trip.com（航空券+ホテル）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Trip.com（ホテル）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "トリンプ・オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "トリー バーチ 公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "トレンドマイクロ・オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "トーカ堂　インターネットテレビショッピング",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "to/one(トーン)公式ウェブサイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "DoCLASSE （ドゥクラッセ）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ドクターケイ公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ドクターシーラボ公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Dorry Doll公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ナイキ公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ナチュラム",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ナチュラルセレクトショップ　「コスメキッチン」",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "【初回購入限定】nosh - ナッシュ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "なんでも酒やカクヤス(ビール・ワイン等の通販・宅配）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "NARS公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "nishikawa（西川）公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ニッセンオンライン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "日テレポシュレ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ニトリ 家具・インテリアの通販サイト【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "日本旅行",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ニューバランス公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "人間ドックのMRSO（マーソ）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ニールズヤード レメディーズ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "NEOWING",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「乃木坂的フラクタル」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "nojima online（ノジマ オンライン）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ノートンストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "HAPPY PLUS STORE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ハッピーマリリン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "花キューピット公式サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Honeys",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ハンズネットストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "HABA ONLINE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "VAIOストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "BUYMA TRAVEL",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "BARNEYS NEW YORK",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "パイオニア公式オンラインショップ（NP1）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "パソコン工房",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "パタゴニア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Panasonic Store Plus",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "PAL CLOSET",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "パレモバONLINESTORE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ぱーそなるたのめーる P-tano",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "日比谷花壇",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "hince日本公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ビックカメラ.com",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ビッグホリデースキーツアー＆スノボツアー予約サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "びゅうトラベル（えきねっと JR東日本国内ツアー）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Be-Stock",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Biople WEB STORE（ビープル ウェブストア）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "BEAMS公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ピザハットオンライン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "PEACH JOHN",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ファイテンオフィシャルストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ファンケル",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "HUAWEI公式サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Farfetch",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "fifthストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "FELISSIMO",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "fukuske ONLINE STORE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "フジテレビフラワーネット",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "FUJIFILMプリント＆ギフト／フジフイルムモール",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "婦人画報のお取り寄せ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "フラワーファーム",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "FREAK’S STORE（デイトナパーク）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "FRAY I.D／フレイアイディー【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "FRONTIERダイレクト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Booking.com",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ブックオフ公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Brandear（ブランディア）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "BrooksBrothers ONLINE SHOP",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "BRUNO online",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "プチバトーオンラインブティック",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "PLST 公式通販サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "プレミアムドッグフード専門店POCHI",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Puma Online Store",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ベッド・マットレス通販専門店ネルコンシェルジュ neruco",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "VELTRA（ベルトラ）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ベルメゾン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ベルーナグルメ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ペット用品通販『ペピイ』",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ペリカン石鹸オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "HOKA（ホカ）公式サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "北海道リゾートライナー",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ホテルズドットコム",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「ぼくとネコ」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "THE BODY SHOP",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "BONAVENTURA",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ボビイ ブラウン公式 オンライン ショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ポケトーク公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ポーラ公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Paul Smithオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "My Kao Mall",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "マイケル・コース オンラインアウトレットストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "MYTREX 公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "マイプロテイン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "【ベルーナ】My Wine CLUB",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "マウスコンピューター",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "マカフィーストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "MAJESTIC LEGON【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "MASH GO GREEN STORE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "マツキヨココカラ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "マルイのネット通販≪マルイウェブチャネル≫",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "漫画全巻ドットコム",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ミズノショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "mix.tokyo",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「未来家系図 つぐme」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ミレー(MILLET)公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "みんなのチケット【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "無印良品ネットストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ムラサキスポーツ【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "メガスポーツオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "メガネのOWNDAYS（オンデーズ）公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "MoMA Design Store",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「モンスターストライク」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "【Yahoo!トラベル】ヤフーパック（宿泊＋航空券）JAL便",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "山善ビズコム",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ヤマダモール",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "YAMADAYA（ヤマダヤオンラインストア）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "山田養蜂場オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "UNITED ARROWS LTD. ONLINE STORE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ユニクロオンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "「UNI’S ON AIR」アプリペイストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "UGREEN NAS",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Udemy",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "洋服の青山オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "よかもーる",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Rakuten Oyado",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "楽天Kobo【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "楽天GORA【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Rakuten STAY（楽天ステイ）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "楽天チケット",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "楽天トラベル観光体験",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "楽天トラベル【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "楽天トラベル（楽天バス）【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "楽天トラベル（楽天レンタカー）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "楽天トラベル（楽パック（航空券＋宿））【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Rakuten Fashion",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "楽天ブックス【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "LACOSTE 公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ラサーナ公式通販サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ラ・メール公式オンラインショップ La Mer",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ラ ロッシュ ポゼ公式ブランド・通販サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "RUNWAY channel",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ランコム",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "リコレ！ソフマップの中古通販サイト",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Relux（リラックス）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Lily Brown／リリーブラウン【楽天市場】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ル・クルーゼ 公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "LOOK @ E-SHOP",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "LUNASOL公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ルミナスクラブショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "るるぶトラベル",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "lululemon(ルルレモン)",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "READYFOR（レディーフォー）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "レノボ・ショッピング",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "電子貸本Renta！",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Razer日本公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ロクシタンオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "テレビ朝日の通販サイト「Ｒｏｐｐｉｎｇ（ロッピング）」",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ロフトネットストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ROPEPICNIC",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ワイシャツの山喜オフィシャル通販",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "WiFiレンタルどっとこむ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ワインショップ　カーヴ・ド・ラ・マドレーヌ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ワコールウェブストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "WORLD ONLINE STORE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "toreta+",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "WINTICKET",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "薬王堂",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Betimo",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ゼンハイザーヒアリング公式ストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "DiDi",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Prize On",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "大賀薬局（Bibicaアプリ決済）アプリ限定",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "シロクオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ココデカウ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "富澤商店（町田本店限定）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "クリーニングWAKO",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "クリーニングタイムリー",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "KENNANクリーニングセンター",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "TIPSTAR",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Google Play",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "京北スーパー",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "池袋ショッピングパーク",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ヨドバシ建物",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "山田養蜂場",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "MARK IS 静岡",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "マツキヨココカラオンライン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "京急ショッピングプラザウィング",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ビルディ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Zoffオンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "モンテアプリアプリ限定",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "新生堂薬局",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "エディオンネットショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "モアーズシティ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "紀伊國屋書店",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "丸善ジュンク堂書店",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "伊藤園アプリ「CHACOCO」",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "i LUMINE（アイルミネ）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "アップルワールド ホテルオンライン予約＜JCBトラベル＞",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Amazon.co.jp",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "&mall/ 三井アウトレットパークオンライン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ISETAN BEAUTY online",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ECカレント",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ｅBEST（イーベスト）",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "HISオンライン予約",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "F.O.Online Store",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "小田急オンラインショッピング",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "海外現地ツアーオンライン予約＜JCBトラベル＞",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "KANADEMONO",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "キングソフトオンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "KNT国内ツアーオンライン予約＜JCBトラベル＞",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "京王百貨店ネットショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "江原道/ Koh Gen Do 公式オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "KOMEHYO ONLINESTORE",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "サンクゼール〈久世福商店〉オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "サンデーマウンテン",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "雑誌のオンライン書店／~＼Fujisan.co.jp　【雑誌の富士山】",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ショップチャンネル",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "JTB海外ツアーオンライン予約＜JCBトラベル＞",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "JCBトラベル 国内宿泊オンライン予約",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "Jackery Japan",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ジョンマスターオーガニック公式オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "スーツスクエア　オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "西武・そごう公式オンラインストア e.デパート",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "高島屋オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "ダイナミックパッケージJTBMySTYLE for JCBトラベル",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "大丸松坂屋オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "つるやゴルフ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "titivate",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "TBSショッピング",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "東武オンラインショップ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "日本旅行ホームページ",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "nojima online(ノジマオンライン)",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "阪急ギフトモール",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "HANKYU HANSHIN E-STORES",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "阪神ギフトモール",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "マルイウェブチャネル",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "三越伊勢丹オンラインストア",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "murauchi.com(ムラウチドットコム)",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "楽天24",
+    "category": "未分類",
+    "source": "auto"
+  }
+]
