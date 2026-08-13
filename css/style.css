@@ -1,11 +1,43 @@
 :root {
   --primary: #2b6cb0;
+  --primary-dark: #1a4971;
   --bg: #f5f7fa;
   --card-bg: #ffffff;
   --text: #1a202c;
   --muted: #718096;
   --border: #e2e8f0;
   --best: #38a169;
+  --best-bg: #eafaf1;
+  --mall: #c05621;
+  --mall-bg: #fdf0e4;
+  --base-text: #718096;
+  --base-bg: #edf1f5;
+  --warning-text: #8a6d1a;
+  --warning-bg: #fffbea;
+  --warning-border: #f6d55c;
+  --shadow: 0 1px 3px rgba(20, 30, 45, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #63b3ed;
+    --primary-dark: #90cdf4;
+    --bg: #11161d;
+    --card-bg: #1a2028;
+    --text: #e7ecf2;
+    --muted: #8b96a5;
+    --border: #2b3440;
+    --best: #55c584;
+    --best-bg: #16281f;
+    --mall: #f0a25f;
+    --mall-bg: #2e2013;
+    --base-text: #8b96a5;
+    --base-bg: #222a33;
+    --warning-text: #f0d382;
+    --warning-bg: #2e2a12;
+    --warning-border: #6b5a1f;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
 }
 
 * { box-sizing: border-box; }
@@ -15,54 +47,108 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
   background: var(--bg);
   color: var(--text);
-  padding-bottom: calc(2rem + env(safe-area-inset-bottom));
 }
 
 .app-header {
   background: var(--primary);
   color: #fff;
-  padding: 1rem;
-  padding-top: calc(1rem + env(safe-area-inset-top));
+  padding: 0.85rem 1rem;
+  padding-top: calc(0.85rem + env(safe-area-inset-top));
   padding-left: calc(1rem + env(safe-area-inset-left));
   padding-right: calc(1rem + env(safe-area-inset-right));
   text-align: center;
 }
 
+@media (prefers-color-scheme: dark) {
+  .app-header {
+    color: #0d1117;
+  }
+}
+
 .app-header h1 {
   margin: 0;
-  font-size: 1.1rem;
-}
-
-.tabs {
-  display: flex;
-  background: var(--card-bg);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  padding-top: env(safe-area-inset-top);
-}
-
-.tab-btn {
-  flex: 1;
-  padding: 0.75rem 0.5rem;
-  border: none;
-  background: none;
-  font-size: 0.9rem;
-  color: var(--muted);
-  cursor: pointer;
-}
-
-.tab-btn.active {
-  color: var(--primary);
-  font-weight: bold;
-  border-bottom: 2px solid var(--primary);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 main {
   max-width: 480px;
   margin: 0 auto;
   padding: 1rem;
+  padding-bottom: calc(4.75rem + env(safe-area-inset-bottom));
+  min-height: calc(100vh - 3.2rem);
+}
+
+/* --- 起動時のローディング表示 --- */
+.loading-state {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 4rem 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+main.is-loading .loading-state {
+  display: flex;
+}
+
+main.is-loading .tab-panel {
+  display: none !important;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- 下部タブナビゲーション --- */
+.tabs {
+  display: flex;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -2px 8px rgba(20, 30, 45, 0.06);
+}
+
+.tab-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.5rem 0.25rem 0.4rem;
+  border: none;
+  background: none;
+  font-size: 0.7rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.tab-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.tab-btn.active {
+  color: var(--primary);
+  font-weight: 600;
 }
 
 .tab-panel { display: none; }
@@ -77,7 +163,13 @@ main {
   padding: 0.75rem;
   font-size: 1rem;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+.search-box input::placeholder {
+  color: var(--muted);
 }
 
 .chip-row {
@@ -119,27 +211,31 @@ main {
 .result-item, .card-item-wrap, .store-item {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
   overflow: hidden;
 }
 
 .result-item, .store-item {
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.75rem;
 }
 
 .card-item {
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.75rem;
 }
 
 .result-item.best {
   border-color: var(--best);
   box-shadow: 0 0 0 1px var(--best) inset;
+  background: var(--best-bg);
 }
 
 .item-name {
@@ -149,54 +245,60 @@ main {
 .item-note {
   font-size: 0.75rem;
   color: var(--muted);
-  margin-top: 0.2rem;
+  margin-top: 0.25rem;
 }
 
 .rate-badge {
-  font-size: 1.1rem;
-  font-weight: bold;
+  font-size: 1.15rem;
+  font-weight: 700;
   color: var(--primary);
+  white-space: nowrap;
 }
 
 .best .rate-badge {
   color: var(--best);
 }
 
-.best-tag {
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+}
+
+.best-tag, .mall-tag, .base-tag {
   display: inline-block;
   font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 0.15rem 0.45rem;
+  margin-left: 0.3rem;
+}
+
+.tag-row .best-tag, .tag-row .mall-tag, .tag-row .base-tag {
+  margin-left: 0;
+}
+
+.best-tag {
   background: var(--best);
   color: #fff;
-  border-radius: 4px;
-  padding: 0.1rem 0.4rem;
-  margin-left: 0.4rem;
 }
 
 .mall-tag {
-  display: inline-block;
-  font-size: 0.7rem;
-  background: #dd6b20;
-  color: #fff;
-  border-radius: 4px;
-  padding: 0.1rem 0.4rem;
-  margin-left: 0.4rem;
+  background: var(--mall-bg);
+  color: var(--mall);
 }
 
 .base-tag {
-  display: inline-block;
-  font-size: 0.7rem;
-  background: var(--border);
-  color: var(--muted);
-  border-radius: 4px;
-  padding: 0.1rem 0.4rem;
-  margin-left: 0.4rem;
+  background: var(--base-bg);
+  color: var(--base-text);
 }
 
 .notice-inline {
-  background: #fffbea;
-  border: 1px solid #f6d55c;
-  border-radius: 10px;
-  color: #8a6d1a;
+  background: var(--warning-bg);
+  border: 1px solid var(--warning-border);
+  border-radius: 12px;
+  color: var(--warning-text);
   font-size: 0.85rem;
   padding: 0.75rem 1rem;
 }
@@ -214,7 +316,7 @@ main {
 
 .card-top-stores-note {
   font-size: 0.7rem;
-  color: #b7791f;
+  color: var(--mall);
   margin: 0 0 0.5rem;
 }
 
@@ -224,12 +326,13 @@ main {
   border-radius: 50%;
   display: inline-block;
   margin-right: 0.4rem;
+  flex-shrink: 0;
 }
 
 .empty-state {
   text-align: center;
   color: var(--muted);
-  padding: 2rem 0;
+  padding: 2.5rem 1rem;
 }
 
 .card-item.not-owned {
