@@ -30,7 +30,7 @@
     "name": "PayPayカード",
     "baseRate": 1,
     "color": "#ff0033",
-    "updatedAt": "2026-08-11",
+    "updatedAt": "2026-08-13",
     "rates": {
       "stores": {
         "toreta+": {
@@ -223,7 +223,7 @@
     "name": "エポスカード",
     "baseRate": 0.5,
     "color": "#e60027",
-    "updatedAt": "2026-08-11",
+    "updatedAt": "2026-08-13",
     "rates": {
       "stores": {
         "ioPLAZA": {
