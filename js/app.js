@@ -8,6 +8,7 @@ const state = {
   cardOrder: [],
   searchHistory: [],
   storeIndex: new Map(), // normalized name -> {name, category}
+  categoryToStores: new Map(), // normalized category -> [store, ...]
 };
 
 const TOP_STORES_LIMIT = 30;
@@ -52,8 +53,15 @@ async function loadData() {
 // プロトタイプ汚染で壊れない)
 function buildIndexes() {
   state.storeIndex = new Map();
+  state.categoryToStores = new Map();
   for (const store of state.stores) {
     state.storeIndex.set(normalizeText(store.name), store);
+    if (!store.category || store.category === '未分類') continue;
+    const normalizedCategory = normalizeText(store.category);
+    if (!state.categoryToStores.has(normalizedCategory)) {
+      state.categoryToStores.set(normalizedCategory, []);
+    }
+    state.categoryToStores.get(normalizedCategory).push(store);
   }
 
   for (const card of state.cards) {
@@ -66,10 +74,11 @@ function buildIndexes() {
     // 店舗単位のデータが充実したカード(三井住友・Oliveなど)ではカテゴリ検索が
     // 全く効かなくなっていた。そこで、そのカードが対象にしている店舗のうち
     // 該当カテゴリに属する店の最大還元率を動的に算出し、手入力のcategories(あれば)
-    // と比べて高い方を採用する。
+    // と比べて高い方を採用する。どの店舗を根拠にした数字かも保持しておき、
+    // 「そのカテゴリの全店で使えるわけではない」ことを検索結果で明示できるようにする。
     card.categoryIndex = new Map();
     for (const [name, rate] of Object.entries(card.rates.categories)) {
-      card.categoryIndex.set(normalizeText(name), rate);
+      card.categoryIndex.set(normalizeText(name), { rate, sourceStore: null });
     }
     for (const { name, rate } of card.storeIndex.values()) {
       const storeInfo = state.storeIndex.get(normalizeText(name));
@@ -77,8 +86,8 @@ function buildIndexes() {
       if (!category || category === '未分類') continue;
       const normalizedCategory = normalizeText(category);
       const current = card.categoryIndex.get(normalizedCategory);
-      if (current === undefined || rate > current) {
-        card.categoryIndex.set(normalizedCategory, rate);
+      if (current === undefined || rate > current.rate) {
+        card.categoryIndex.set(normalizedCategory, { rate, sourceStore: name });
       }
     }
   }
@@ -176,15 +185,51 @@ function renderSearchHistory() {
   });
 }
 
-function rateForCard(card, normalizedQuery, normalizedCategory) {
+function rateForCard(card, normalizedQuery, normalizedCategory, isSpecificStoreQuery) {
   const storeMatch = card.storeIndex.get(normalizedQuery);
   if (storeMatch) {
     return { rate: storeMatch.rate, channel: storeMatch.channel, note: card.notes[storeMatch.name] || null, matched: 'store' };
   }
   if (normalizedCategory && card.categoryIndex.has(normalizedCategory)) {
-    return { rate: card.categoryIndex.get(normalizedCategory), channel: 'store', note: null, matched: 'category' };
+    const { rate, sourceStore } = card.categoryIndex.get(normalizedCategory);
+    // sourceStoreがある場合、そのカードの「別の1店舗」の実績から逆算した推定値であって、
+    // カテゴリ内の全店で使える保証はない。なので、検索語がまさにその「特定の店名」に
+    // 一致していて、かつこのカードにその店の個別データが無い場合は、
+    // (対象外の可能性が高いので)このカテゴリ推定値は使わずbaseRateへ進む。
+    // 「コンビニ」のような曖昧なカテゴリ語で検索した時だけ、参考値として表示する。
+    if (isSpecificStoreQuery && sourceStore !== null) {
+      return { rate: card.baseRate, channel: 'store', note: null, matched: 'base' };
+    }
+    const note = sourceStore ? `${sourceStore}などの一部店舗が対象(店舗ごとに異なる場合があります)` : null;
+    return { rate, channel: 'store', note, matched: 'category' };
   }
   return { rate: card.baseRate, channel: 'store', note: null, matched: 'base' };
+}
+
+function renderCategoryStores(normalizedCategory) {
+  const container = document.getElementById('category-stores');
+  if (!container) return;
+  const stores = state.categoryToStores.get(normalizedCategory);
+  if (!stores || stores.length === 0) {
+    container.innerHTML = '';
+    return;
+  }
+  const chips = stores
+    .map((s) => `<button type="button" class="chip" data-query="${escapeHtml(s.name)}">${escapeHtml(s.name)}</button>`)
+    .join('');
+  container.innerHTML = `
+    <p class="hint category-stores-hint">この分類の店舗(タップで個別に検索)</p>
+    <div class="chip-row">${chips}</div>
+  `;
+  container.querySelectorAll('.chip').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const storeName = chip.dataset.query;
+      const input = document.getElementById('search-input');
+      input.value = storeName;
+      renderResults(storeName);
+      addSearchHistory(storeName);
+    });
+  });
 }
 
 function renderResults(query) {
@@ -196,11 +241,13 @@ function renderResults(query) {
 
   if (ownedCards.length === 0) {
     list.innerHTML = '<li class="empty-state">「カード一覧」で持っているカードを選んでください</li>';
+    renderCategoryStores('');
     return;
   }
 
   if (!query) {
     list.innerHTML = '<li class="empty-state">店名やカテゴリを入力してください</li>';
+    renderCategoryStores('');
     return;
   }
 
@@ -208,7 +255,11 @@ function renderResults(query) {
   const storeEntry = state.storeIndex.get(normalizedQuery);
   const normalizedCategory = normalizeText(storeEntry ? storeEntry.category : query);
 
-  const results = ownedCards.map((card) => ({ card, ...rateForCard(card, normalizedQuery, normalizedCategory) }));
+  // 入力そのものが特定の店名に一致しなかった場合(=カテゴリ名として解釈された場合)のみ、
+  // そのカテゴリに属する店舗一覧をチップで表示する。特定の店を検索した時は不要。
+  renderCategoryStores(storeEntry ? '' : normalizedCategory);
+
+  const results = ownedCards.map((card) => ({ card, ...rateForCard(card, normalizedQuery, normalizedCategory, !!storeEntry) }));
   const hasRealMatch = results.some((r) => r.matched !== 'base');
   const bestRate = hasRealMatch
     ? Math.max(...results.filter((r) => r.matched !== 'base').map((r) => r.rate))
