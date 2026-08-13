@@ -184,6 +184,26 @@
     "category": "飲食"
   },
   {
+    "name": "JA鶴岡もんとあ〜る",
+    "category": "ネット通販"
+  },
+  {
+    "name": "チャリロト",
+    "category": "ネット通販"
+  },
+  {
+    "name": "花キューピット",
+    "category": "ネット通販"
+  },
+  {
+    "name": "コミックシーモア",
+    "category": "ネット通販"
+  },
+  {
+    "name": "めちゃコミック",
+    "category": "ネット通販"
+  },
+  {
     "name": "ioPLAZA",
     "category": "未分類",
     "source": "auto"
@@ -2910,6 +2930,41 @@
   },
   {
     "name": "World eSIM",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "石橋楽器店",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "印鑑の匠ドットコム",
+    "category": "ネット通販",
+    "source": "auto"
+  },
+  {
+    "name": "オーシャンプリンセスオンラインショップ",
+    "category": "ネット通販",
+    "source": "auto"
+  },
+  {
+    "name": "Victoria Golf Online Store",
+    "category": "未分類",
+    "source": "auto"
+  },
+  {
+    "name": "タニタオンラインショップ",
+    "category": "ネット通販",
+    "source": "auto"
+  },
+  {
+    "name": "BEAUTY PARK",
+    "category": "美容",
+    "source": "auto"
+  },
+  {
+    "name": "レンズモード",
     "category": "未分類",
     "source": "auto"
   }
