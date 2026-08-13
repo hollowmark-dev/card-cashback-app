@@ -23,7 +23,8 @@
     },
     "notes": {
       "楽天市場": "SPU条件達成でさらに上乗せ(表示は基本還元率)"
-    }
+    },
+    "type": "credit"
   },
   {
     "id": "paypay-card",
@@ -196,7 +197,8 @@
       "丸善ジュンク堂書店": "金曜",
       "伊藤園アプリ「CHACOCO」": "水曜"
     },
-    "source": "auto"
+    "source": "auto",
+    "type": "barcode"
   },
   {
     "id": "d-card",
@@ -2177,7 +2179,8 @@
       }
     },
     "notes": {},
-    "source": "auto"
+    "source": "auto",
+    "type": "credit"
   },
   {
     "id": "epos-card",
@@ -4037,7 +4040,8 @@
       }
     },
     "notes": {},
-    "source": "auto"
+    "source": "auto",
+    "type": "credit"
   },
   {
     "id": "view-card",
@@ -4054,7 +4058,8 @@
       },
       "categories": {}
     },
-    "notes": {}
+    "notes": {},
+    "type": "credit"
   },
   {
     "id": "jcb-card",
@@ -5456,7 +5461,8 @@
       "categories": {}
     },
     "notes": {},
-    "source": "auto"
+    "source": "auto",
+    "type": "credit"
   },
   {
     "id": "smbc-card",
@@ -5580,7 +5586,8 @@
       "ドトールコーヒー": "スマホのタッチ決済またはモバイルオーダーでの支払い限定",
       "エクセルシオールカフェ": "スマホのタッチ決済またはモバイルオーダーでの支払い限定",
       "かっぱ寿司": "スマホのタッチ決済またはモバイルオーダーでの支払い限定"
-    }
+    },
+    "type": "credit"
   },
   {
     "id": "aeon-card",
@@ -5629,7 +5636,8 @@
       "ミニストップ": "イオングループ対象店舗はいつでもポイント2倍",
       "ウエルシア": "イオングループ対象店舗はいつでもポイント2倍",
       "イオンシネマ": "イオングループ対象店舗はいつでもポイント2倍"
-    }
+    },
+    "type": "credit"
   },
   {
     "id": "au-pay-card",
@@ -5648,7 +5656,8 @@
     },
     "notes": {
       "au PAY マーケット": "支払い方法にau PAYカードを選択時の還元(基本1%+カード利用1.5%)。au/UQ回線・Pontaパス・月間購入額などの条件達成でさらに上乗せの可能性あり(未反映)"
-    }
+    },
+    "type": "credit"
   },
   {
     "id": "olive-card",
@@ -5772,7 +5781,8 @@
       "ドトールコーヒー": "Oliveフレキシブルペイ クレジットモードでのスマホタッチ決済/モバイルオーダー限定",
       "エクセルシオールカフェ": "Oliveフレキシブルペイ クレジットモードでのスマホタッチ決済/モバイルオーダー限定",
       "かっぱ寿司": "Oliveフレキシブルペイ クレジットモードでのスマホタッチ決済/モバイルオーダー限定"
-    }
+    },
+    "type": "credit"
   },
   {
     "id": "saison-card",
@@ -5784,7 +5794,8 @@
       "stores": {},
       "categories": {}
     },
-    "notes": {}
+    "notes": {},
+    "type": "credit"
   },
   {
     "id": "orico-card",
@@ -7442,7 +7453,8 @@
       "categories": {}
     },
     "notes": {},
-    "source": "auto"
+    "source": "auto",
+    "type": "credit"
   },
   {
     "id": "jcb-card-w",
@@ -8844,7 +8856,8 @@
       "categories": {}
     },
     "notes": {},
-    "source": "auto"
+    "source": "auto",
+    "type": "credit"
   },
   {
     "id": "recruit-card",
@@ -8856,7 +8869,8 @@
       "stores": {},
       "categories": {}
     },
-    "notes": {}
+    "notes": {},
+    "type": "credit"
   },
   {
     "id": "mufg-card",
@@ -8910,7 +8924,8 @@
       "くら寿司": "三菱UFJ銀行口座の支払い設定+MDCアプリからのエントリーで条件達成時は最大20%まで上乗せ可能(表示は基本の優待率)",
       "スシロー": "三菱UFJ銀行口座の支払い設定+MDCアプリからのエントリーで条件達成時は最大20%まで上乗せ可能(表示は基本の優待率)",
       "松屋": "三菱UFJ銀行口座の支払い設定+MDCアプリからのエントリーで条件達成時は最大20%まで上乗せ可能(表示は基本の優待率)"
-    }
+    },
+    "type": "credit"
   },
   {
     "id": "seven-card-plus",
@@ -8933,7 +8948,8 @@
     },
     "notes": {
       "セブンイレブン": "7iD登録が必要(nanacoポイント9.5%+セブンマイル0.5%)。未登録の場合はnanacoチャージ分の0.5%のみ"
-    }
+    },
+    "type": "credit"
   },
   {
     "id": "life-card",
@@ -9243,7 +9259,8 @@
       "categories": {}
     },
     "notes": {},
-    "source": "auto"
+    "source": "auto",
+    "type": "credit"
   },
   {
     "id": "ts3-card",
@@ -9909,7 +9926,8 @@
       "categories": {}
     },
     "notes": {},
-    "source": "auto"
+    "source": "auto",
+    "type": "credit"
   },
   {
     "id": "d-barai",
@@ -9946,7 +9964,8 @@
       },
       "categories": {}
     },
-    "notes": {}
+    "notes": {},
+    "type": "barcode"
   },
   {
     "id": "merpay",
@@ -9958,6 +9977,7 @@
       "stores": {},
       "categories": {}
     },
-    "notes": {}
+    "notes": {},
+    "type": "barcode"
   }
 ]
