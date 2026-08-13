@@ -172,6 +172,50 @@ main.is-loading .tab-panel {
   color: var(--muted);
 }
 
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.category-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+  padding: 0.9rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  text-align: left;
+  color: var(--text);
+}
+
+.category-tile-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.category-tile-count {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.back-link {
+  display: inline-block;
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.4rem 0.2rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
 .chip-row {
   display: flex;
   flex-wrap: wrap;
@@ -206,6 +250,19 @@ main.is-loading .tab-panel {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+}
+
+.card-list-section-header {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  margin: 0.6rem 0 -0.1rem;
+  padding: 0 0.2rem;
+}
+
+.card-list-section-header:first-child {
+  margin-top: 0;
 }
 
 .result-item, .card-item-wrap, .store-item {

@@ -9,6 +9,7 @@ const state = {
   searchHistory: [],
   storeIndex: new Map(), // normalized name -> {name, category}
   categoryToStores: new Map(), // normalized category -> [store, ...]
+  storeCategoryFilter: null, // 店舗一覧タブで選択中のカテゴリ(nullならカテゴリ選択画面)
 };
 
 const TOP_STORES_LIMIT = 30;
@@ -328,9 +329,13 @@ function renderCardTopStoresHtml(card) {
 
 // 持っている(ON)カードが上に来る表示順を計算する。カード一覧タブを開いた時だけ再計算し、
 // トグル操作のたびには並び替えない(指の下でカードが移動してしまうのを防ぐため)。
+const CARD_TYPE_LABELS = { credit: 'クレジットカード', barcode: 'バーコード決済' };
+const CARD_TYPE_ORDER = ['credit', 'barcode'];
+
 function computeCardOrder() {
   state.cardOrder = [...state.cards]
     .sort((a, b) => {
+      if (a.type !== b.type) return CARD_TYPE_ORDER.indexOf(a.type) - CARD_TYPE_ORDER.indexOf(b.type);
       const aOwned = state.ownedCardIds.has(a.id);
       const bOwned = state.ownedCardIds.has(b.id);
       if (aOwned === bOwned) return 0;
@@ -346,7 +351,16 @@ function renderCardList() {
   const cardsById = new Map(state.cards.map((c) => [c.id, c]));
   const orderedCards = state.cardOrder.map((id) => cardsById.get(id)).filter(Boolean);
 
+  let lastType = null;
   orderedCards.forEach((card) => {
+    if (card.type !== lastType) {
+      lastType = card.type;
+      const header = document.createElement('li');
+      header.className = 'card-list-section-header';
+      header.textContent = CARD_TYPE_LABELS[card.type] || card.type;
+      list.appendChild(header);
+    }
+
     const owned = state.ownedCardIds.has(card.id);
     const expanded = state.expandedCardId === card.id;
     const sourceLabel = card.source === 'auto' ? '自動更新' : '手動登録';
@@ -384,16 +398,77 @@ function renderCardList() {
   });
 }
 
+// 604件を一度に並べても目当ての店が探しにくいため、初期表示はカテゴリ選択にし、
+// 選んだカテゴリ内(または検索文字列に一致するもの)だけを一覧表示する。
+function getCategoryCounts() {
+  const counts = new Map();
+  for (const store of state.stores) {
+    const category = store.category || '未分類';
+    counts.set(category, (counts.get(category) || 0) + 1);
+  }
+  return counts;
+}
+
+function renderStoreCategoryNav() {
+  const nav = document.getElementById('store-category-nav');
+  if (!nav) return;
+  const filterQuery = document.getElementById('store-filter-input').value.trim();
+
+  // 文字検索中はカテゴリ選択より全件横断検索を優先する
+  if (filterQuery) {
+    nav.innerHTML = '';
+    return;
+  }
+
+  if (state.storeCategoryFilter === null) {
+    const sorted = [...getCategoryCounts().entries()].sort((a, b) => b[1] - a[1]);
+    nav.innerHTML = `
+      <p class="hint">カテゴリから選ぶ(または上の欄で店名を検索)</p>
+      <div class="category-grid">
+        ${sorted
+          .map(
+            ([category, count]) => `
+              <button type="button" class="category-tile" data-category="${escapeHtml(category)}">
+                <span class="category-tile-name">${escapeHtml(category)}</span>
+                <span class="category-tile-count">${count}件</span>
+              </button>`
+          )
+          .join('')}
+      </div>
+    `;
+    nav.querySelectorAll('.category-tile').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        state.storeCategoryFilter = btn.dataset.category;
+        renderStoreCategoryNav();
+        renderStoreList();
+      });
+    });
+  } else {
+    nav.innerHTML = `<button type="button" id="store-category-back" class="back-link">← カテゴリ一覧に戻る</button>`;
+    document.getElementById('store-category-back').addEventListener('click', () => {
+      state.storeCategoryFilter = null;
+      renderStoreCategoryNav();
+      renderStoreList();
+    });
+  }
+}
+
 function renderStoreList(filterQuery = '') {
   const list = document.getElementById('store-list');
   list.innerHTML = '';
 
   const normalizedFilter = normalizeText(filterQuery);
-  const stores = normalizedFilter
-    ? state.stores.filter((s) => normalizeText(s.name).includes(normalizedFilter))
-    : state.stores;
+  let stores;
+  if (normalizedFilter) {
+    stores = state.stores.filter((s) => normalizeText(s.name).includes(normalizedFilter));
+  } else if (state.storeCategoryFilter === null) {
+    stores = []; // カテゴリ選択待ち(上のnavにカテゴリ一覧が出ている)
+  } else {
+    stores = state.stores.filter((s) => (s.category || '未分類') === state.storeCategoryFilter);
+  }
 
   if (stores.length === 0) {
+    if (!normalizedFilter && state.storeCategoryFilter === null) return;
     list.innerHTML = '<li class="empty-state">該当する店舗がありません</li>';
     return;
   }
@@ -466,7 +541,10 @@ function initSearch() {
 function initStoreFilter() {
   const input = document.getElementById('store-filter-input');
   if (!input) return;
-  input.addEventListener('input', () => renderStoreList(input.value.trim()));
+  input.addEventListener('input', () => {
+    renderStoreCategoryNav();
+    renderStoreList(input.value.trim());
+  });
 }
 
 function showLoadError() {
@@ -503,6 +581,7 @@ async function main() {
   populateSuggestions();
   computeCardOrder();
   renderCardList();
+  renderStoreCategoryNav();
   renderStoreList();
   renderResults('');
   renderSearchHistory();
