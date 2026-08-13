@@ -127,6 +127,32 @@ async function scrapePayPay() {
   return { stores, notes };
 }
 
+// オリコカード: オリコモール (https://www.oricomall.com/shop_list/indexed/)
+// エポス/JCBと違い五十音ページに分かれておらず、1ページに全店舗が掲載されている。
+// 還元率も倍率ではなく最終的な%がそのまま書かれている。
+const ORICO_URL = 'https://www.oricomall.com/shop_list/indexed/';
+
+async function scrapeOrico() {
+  const html = await fetchHtml(ORICO_URL);
+  const $ = cheerio.load(html);
+  const stores = {};
+
+  $('.shopName').each((_, el) => {
+    const container = $(el).parent();
+    const name = $(el).find('a').first().text().trim();
+    const rateText = container.find('.point_area .up').first().text().trim();
+    const match = rateText.match(/([\d.]+)\s*%/);
+    if (!name || !match) return;
+
+    const rate = Number(match[1]);
+    if (!Number.isFinite(rate)) return;
+
+    stores[name] = { rate, channel: 'mall' };
+  });
+
+  return stores;
+}
+
 function mergeCardRates(cards, cardId, storesRates, notes = {}) {
   const card = cards.find((c) => c.id === cardId);
   if (!card) throw new Error(`card not found: ${cardId}`);
@@ -171,6 +197,7 @@ const SOURCES = [
   { name: 'エポスカード', cardId: 'epos-card', scrape: scrapeEpos },
   { name: 'PayPayカード', cardId: 'paypay-card', scrape: scrapePayPay },
   { name: 'JCBカード', cardId: 'jcb-card', scrape: scrapeJcb },
+  { name: 'オリコカード', cardId: 'orico-card', scrape: scrapeOrico },
 ];
 
 async function main() {
