@@ -268,31 +268,39 @@ function mergeCardRates(cards, cardId, storesRates, notes = {}, { preserveManual
 
 // 自動取得した店舗はほとんどが「未分類」のままだと店舗一覧のカテゴリ検索が効かないため、
 // 店名のキーワードから大まかなカテゴリを推定する。完全ではないベストエフォートの分類。
+// 自動取得店舗(エポス/JCB/オリコ/dカード/ライフカード/TS3)は、そもそも全て
+// 「ポイントモールに掲載されているネットショップ」なので、他の特定カテゴリに
+// 当てはまらなければ「ネット通販」をデフォルトにする(=「未分類」をほぼ無くす)。
+// 旅行・美容・ゲーム等、明確に判定できるものだけ個別カテゴリに振り分ける。
 const CATEGORY_RULES = [
-  [/オンライン|ネットショップ|ドットコム|\.com|web ?store|online ?shop|ストア$|ショップ$/i, 'ネット通販'],
-  [/ホテル|トラベル|航空|ツアー|エクスペディア|エアトリ|じゃらん|agoda|expedia|travel|hotel/i, '旅行'],
+  [/ホテル|トラベル|航空|ツアー|エクスペディア|エアトリ|じゃらん|agoda|expedia|travel|hotel|JTB|スカイチケット|skyticket|skyscanner|レンタカー|近畿日本ツーリスト/i, '旅行'],
   [/アプリペイストア|ミニアプリ/i, 'アプリ'],
-  [/コスメ|化粧品|beauty|cosme|オーガニック/i, '美容'],
-  [/ゲーム|game/i, 'ゲーム'],
+  [/コスメ|化粧品|beauty|cosme|オーガニック|ボーテ|ネイル/i, '美容'],
+  [/ゲーム|game|SQUARE ENIX/i, 'ゲーム'],
+  [/チケット|ぴあ/i, 'チケット'],
 ];
 
 function guessCategory(name) {
   for (const [pattern, category] of CATEGORY_RULES) {
     if (pattern.test(name)) return category;
   }
-  return '未分類';
+  return 'ネット通販';
 }
 
 // stores.json は手動登録の店舗と、自動取得で見つかった店舗が混在する。
 // 1ソースの取得が失敗しても他のソースの結果を失わないよう、既存の自動取得店舗を
 // 丸ごと入れ替えるのではなく「まだ無いものだけ追加する」方式にしている
 // (取り下げられた店舗がstores.jsonに残り続ける可能性はあるが、実害は小さい)。
+// カテゴリだけは、ルールを改善した時に既存分にも反映されるよう毎回再計算する。
 function mergeDiscoveredStores(stores, newStoreNames) {
-  const existingNames = new Set(stores.map((s) => s.name));
+  const recategorized = stores.map((s) =>
+    s.source === 'auto' ? { ...s, category: guessCategory(s.name) } : s
+  );
+  const existingNames = new Set(recategorized.map((s) => s.name));
   const additions = [...new Set(newStoreNames)]
     .filter((name) => !existingNames.has(name))
     .map((name) => ({ name, category: guessCategory(name), source: 'auto' }));
-  return [...stores, ...additions];
+  return [...recategorized, ...additions];
 }
 
 // 取得元ごとの設定。1つのソースが失敗しても他のソースの更新は失われないよう、
