@@ -200,12 +200,24 @@ const SOURCES = [
   { name: 'オリコカード', cardId: 'orico-card', scrape: scrapeOrico },
 ];
 
+// JCB CARD Wは通常のJCBカードと同じJ-POINTモールを使うが、基本還元率が0.5%ではなく
+// 1.0%(2倍)なので、モールの還元率もすべて2倍になる。jcb-cardの取得結果からそのまま
+// 導出できるので、別途スクレイピングはしない。
+function deriveJcbCardW(cards, jcbStoresRates) {
+  const stores = {};
+  for (const [name, entry] of Object.entries(jcbStoresRates)) {
+    stores[name] = { rate: Math.round(entry.rate * 2 * 100) / 100, channel: entry.channel };
+  }
+  mergeCardRates(cards, 'jcb-card-w', stores, {});
+}
+
 async function main() {
   const cards = JSON.parse(fs.readFileSync(CARDS_PATH, 'utf8'));
   const stores = JSON.parse(fs.readFileSync(STORES_PATH, 'utf8'));
 
   const allNewStoreNames = [];
   const failures = [];
+  let jcbStoresRates = null;
 
   for (const source of SOURCES) {
     console.log(`${source.name}のデータを取得中...`);
@@ -216,10 +228,16 @@ async function main() {
       console.log(`  -> ${Object.keys(storesRates).length}件取得`);
       mergeCardRates(cards, source.cardId, storesRates, notes);
       allNewStoreNames.push(...Object.keys(storesRates));
+      if (source.cardId === 'jcb-card') jcbStoresRates = storesRates;
     } catch (err) {
       console.error(`  ! ${source.name}の取得に失敗しました: ${err.message}`);
       failures.push(source.name);
     }
+  }
+
+  if (jcbStoresRates) {
+    deriveJcbCardW(cards, jcbStoresRates);
+    console.log('JCB CARD W: jcb-cardの結果から2倍換算で更新しました。');
   }
 
   const updatedStores = mergeDiscoveredStores(stores, allNewStoreNames);
