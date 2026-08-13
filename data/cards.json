@@ -2100,7 +2100,7 @@
     "name": "JCBカード",
     "baseRate": 0.5,
     "color": "#00913a",
-    "updatedAt": "2026-08-11",
+    "updatedAt": "2026-08-13",
     "rates": {
       "stores": {
         "ioPLAZA": {
@@ -3824,5 +3824,1663 @@
       "categories": {}
     },
     "notes": {}
+  },
+  {
+    "id": "orico-card",
+    "name": "オリコカード",
+    "baseRate": 0.5,
+    "color": "#009fe8",
+    "updatedAt": "2026-08-13",
+    "rates": {
+      "stores": {
+        "ioPLAZA": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "アイリスプラザ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "i LUMINE（アイルミネ）": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "AOKI公式オンラインショップ": {
+          "rate": 10,
+          "channel": "mall"
+        },
+        "青山花茂本店　オンラインショップ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "青山フラワーマーケット オンラインショップ": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "アカチャンホンポ Online Shop": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "アキレスウェブショップ": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "アクセーヌオンラインショップ": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "ACTUS online": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "UGG（R） Australia 公式サイト": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "Agoda": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "アサヒカルピスウェルネスショップ": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "ASICS WALKING【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "ASBeeオンラインショップ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "asoview!(アソビュー)": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "@cosme SHOPPING": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "アットコンタクト": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "アットスタイル": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "Apple公式サイト": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "adidas ONLINE SHOP": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "anatae": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "Anny（アニー） ギフト専門のセレクトショップ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "Amazon.co.jp": {
+          "rate": 4,
+          "channel": "mall"
+        },
+        "アモスタイル バイ トリンプ オンラインショップ": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "Alinoma（アリノマ）": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "アルマードオンラインショップ": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "Angellir（アンジェリール）公式サイト": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "アンティナギフトスタジオ": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "and ST": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "アンファーストア": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "アヴェダ公式オンラインショップ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "アートネイチャー・オンライン": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "URBAN RESEARCH": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "e87.com（千趣会　イイハナ）": {
+          "rate": 7.5,
+          "channel": "mall"
+        },
+        "おうちでイオン イオンショップ": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "ISETAN BEAUTY online": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "一番くじONLINE": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ITOKIN ONLINE STORE 【イトキンオフィシャルサイト】": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "IPSA 公式サイト": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "印鑑・はんこ専門店ハンコヤドットコム": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "イヴ・サンローラン・ボーテ公式オンラインブティック": {
+          "rate": 7,
+          "channel": "mall"
+        },
+        "イーカプコン": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ECカレント": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "イーフローラ": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "ｅBEST（イーベスト）": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "ウェブポ（年賀状総合サービス）": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "USAGI ONLINE": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "エアクロモール（airCloset Mall）": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "エアトリ（海外航空券・海外ホテル）": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "エアトリ国内航空券予約": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "エア・リゾーム インテリア本店": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "EIZOダイレクト": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "HISオンライン予約": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "H&M": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "HMV & BOOKS online": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "HP Directplus": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "EXETIME": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "エスティローダー公式オンライン ショップ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "est（エスト）公式オンラインショップ": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "X-girl【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "F ORGANICS(エッフェオーガニック)公式ウェブサイト": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "NEC Direct（NECダイレクト）": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "NEC　得選街": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "NY.ONLINE": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "ENOTECA online": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "FMV Store": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "F.O.Online Store": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "エプソンダイレクト": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "エマ・スリープ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "MTG ONLINESHOP": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "aimerfeel(エメフィール）公式通販サイト": {
+          "rate": 4.5,
+          "channel": "mall"
+        },
+        "L.L.Beanオンラインショップ": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ELLE SHOP": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "【ANA公式】 ANAトラベラーズホテル＆レンタカー": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "ANAの国内・海外ツアー【ANAトラベラーズ】": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "ABC-MARTオンラインストア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "au PAY マーケット（旧au wowma）": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "Oisix（おいしっくす）": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "オシャレウォーカー": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "OZmall": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "小樽洋菓子舗ルタオ": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "小田急オンラインショッピング": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "Onitsuka Tiger【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "ORIHICA（オリヒカ）": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "オルビス": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "オージオ ネット": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "オーダーチーズ・ドットコム": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "【海外・国内航空券】旅行予約のエクスペディア": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "【海外・国内ホテル】旅行予約のエクスペディア": {
+          "rate": 4,
+          "channel": "mall"
+        },
+        "貝印公式オンラインストア": {
+          "rate": 7,
+          "channel": "mall"
+        },
+        "カインズ": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "格安航空券モール": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "CAGUUU": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "【カゴメの通信販売】カゴメ健康直送便": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "カタログギフトのリンベル": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "カタログギフトのハーモニック公式サイト": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "カタログ通販ベルーナ（Belluna）": {
+          "rate": 4,
+          "channel": "mall"
+        },
+        "KANADEMONO": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "カニ通販.com": {
+          "rate": 6.5,
+          "channel": "mall"
+        },
+        "カメラのキタムラ ネットショップ": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "カンペール オフィシャルオンラインストア": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "キタムラグループ　ネットプリントサービス": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "紀伊國屋書店ウェブストア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "きもの365": {
+          "rate": 5.5,
+          "channel": "mall"
+        },
+        "キャロウェイ オンラインストア": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "キューサイ公式ショッピングサイト": {
+          "rate": 12,
+          "channel": "mall"
+        },
+        "Qoo10": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "京都・宇治 伊藤久右衛門": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "近畿日本ツーリストの交通+宿泊": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "近畿日本ツーリストの国内宿泊": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "近畿日本ツーリストの国内ツアー": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "キングソフトオンラインショップ": {
+          "rate": 15,
+          "channel": "mall"
+        },
+        "キールズ公式オンラインショップ": {
+          "rate": 7.5,
+          "channel": "mall"
+        },
+        "祇園辻利": {
+          "rate": 6,
+          "channel": "mall"
+        },
+        "ギフトモール 日本最大級のギフト専門ショップ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "Gapオンラインストア": {
+          "rate": 4,
+          "channel": "mall"
+        },
+        "GILT": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "くまポンbyGMO": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "クリニーク公式 オンライン ショップ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "Klook": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "クロックス オンラインショップ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "グレディブリリアン公式通販": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "グローバルWiFi": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "グンゼストア": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "GOOPASS": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "京王百貨店ネットショップ": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "Cake.jp": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "ケーズデンキオンラインショップ": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "ゲオオンラインストア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "湖池屋オンラインショップ": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "【航空券＋宿泊の同時予約】旅行予約のエクスペディア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "江原道/ Koh Gen Do 公式オンラインショップ": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "神戸屋オンラインストア": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "神戸レタス：Kobe　Lettuce": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "ココデカウ【日用品通販】": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "cocorostore": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "コジマネット": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "KOMEHYO ONLINESTORE": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "コロンビアスポーツウェア 公式サイト": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "コンタクトレンズ通販 レンズアップル": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "コンビ公式ブランドストア": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "COLE HAAN 公式オンラインストア": {
+          "rate": 5.5,
+          "channel": "mall"
+        },
+        "ゴディバ（GODIVA）公式オンラインショップ": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "【ゴルフショップ】ゴルフダイジェスト・オンライン：GDO": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "サイクルベースあさひ": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "サッカーショップ加茂": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "サニーヘルスショッピング": {
+          "rate": 7.5,
+          "channel": "mall"
+        },
+        "Surprice!（サプライス）": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "Samsungオンラインショップ": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "サムソナイト公式オンラインストア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "サロモン": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "サンデーマウンテン": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "サントリーウエルネスオンライン": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "サンプル百貨店": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "サンワダイレクト": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "サーモスオンラインショップ": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "雑誌のオンライン書店／~＼Fujisan.co.jp　【雑誌の富士山】": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "SHEL'TTER WEB STORE": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "資生堂オンラインストア": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "SHIPS": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "シャディ　ギフトモール": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "シュウ ウエムラ公式オンラインショップ": {
+          "rate": 7,
+          "channel": "mall"
+        },
+        "生涯学習のユーキャン": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ショップジャパン": {
+          "rate": 6,
+          "channel": "mall"
+        },
+        "ショップチャンネル": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "Shoplist": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "白樺リゾート 池の平ホテル【THE LAKE RESORT】長野県": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "白鳩/京都発インナーショップ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "JAタウン": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "JTB【海外旅行】": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "JTB【国内】": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "JTOPIA": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "ジェイトリップツアー": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "gelato pique【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "JR東海ツアーズ": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "Jackery Japan": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "じゃらん　遊び体験予約": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "じゃらんnet": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "じゃらんパック": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "じゃらんレンタカー": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "JAL 日本航空 国際線航空券": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "ジャルパック　海外ツアー": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "ジャルパック　国内ツアー": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "ジョンマスターオーガニック公式オンラインストア": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "Joshin Webショップ": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "ジョー マローン ロンドン": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "skyticket": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "すかいらーくの宅配": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "SQUARE ENIX　e-STORE": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "Stylora Store（スタイロラ ストア）": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "SNIDELBEAUTY(スナイデルビューティ)公式ウェブサイト": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "スポーツデポ・ゴルフ5・アルペン公式ストア": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "ZUTTO": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "成城石井.com": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "セカンドストリート": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "セシール　オンラインショップ": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "セフィーヌ　公式オンラインショップ": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "セブンネットショッピング": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "セルフジェルネイル「ohora」": {
+          "rate": 4,
+          "channel": "mall"
+        },
+        "Celvoke（セルヴォーク）ウェブサイト": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "ソニーストア": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "Sony Music Shop": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "ソフマップ・ドットコム": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ソースネクスト": {
+          "rate": 5.5,
+          "channel": "mall"
+        },
+        "Zoff Online Store (ゾフ オンラインストア)": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "タイヤ＆ホイール専門店 カーポートマルゼン": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "TIREHOOD": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "高島屋オンラインストア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "タカシマヤファッションスクエア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "［タカラトミー公式］タカラトミーモール": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "匠本舗 かに本舗": {
+          "rate": 4,
+          "channel": "mall"
+        },
+        "宅麺.com": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "TATRAS CONCEPT STORE": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "たまひよSHOP": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "TOWER RECORDS ONLINE": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ダイエーネットショッピング": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ダイソン公式オンラインストア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ダイソーネットストア": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "Dynabook Direct": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "大丸松坂屋オンラインストア": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "ダイレクトテレショップ": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "Daniel Wellington JP": {
+          "rate": 6,
+          "channel": "mall"
+        },
+        "ダンロップスポーツストア": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "チケットぴあ": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "CHACOTT【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "CHARLES & KEITH 公式オンラインストア": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "ツインバード公式ストア": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "蔦屋書店オンラインストア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "TSUNAGU 内祝い専門店 by senshukai": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ツヴィリング　公式オンラインショップ": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "titivate": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "Teva公式サイト（テバ公式サイト）": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "TeMOT": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "テレ東アトミックゴルフ本店": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "テンピュール(R) 公式ネットストア": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "テーラーメイドゴルフ公式オンラインストア": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "DECENCIA(ディセンシア）": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "ディノスオンラインショップ": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "DHCオンラインショップ": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "dショッピング": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "DCMオンライン": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "DHOLIC STYLE【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "【DEPACO】大丸松坂屋コスメオンラインストア": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "Dell（法人向け）": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "Dell（個人向け）": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "電子書籍ストア ブックライブ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "電動アシスト自転車＆子供自転車－ｗｉｍｏ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "トイザらス・ベビーザらス オンラインストア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "TOKYOlife（トウキョウライフ）": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "東武オンラインショップ": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "Trip.com（ホテル）": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "トリンプ・オンラインショップ": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "トリー バーチ 公式オンラインストア": {
+          "rate": 4,
+          "channel": "mall"
+        },
+        "トレンドマイクロ・オンラインショップ": {
+          "rate": 15,
+          "channel": "mall"
+        },
+        "トーカ堂　インターネットテレビショッピング": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "to/one(トーン)公式ウェブサイト": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "DoCLASSE （ドゥクラッセ）": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "ドクターケイ公式オンラインショップ": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ドクターシーラボ公式オンラインショップ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "Dorry Doll公式オンラインストア": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "ナチュラム": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "ナチュラルセレクトショップ　「コスメキッチン」": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "【初回購入限定】nosh - ナッシュ": {
+          "rate": 6.5,
+          "channel": "mall"
+        },
+        "なんでも酒やカクヤス(ビール・ワイン等の通販・宅配）": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "NARS公式オンラインショップ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "ニッセンオンライン": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "日テレポシュレ": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "ニトリ 家具・インテリアの通販サイト【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "日本旅行ホームページ": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ニューバランス公式オンラインストア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ニールズヤード レメディーズ": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "NEOWING": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "nojima online(ノジマオンライン)": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "ノートンストア": {
+          "rate": 15,
+          "channel": "mall"
+        },
+        "HAPPY PLUS STORE": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ハッピーマリリン": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "花キューピット公式サイト": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "Honeys": {
+          "rate": 5.5,
+          "channel": "mall"
+        },
+        "阪急ギフトモール": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "HANKYU HANSHIN E-STORES": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "阪神ギフトモール": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ハンズネットストア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "HABA ONLINE": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "VAIOストア": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "BUYMA TRAVEL": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "BARNEYS NEW YORK": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "パイオニア公式オンラインショップ（NP1）": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "パソコン工房": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "パタゴニア": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "Panasonic Store Plus": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "PAL CLOSET": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "パレモバONLINESTORE": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "ぱーそなるたのめーる P-tano": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "日比谷花壇": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "ビックカメラ.com": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "びゅうトラベル（えきねっと JR東日本国内ツアー）": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "Biople WEB STORE（ビープル ウェブストア）": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "BEAMS公式オンラインショップ": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ピザハットオンライン": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "PEACH JOHN": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "ファイテンオフィシャルストア": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "ファイブフォックス オンラインストア": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "ファンケル": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "HUAWEI公式サイト": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "fifthストア": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "FELISSIMO": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "fukuske ONLINE STORE": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "フジテレビフラワーネット": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "FUJIFILMプリント＆ギフト／フジフイルムモール": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "藤巻百貨店": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "婦人画報のお取り寄せ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "フラワーファーム": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "FREAK’S STORE（デイトナパーク）": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "FRAY I.D／フレイアイディー【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "FRONTIERダイレクト": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "Booking.com": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "BOOK☆WALKER": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ブックオフ公式オンラインストア": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "Brandear（ブランディア）": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "BrooksBrothers ONLINE SHOP": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "BRUNO online": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "プチバトーオンラインブティック": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "プレミアムドッグフード専門店POCHI": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "Puma Online Store": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "ベッド・マットレス通販専門店ネルコンシェルジュ neruco": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "VELTRA（ベルトラ）": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "ベルメゾン": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "ベルーナグルメ": {
+          "rate": 4,
+          "channel": "mall"
+        },
+        "ペット用品通販『ペピイ』": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "HOKA（ホカ）公式サイト": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "北海道リゾートライナー": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "ホテルズドットコム": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "THE BODY SHOP": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "BONAVENTURA": {
+          "rate": 7,
+          "channel": "mall"
+        },
+        "ボビイ ブラウン公式 オンライン ショップ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "ポケトーク公式オンラインストア": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "Paul Smithオンラインショップ": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "My Kao Mall": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "マイケル・コース オンラインアウトレットストア": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "MYTREX 公式オンラインストア": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "マイプロテイン": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "【ベルーナ】My Wine CLUB": {
+          "rate": 4,
+          "channel": "mall"
+        },
+        "マウスコンピューター": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "マカフィーストア": {
+          "rate": 15,
+          "channel": "mall"
+        },
+        "MAJESTIC LEGON【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "マツキヨココカラ": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "マルイウェブチャネル": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "漫画全巻ドットコム": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "ミズノショップ": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "三越伊勢丹オンラインストア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ミレー(MILLET)公式オンラインストア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "みんなのチケット【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "murauchi.com(ムラウチドットコム)": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "ムラサキスポーツ【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "メガスポーツオンラインショップ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "メガネのOWNDAYS（オンデーズ）公式オンラインストア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "メンズファッション通販　CAMBIO/カンビオ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "MoMA Design Store": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "「モンスターストライク」アプリペイストア": {
+          "rate": 10,
+          "channel": "mall"
+        },
+        "Yahoo!ショッピング": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "【Yahoo!トラベル】ヤフーパック（宿泊＋航空券）JAL便": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ヤマダモール": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "YAMADAYA（ヤマダヤオンラインストア）": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "山田養蜂場オンラインショップ": {
+          "rate": 7.5,
+          "channel": "mall"
+        },
+        "UNITED ARROWS LTD. ONLINE STORE": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "Udemy": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "洋服の青山オンラインストア": {
+          "rate": 4.5,
+          "channel": "mall"
+        },
+        "楽天市場": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "Rakuten Oyado": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "楽天Kobo【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "楽天GORA【楽天市場】": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "Rakuten STAY（楽天ステイ）": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "楽天チケット": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "楽天トラベル【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "楽天トラベル（楽天バス）【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "楽天トラベル（楽天レンタカー）": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "楽天トラベル（楽パック（航空券＋宿））【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "Rakuten Fashion": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "楽天ブックス【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "LACOSTE 公式オンラインショップ": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "ラサーナ公式通販サイト": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "ラ・メール公式オンラインショップ La Mer": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ラ ロッシュ ポゼ公式ブランド・通販サイト": {
+          "rate": 6,
+          "channel": "mall"
+        },
+        "RUNWAY channel": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ランコム": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "リコレ！ソフマップの中古通販サイト": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "Relux（リラックス）": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "Lily Brown／リリーブラウン【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "LEVI'S E-SHOP": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "ル・クルーゼ 公式オンラインショップ": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "LOOK @ E-SHOP": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "LUNASOL公式オンラインストア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "ルミナスクラブショップ": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "るるぶトラベル": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "レコチョク": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "READYFOR（レディーフォー）": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "レノボ・ショッピング": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "電子貸本Renta！": {
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "Rentio": {
+          "rate": 7.5,
+          "channel": "mall"
+        },
+        "ロクシタンオンラインショップ": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "テレビ朝日の通販サイト「Ｒｏｐｐｉｎｇ（ロッピング）」": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "ロフトネットストア": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "ROPEPICNIC": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "ワイシャツの山喜オフィシャル通販": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "WiFiBOX": {
+          "rate": 5,
+          "channel": "mall"
+        },
+        "WiFiレンタルどっとこむ": {
+          "rate": 2,
+          "channel": "mall"
+        },
+        "ワインショップ　カーヴ・ド・ラ・マドレーヌ": {
+          "rate": 4,
+          "channel": "mall"
+        },
+        "ワコールウェブストア": {
+          "rate": 1,
+          "channel": "mall"
+        },
+        "World eSIM": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
+        "WORLD ONLINE STORE": {
+          "rate": 1,
+          "channel": "mall"
+        }
+      },
+      "categories": {}
+    },
+    "notes": {},
+    "source": "auto"
   }
 ]
