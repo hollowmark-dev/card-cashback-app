@@ -1,0 +1,12 @@
+{
+  "name": "カード還元率チェッカー",
+  "short_name": "還元率チェッカー",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f7fa",
+  "theme_color": "#2b6cb0",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "192x192 512x512", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
