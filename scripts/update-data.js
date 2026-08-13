@@ -9,7 +9,7 @@ const cheerio = require('cheerio');
 
 const CARDS_PATH = path.join(__dirname, '..', 'data', 'cards.json');
 const STORES_PATH = path.join(__dirname, '..', 'data', 'stores.json');
-const USER_AGENT = 'Mozilla/5.0 (compatible; personal-card-cashback-app/1.0)';
+const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36';
 const SLEEP_MS = 500;
 
 function sleep(ms) {
@@ -147,45 +147,59 @@ function guessCategory(name) {
   return '未分類';
 }
 
-// stores.json は手動登録の店舗(コンビニ等)と、自動取得で見つかった店舗が混在する。
-// 自動取得分(source: "auto")は毎回まるごと入れ替える。手動登録分はそのまま残す。
+// stores.json は手動登録の店舗と、自動取得で見つかった店舗が混在する。
+// 1ソースの取得が失敗しても他のソースの結果を失わないよう、既存の自動取得店舗を
+// 丸ごと入れ替えるのではなく「まだ無いものだけ追加する」方式にしている
+// (取り下げられた店舗がstores.jsonに残り続ける可能性はあるが、実害は小さい)。
 function mergeDiscoveredStores(stores, newStoreNames) {
-  const manual = stores.filter((s) => s.source !== 'auto');
-  const manualNames = new Set(manual.map((s) => s.name));
-  const auto = [...new Set(newStoreNames)]
-    .filter((name) => !manualNames.has(name))
+  const existingNames = new Set(stores.map((s) => s.name));
+  const additions = [...new Set(newStoreNames)]
+    .filter((name) => !existingNames.has(name))
     .map((name) => ({ name, category: guessCategory(name), source: 'auto' }));
-  return [...manual, ...auto];
+  return [...stores, ...additions];
 }
+
+// 取得元ごとの設定。1つのソースが失敗しても他のソースの更新は失われないよう、
+// それぞれ独立してtry/catchする。
+const SOURCES = [
+  { name: 'エポスカード', cardId: 'epos-card', scrape: scrapeEpos },
+  { name: 'PayPayカード', cardId: 'paypay-card', scrape: scrapePayPay },
+  { name: 'JCBカード', cardId: 'jcb-card', scrape: scrapeJcb },
+];
 
 async function main() {
   const cards = JSON.parse(fs.readFileSync(CARDS_PATH, 'utf8'));
   const stores = JSON.parse(fs.readFileSync(STORES_PATH, 'utf8'));
 
-  console.log('エポスカードのデータを取得中...');
-  const eposStores = await scrapeEpos();
-  console.log(`  -> ${Object.keys(eposStores).length}件取得`);
+  const allNewStoreNames = [];
+  const failures = [];
 
-  console.log('PayPayカードのデータを取得中...');
-  const { stores: paypayStores, notes: paypayNotes } = await scrapePayPay();
-  console.log(`  -> ${Object.keys(paypayStores).length}件取得`);
+  for (const source of SOURCES) {
+    console.log(`${source.name}のデータを取得中...`);
+    try {
+      const result = await source.scrape();
+      const storesRates = result.stores || result;
+      const notes = result.notes || {};
+      console.log(`  -> ${Object.keys(storesRates).length}件取得`);
+      mergeCardRates(cards, source.cardId, storesRates, notes);
+      allNewStoreNames.push(...Object.keys(storesRates));
+    } catch (err) {
+      console.error(`  ! ${source.name}の取得に失敗しました: ${err.message}`);
+      failures.push(source.name);
+    }
+  }
 
-  console.log('JCBカードのデータを取得中...');
-  const jcbStores = await scrapeJcb();
-  console.log(`  -> ${Object.keys(jcbStores).length}件取得`);
-
-  mergeCardRates(cards, 'epos-card', eposStores);
-  mergeCardRates(cards, 'paypay-card', paypayStores, paypayNotes);
-  mergeCardRates(cards, 'jcb-card', jcbStores);
-
-  const updatedStores = mergeDiscoveredStores(
-    stores,
-    [...Object.keys(eposStores), ...Object.keys(paypayStores), ...Object.keys(jcbStores)]
-  );
+  const updatedStores = mergeDiscoveredStores(stores, allNewStoreNames);
 
   fs.writeFileSync(CARDS_PATH, JSON.stringify(cards, null, 2) + '\n');
   fs.writeFileSync(STORES_PATH, JSON.stringify(updatedStores, null, 2) + '\n');
-  console.log('data/cards.json と data/stores.json を更新しました。');
+
+  if (failures.length > 0) {
+    console.error(`一部のソースで取得に失敗しました(他のソースは正常に更新済み): ${failures.join(', ')}`);
+    process.exitCode = 1;
+  } else {
+    console.log('data/cards.json と data/stores.json をすべて正常に更新しました。');
+  }
 }
 
 main().catch((err) => {
