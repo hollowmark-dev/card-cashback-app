@@ -152,6 +152,38 @@
     "category": "ネット通販"
   },
   {
+    "name": "イトーヨーカドー",
+    "category": "スーパー"
+  },
+  {
+    "name": "オーケー",
+    "category": "スーパー"
+  },
+  {
+    "name": "東武ストア",
+    "category": "スーパー"
+  },
+  {
+    "name": "オオゼキ",
+    "category": "スーパー"
+  },
+  {
+    "name": "肉のハナマサ",
+    "category": "スーパー"
+  },
+  {
+    "name": "くら寿司",
+    "category": "飲食"
+  },
+  {
+    "name": "スシロー",
+    "category": "飲食"
+  },
+  {
+    "name": "松屋",
+    "category": "飲食"
+  },
+  {
     "name": "ioPLAZA",
     "category": "未分類",
     "source": "auto"
