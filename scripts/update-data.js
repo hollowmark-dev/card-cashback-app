@@ -16,8 +16,14 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+const COMMON_HEADERS = {
+  'User-Agent': USER_AGENT,
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'Accept-Language': 'ja,en-US;q=0.9,en;q=0.8',
+};
+
 async function fetchHtml(url) {
-  const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
+  const res = await fetch(url, { headers: COMMON_HEADERS });
   if (!res.ok) throw new Error(`${url} -> HTTP ${res.status}`);
   return res.text();
 }
@@ -196,9 +202,16 @@ async function main() {
 
   if (failures.length > 0) {
     console.error(`一部のソースで取得に失敗しました(他のソースは正常に更新済み): ${failures.join(', ')}`);
-    process.exitCode = 1;
   } else {
     console.log('data/cards.json と data/stores.json をすべて正常に更新しました。');
+  }
+
+  // 1つでも取得できたソースがあれば、その分だけでも必ずコミットされてほしいので
+  // exitCodeは正常終了にする(GitHub ActionsはStepが失敗すると後続のgit commit/push
+  // ステップごとスキップしてしまうため、部分的な失敗でジョブ全体を落とさない)。
+  // 全ソースが失敗した場合のみ異常終了として扱い、CI上で赤く分かるようにする。
+  if (failures.length === SOURCES.length) {
+    process.exitCode = 1;
   }
 }
 
