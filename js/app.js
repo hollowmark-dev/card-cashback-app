@@ -51,19 +51,36 @@ async function loadData() {
 // (Mapを使うことで "constructor" のようなJSの予約語的なキーを店名検索しても
 // プロトタイプ汚染で壊れない)
 function buildIndexes() {
+  state.storeIndex = new Map();
+  for (const store of state.stores) {
+    state.storeIndex.set(normalizeText(store.name), store);
+  }
+
   for (const card of state.cards) {
     card.storeIndex = new Map();
     for (const [name, entry] of Object.entries(card.rates.stores)) {
       card.storeIndex.set(normalizeText(name), { name, rate: entry.rate, channel: entry.channel || 'store' });
     }
+
+    // 手入力のcategories(飲食・コンビニ等)は一部のカードにしか設定されておらず、
+    // 店舗単位のデータが充実したカード(三井住友・Oliveなど)ではカテゴリ検索が
+    // 全く効かなくなっていた。そこで、そのカードが対象にしている店舗のうち
+    // 該当カテゴリに属する店の最大還元率を動的に算出し、手入力のcategories(あれば)
+    // と比べて高い方を採用する。
     card.categoryIndex = new Map();
     for (const [name, rate] of Object.entries(card.rates.categories)) {
       card.categoryIndex.set(normalizeText(name), rate);
     }
-  }
-  state.storeIndex = new Map();
-  for (const store of state.stores) {
-    state.storeIndex.set(normalizeText(store.name), store);
+    for (const { name, rate } of card.storeIndex.values()) {
+      const storeInfo = state.storeIndex.get(normalizeText(name));
+      const category = storeInfo?.category;
+      if (!category || category === '未分類') continue;
+      const normalizedCategory = normalizeText(category);
+      const current = card.categoryIndex.get(normalizedCategory);
+      if (current === undefined || rate > current) {
+        card.categoryIndex.set(normalizedCategory, rate);
+      }
+    }
   }
 }
 
