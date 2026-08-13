@@ -1,4 +1,4 @@
-const CACHE_NAME = 'card-cashback-v3';
+const CACHE_NAME = 'card-cashback-v4';
 const ASSETS = [
   './',
   './index.html',
@@ -32,11 +32,14 @@ self.addEventListener('activate', (event) => {
 // 還元率データの鮮度が本質的に重要なため、オンライン時は常にネットワークを優先し、
 // オフライン時のみキャッシュにフォールバックする(cache-firstにすると更新後も
 // 古い還元率が表示され続けてしまう)。
+// cache: 'no-store' を指定しないと、SWが「ネットワークから取得」していても
+// ブラウザ自体のHTTPキャッシュ(GitHub PagesのCache-Controlヘッダ)が古い
+// レスポンスを黙って返してしまい、network-firstのつもりが実質cache-firstになる。
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return; // POST等はService Workerが関与しない
 
   event.respondWith(
-    fetch(event.request)
+    fetch(event.request, { cache: 'no-store' })
       .then((res) => {
         // エラーレスポンス(404/500等)をキャッシュすると、その後オフライン時に
         // 壊れた内容が固定化されてしまうため、成功時のみ保存する。
