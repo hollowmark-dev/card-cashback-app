@@ -218,7 +218,7 @@ function renderResults(query) {
       <div>
         <span class="card-swatch" style="background:${card.color}"></span>
         <span class="item-name">${escapeHtml(card.name)}</span>
-        ${tags.join('')}
+        ${tags.length ? `<div class="tag-row">${tags.join('')}</div>` : ''}
         ${note ? `<div class="item-note">${escapeHtml(note)}</div>` : ''}
       </div>
       <div class="rate-badge">${rate.toFixed(1)}%</div>
@@ -420,6 +420,7 @@ async function main() {
   }
 
   buildIndexes();
+  document.querySelector('main').classList.remove('is-loading');
 
   const { owned, seen } = loadOwnership();
   state.ownedCardIds = owned;

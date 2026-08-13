@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>カード還元率チェッカー</title>
-<meta name="theme-color" content="#2b6cb0">
+<meta name="theme-color" content="#2b6cb0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12181f" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icons/icon-180.png">
@@ -15,13 +16,12 @@
   <h1>カード還元率チェッカー</h1>
 </header>
 
-<nav class="tabs" role="tablist">
-  <button class="tab-btn active" data-tab="search" role="tab" aria-selected="true">検索</button>
-  <button class="tab-btn" data-tab="cards" role="tab" aria-selected="false">カード一覧</button>
-  <button class="tab-btn" data-tab="stores" role="tab" aria-selected="false">店舗一覧</button>
-</nav>
+<main class="is-loading">
+  <div id="loading-state" class="loading-state">
+    <div class="spinner" aria-hidden="true"></div>
+    <p>読み込み中...</p>
+  </div>
 
-<main>
   <section id="tab-search" class="tab-panel active">
     <div class="search-box">
       <input
@@ -56,6 +56,21 @@
     <ul id="store-list" class="store-list"></ul>
   </section>
 </main>
+
+<nav class="tabs" role="tablist">
+  <button class="tab-btn active" data-tab="search" role="tab" aria-selected="true">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <span>検索</span>
+  </button>
+  <button class="tab-btn" data-tab="cards" role="tab" aria-selected="false">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2.5"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+    <span>カード一覧</span>
+  </button>
+  <button class="tab-btn" data-tab="stores" role="tab" aria-selected="false">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"></path><path d="M3 9a2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0"></path><path d="M5 9v10h14V9"></path></svg>
+    <span>店舗一覧</span>
+  </button>
+</nav>
 
 <script src="js/app.js"></script>
 </body>
