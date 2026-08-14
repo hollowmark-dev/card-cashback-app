@@ -1,4 +1,4 @@
-const CACHE_NAME = 'card-cashback-v4';
+const CACHE_NAME = 'card-cashback-v5';
 const ASSETS = [
   './',
   './index.html',
@@ -37,6 +37,25 @@ self.addEventListener('activate', (event) => {
 // レスポンスを黙って返してしまい、network-firstのつもりが実質cache-firstになる。
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return; // POST等はService Workerが関与しない
+
+  // OCRエンジン本体(wasm/traineddata、合計十数MB)は内容が変わらない静的アセットなので、
+  // 還元率データと違って鮮度は不要。network-firstだとオンライン時に毎回十数MBを
+  // 再ダウンロードしてしまうため、ここだけcache-firstにする。
+  if (event.request.url.includes('/vendor/tesseract/')) {
+    event.respondWith(
+      caches.match(event.request).then((cached) => {
+        if (cached) return cached;
+        return fetch(event.request).then((res) => {
+          if (res.ok) {
+            const resClone = res.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, resClone));
+          }
+          return res;
+        });
+      })
+    );
+    return;
+  }
 
   event.respondWith(
     fetch(event.request, { cache: 'no-store' })
