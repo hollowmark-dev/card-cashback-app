@@ -358,10 +358,16 @@ function isOcrDiscountLine(line) {
   );
 }
 
+// 画面全体のスクショには、スマホのステータスバー(時刻・電波・バッテリー等のアイコン)や
+// ブラウザのURLバーが写り込むことが多い。これらは小さいアイコンの寄せ集めなので
+// OCRが「11:47 の る NISS 5」のような意味不明な断片として1行にまとめて読み取ってしまい、
+// 何も対策しないと店名候補として拾われてしまう(実際に発生した不具合)。
 function isOcrChromeLine(line) {
   if (!line) return true;
   if (/^[\[【].*[\]】]$/.test(line)) return true; // [メニューNo.xxxx] のような行
   if (/^[0-9０-９]+$/.test(line)) return true; // 数字だけの行
+  if (/^\d{1,2}[:：]\d{2}\b/.test(line)) return true; // 行頭が時刻(ステータスバー行)
+  if (/https?:\/\/|www\.|\.(com|jp|inc|net|co)\b/i.test(line)) return true; // URLらしき行(アドレスバー)
   return OCR_CHROME_BLOCKLIST.some((w) => line.includes(w));
 }
 
@@ -382,10 +388,14 @@ function guessCouponsFromOcrText(text) {
   lines.forEach((line, idx) => {
     if (!isOcrDiscountLine(line)) return;
 
+    // ステータスバーやURLバー、ヘッダー、タブ、並び替えメニューなど、店名の前に
+    // 何行もチラつくことがあるため、少し広めに遡って最初の「まともな行」を探す。
     let storeName = '';
-    for (let back = 1; back <= 3; back++) {
+    for (let back = 1; back <= 6; back++) {
       const candidate = lines[idx - back];
-      if (candidate && !isOcrChromeLine(candidate) && !isOcrDiscountLine(candidate)) {
+      if (!candidate) break;
+      if (isOcrDiscountLine(candidate)) break; // 1つ前のクーポンの割引行に突き当たったら打ち切る
+      if (!isOcrChromeLine(candidate)) {
         storeName = candidate;
         break;
       }
@@ -414,20 +424,20 @@ function renderCouponOcrCandidates(candidates) {
     return;
   }
 
+  // 店名の自動判定は外れることがある(ステータスバーの誤読等)ため、チェックだけでなく
+  // その場で書き換えられるようにしておく。間違っていてもチェックを外さず直せば済む。
   container.innerHTML = `
-    <p class="hint">${candidates.length}件見つかりました。登録したいものだけチェックしてください。</p>
+    <p class="hint">${candidates.length}件見つかりました。店名が違っていたら書き換えてから、登録したいものだけチェックしてください。</p>
     <ul class="ocr-candidate-list">
       ${candidates
         .map(
           (c, i) => `
             <li class="ocr-candidate-item">
-              <label>
-                <input type="checkbox" checked data-index="${i}">
-                <span>
-                  <span class="item-name">${escapeHtml(c.storeName)}</span>
-                  <div class="item-note">${escapeHtml(c.discount)}${c.cardName ? ` ・ ${escapeHtml(c.cardName)}` : ''}</div>
-                </span>
-              </label>
+              <div class="ocr-candidate-row">
+                <input type="checkbox" checked data-index="${i}" class="ocr-candidate-check">
+                <input type="text" value="${escapeHtml(c.storeName)}" data-index="${i}" class="ocr-candidate-store-input" aria-label="店名">
+              </div>
+              <div class="item-note">${escapeHtml(c.discount)}${c.cardName ? ` ・ ${escapeHtml(c.cardName)}` : ''}</div>
             </li>`
         )
         .join('')}
@@ -436,12 +446,16 @@ function renderCouponOcrCandidates(candidates) {
   `;
 
   document.getElementById('coupon-ocr-add-selected').addEventListener('click', () => {
-    const checkboxes = [...container.querySelectorAll('input[type="checkbox"]')];
+    const items = [...container.querySelectorAll('.ocr-candidate-item')];
     let addedCount = 0;
-    checkboxes.forEach((cb) => {
-      if (!cb.checked) return;
-      const c = candidates[Number(cb.dataset.index)];
-      addCoupon(c.storeName, c.discount, c.cardName, '');
+    items.forEach((li) => {
+      const checkbox = li.querySelector('.ocr-candidate-check');
+      if (!checkbox.checked) return;
+      const storeInput = li.querySelector('.ocr-candidate-store-input');
+      const storeName = storeInput.value.trim();
+      if (!storeName) return;
+      const c = candidates[Number(checkbox.dataset.index)];
+      addCoupon(storeName, c.discount, c.cardName, '');
       addedCount += 1;
     });
     container.innerHTML = '';
@@ -451,10 +465,12 @@ function renderCouponOcrCandidates(candidates) {
 
 async function runCouponOcr(file) {
   const status = document.getElementById('coupon-ocr-status');
+  const rawTextEl = document.getElementById('coupon-ocr-raw');
   const storeInput = document.getElementById('coupon-store-input');
   const discountInput = document.getElementById('coupon-discount-input');
   const cardInput = document.getElementById('coupon-card-input');
   document.getElementById('coupon-ocr-candidates').innerHTML = '';
+  rawTextEl.innerHTML = '';
 
   status.textContent = 'OCRを準備中...';
   try {
@@ -472,11 +488,18 @@ async function runCouponOcr(file) {
     } = await worker.recognize(file);
     await worker.terminate();
 
+    // 自動判定(店名・割引・カード名の推測)が外れることは珍しくないので、
+    // 判定結果に関わらず読み取った生テキストは常に見られるようにしておく
+    // (自動入力が間違っていた時に、ここからコピーして手直しできる)。
+    if (text.trim()) {
+      rawTextEl.innerHTML = `<summary>読み取った文字を見る</summary><pre>${escapeHtml(text.trim())}</pre>`;
+    }
+
     const candidates = guessCouponsFromOcrText(text);
 
     if (candidates.length === 0) {
       status.textContent = text.trim()
-        ? `店名や割引を特定できませんでした。手入力してください。(読み取り結果: ${text.trim().replace(/\n/g, ' / ')})`
+        ? '店名や割引を特定できませんでした。下の読み取り結果を参考に手入力してください。'
         : '文字を読み取れませんでした。手入力してください。';
     } else if (candidates.length === 1) {
       // 1件だけならそのままフォームに入れる
@@ -488,7 +511,7 @@ async function runCouponOcr(file) {
     } else {
       // 1枚に複数のクーポンが写っている場合(クーポン一覧のスクショ等)は選んで一括登録できるようにする
       renderCouponOcrCandidates(candidates);
-      status.textContent = '';
+      status.textContent = `${candidates.length}件見つかりました。店名が違っていたら書き換えてください。`;
     }
   } catch (err) {
     status.textContent = `読み取りに失敗しました: ${err.message}`;
