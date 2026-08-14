@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "card-app",
-      "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8123"],
-      "port": 8123
+      "runtimeExecutable": "node",
+      "runtimeArgs": [".claude/static-server.js"],
+      "port": 8129
     }
   ]
 }
