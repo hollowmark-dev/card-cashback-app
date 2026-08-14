@@ -503,7 +503,10 @@ function renderCouponOcrCandidates(candidates) {
                 <input type="checkbox" checked data-index="${i}" class="ocr-candidate-check">
                 <input type="text" value="${escapeHtml(c.storeName)}" placeholder="店名を入力" data-index="${i}" class="ocr-candidate-store-input" aria-label="店名">
               </div>
-              <div class="item-note">${escapeHtml(c.discount)}${c.cardName ? ` ・ ${escapeHtml(c.cardName)}` : ''}</div>
+              <div class="ocr-candidate-row ocr-candidate-discount-row">
+                <input type="text" value="${escapeHtml(c.discount)}" placeholder="例: 10%OFF" data-index="${i}" class="ocr-candidate-discount-input" aria-label="割引内容">
+              </div>
+              ${c.cardName ? `<div class="item-note">${escapeHtml(c.cardName)}</div>` : ''}
             </li>`
         )
         .join('')}
@@ -519,9 +522,11 @@ function renderCouponOcrCandidates(candidates) {
       if (!checkbox.checked) return;
       const storeInput = li.querySelector('.ocr-candidate-store-input');
       const storeName = storeInput.value.trim();
-      if (!storeName) return;
+      const discountInput = li.querySelector('.ocr-candidate-discount-input');
+      const discount = discountInput.value.trim();
+      if (!storeName || !discount) return;
       const c = candidates[Number(checkbox.dataset.index)];
-      addCoupon(storeName, c.discount, c.cardName, '');
+      addCoupon(storeName, discount, c.cardName, '');
       addedCount += 1;
     });
     container.innerHTML = '';
