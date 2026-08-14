@@ -224,8 +224,45 @@ function deleteCoupon(id) {
   renderCouponList();
 }
 
+// 文字数だけ比較する簡易編集距離(レーベンシュタイン距離)。OCR由来の店名は
+// 1〜2文字だけ読み違えることがあるため、完全一致だけだと拾い漏れる。
+function levenshteinDistance(a, b) {
+  const dp = Array.from({ length: a.length + 1 }, (_, i) => {
+    const row = new Array(b.length + 1).fill(0);
+    row[0] = i;
+    return row;
+  });
+  for (let j = 0; j <= b.length; j++) dp[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      dp[i][j] =
+        a[i - 1] === b[j - 1]
+          ? dp[i - 1][j - 1]
+          : 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+    }
+  }
+  return dp[a.length][b.length];
+}
+
+// 完全一致するクーポンがあればそれを優先し、無ければあいまい一致(部分一致・数文字程度の
+// 読み取りゆれ)で探す。OCRで登録した店名が検索語と1文字違うだけで見つからない、
+// という事態を避けるための救済措置。
 function findCouponForStore(normalizedStoreName) {
-  return state.coupons.find((c) => normalizeText(c.storeName) === normalizedStoreName) || null;
+  if (!normalizedStoreName) return null;
+
+  const exact = state.coupons.find((c) => normalizeText(c.storeName) === normalizedStoreName);
+  if (exact) return exact;
+
+  return (
+    state.coupons.find((c) => {
+      const n = normalizeText(c.storeName);
+      if (!n) return false;
+      if (n.includes(normalizedStoreName) || normalizedStoreName.includes(n)) return true;
+      const maxLen = Math.max(n.length, normalizedStoreName.length);
+      const allowedDistance = maxLen <= 4 ? 0 : maxLen <= 8 ? 1 : 2;
+      return levenshteinDistance(n, normalizedStoreName) <= allowedDistance;
+    }) || null
+  );
 }
 
 function renderCouponList() {
