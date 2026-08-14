@@ -342,20 +342,39 @@ function loadTesseractScript() {
 // ベネフィット・ワン等のクーポン一覧画面は1枚のスクショに複数件並んでいることが多く、
 // タブ名や並び替えメニュー・件数表示のようなUI装飾テキストも大量に混ざる。そのため
 // 「1件だけ」前提ではなく、割引・還元率らしき行を全部拾い、それぞれの直前数行から
-// 店名らしき行を探す方式にしている。店名が特定できなかったものは(誤登録を避けるため)
-// 候補に出さない。カード名はアプリが知っているカード名がテキスト中にそのまま
-// 含まれていないかを画像全体から探す。
+// 店名らしき行を探す方式にしている。カード名はアプリが知っているカード名がテキスト中に
+// そのまま含まれていないかを画像全体から探す。
 const OCR_CHROME_BLOCKLIST = [
-  'マイクーポン', 'デジタルチケット', 'デジタルクーポン', '会員証クーポン',
-  '取得日', '件中', '表示', '削除', '有効期限', 'メニューNo', 'メニュー No',
+  'マイクーポン', 'マイクーボン', 'デジタルチケット', 'デジタルクーポン', 'デジタルクーボン',
+  '会員証クーポン', '取得日', '件中', '表示', '削除', '有効期限', 'メニューNo', 'メニュー No',
 ];
 
+// スクショ圧縮の影響で「%」が「9」や「%%」等に化けても、OFF/オフの直前にある
+// 主要な桁(通常1〜2桁)自体は読めていることが多い。そこで「数字+多少のノイズ+OFF等」
+// という形から割引率を復元し、正規化した表記(例:「10%OFF」)を返す。
+// 実例: 「1096OFF」「109%6OFF」「10%6OFF」「109%%OFF」→ すべて「10%OFF」に復元できる。
+function extractDiscountValue(rawLine) {
+  const line = rawLine.replace(/[,、\s]/g, '');
+
+  let m = line.match(/([0-9]{1,2})[0-9%％]{0,3}\s*(?:%|％|OFF|0FF|OFI|OF|オフ)/i);
+  if (m) return `${m[1]}%OFF`;
+
+  m = line.match(/([0-9]{1,2})[0-9%％]{0,3}\s*引き/);
+  if (m) return `${m[1]}%引き`;
+
+  m = line.match(/([0-9,]{3,6})円\s*(?:引き|OFF|オフ)/i);
+  if (m) return `${m[1].replace(/,/g, '')}円引き`;
+
+  m = line.match(/([0-9]{1,3})[0-9%％]{0,2}\s*(還元|ポイント|倍)/);
+  if (m) return `${m[1]}${m[2]}`;
+
+  if (/無料/.test(line)) return '無料';
+
+  return null;
+}
+
 function isOcrDiscountLine(line) {
-  const hasNumber = /[0-9０-９]/;
-  return (
-    /[0-9０-９]+\s*[%％]|円引き|円[Oo][Ff][Ff]|円オフ|無料/.test(line) ||
-    (hasNumber.test(line) && /還元|ポイント|倍/.test(line))
-  );
+  return extractDiscountValue(line) !== null;
 }
 
 // 画面全体のスクショには、スマホのステータスバー(時刻・電波・バッテリー等のアイコン)や
@@ -371,13 +390,79 @@ function isOcrChromeLine(line) {
   return OCR_CHROME_BLOCKLIST.some((w) => line.includes(w));
 }
 
-// 割引文言は「数字1〜2桁+%」がちょうど1回だけ出現する形が正常。%が2回出たり
-// 数字が4桁以上連続しているのはOCRの誤読(例:「10%OFF」→「109%%OFF」)の可能性が高い。
-function isCleanDiscountText(line) {
-  const percentCount = (line.match(/[%％]/g) || []).length;
-  if (percentCount > 1) return false;
-  if (/[0-9０-９]{4,}/.test(line)) return false;
-  return true;
+// 「メニューNo.」はクーポン1件ごとの見出しとして必ず現れるアンカーなので、これで
+// 行を区切ってから各区画内で店名・割引を探す方が、割引行から数行遡って探すよりも
+// レイアウト崩れに強い(店名の前に何行チラつくかを推測しなくて済む)。
+function splitIntoCouponChunks(lines) {
+  const anchorRegex = /メニュー\s*No/i;
+  const chunks = [];
+  let current = null;
+  lines.forEach((line) => {
+    if (anchorRegex.test(line)) {
+      current = [];
+      chunks.push(current);
+      return;
+    }
+    if (current) current.push(line);
+  });
+  return chunks;
+}
+
+function guessCouponsFromChunks(lines, cardName) {
+  const chunks = splitIntoCouponChunks(lines);
+  const candidates = [];
+  chunks.forEach((chunkLines) => {
+    let storeName = '';
+    let discount = null;
+    chunkLines.forEach((line) => {
+      const value = extractDiscountValue(line);
+      if (value !== null) {
+        if (discount === null) discount = value; // 小見出し+強調見出しの重複は最初の1件だけ採用
+        return;
+      }
+      if (!storeName && !isOcrChromeLine(line)) storeName = line;
+    });
+    if (discount === null) return; // 割引が全く読めなければ登録候補にしない
+    candidates.push({ storeName, discount, cardName });
+  });
+  return candidates;
+}
+
+// 「メニューNo.」のアンカーが見つからない場合(レイアウトが異なる/読み取れなかった場合)の
+// フォールバック。割引らしき行から数行遡って店名らしき行を探す。
+function guessCouponsByBackwardScan(lines, cardName) {
+  const candidates = [];
+  let lastStoreName = null;
+  let lastStoreIdx = -Infinity;
+
+  lines.forEach((line, idx) => {
+    const value = extractDiscountValue(line);
+    if (value === null) return;
+
+    const prevLine = lines[idx - 1];
+    if (prevLine && isOcrDiscountLine(prevLine) && candidates.length > 0) {
+      return; // 直前行もすでに割引行として処理済み=同じクーポンの2回目の表示
+    }
+
+    let storeName = '';
+    for (let back = 1; back <= 6; back++) {
+      const candidate = lines[idx - back];
+      if (!candidate) break;
+      if (isOcrDiscountLine(candidate)) break; // 1つ前のクーポンの割引行に突き当たったら打ち切る
+      if (!isOcrChromeLine(candidate)) {
+        storeName = candidate;
+        break;
+      }
+    }
+
+    if (storeName === lastStoreName && idx - lastStoreIdx <= 4) return;
+    lastStoreName = storeName;
+    lastStoreIdx = idx;
+
+    candidates.push({ storeName, discount: value, cardName });
+  });
+
+  return candidates;
 }
 
 function guessCouponsFromOcrText(text) {
@@ -390,55 +475,10 @@ function guessCouponsFromOcrText(text) {
   const matchedCard = state.cards.find((c) => normalizedFullText.includes(normalizeText(c.name)));
   const cardName = matchedCard ? matchedCard.name : '';
 
-  const candidates = [];
-  let lastStoreName = null;
-  let lastStoreIdx = -Infinity;
+  const chunkCandidates = guessCouponsFromChunks(lines, cardName);
+  if (chunkCandidates.length > 0) return chunkCandidates;
 
-  lines.forEach((line, idx) => {
-    if (!isOcrDiscountLine(line)) return;
-
-    // 小見出し+強調見出しの二重表示(1つのクーポンに割引文言が2回連続で出る)対策。
-    // 直前の行がすでに割引行として処理済みなら、これは同じクーポンの2回目の表示。
-    // 店名として拾わず、2回のうちOCRノイズが少なそうな方を割引文言として採用する
-    // (1回目より2回目の方が綺麗に読めていることもあるため、常に1回目を使うわけではない)。
-    const prevLine = lines[idx - 1];
-    if (prevLine && isOcrDiscountLine(prevLine) && candidates.length > 0) {
-      const last = candidates[candidates.length - 1];
-      if (isCleanDiscountText(line) && !isCleanDiscountText(last.discount)) {
-        last.discount = line;
-      }
-      return;
-    }
-
-    // ステータスバーやURLバー、ヘッダー、タブ、並び替えメニューなど、店名の前に
-    // 何行もチラつくことがあるため、少し広めに遡って最初の「まともな行」を探す。
-    let storeName = '';
-    for (let back = 1; back <= 6; back++) {
-      const candidate = lines[idx - back];
-      if (!candidate) break;
-      if (isOcrDiscountLine(candidate)) break; // 1つ前のクーポンの割引行に突き当たったら打ち切る
-      if (!isOcrChromeLine(candidate)) {
-        storeName = candidate;
-        break;
-      }
-    }
-    if (!storeName) return; // 店名が特定できないものは誤登録防止のため候補に出さない
-
-    // 店名が離れた行数で同じ割引文言と再度組み合わさった場合も、上と同じ重複表示のはず。
-    if (storeName === lastStoreName && idx - lastStoreIdx <= 4) {
-      const last = candidates[candidates.length - 1];
-      if (last && isCleanDiscountText(line) && !isCleanDiscountText(last.discount)) {
-        last.discount = line;
-      }
-      return;
-    }
-    lastStoreName = storeName;
-    lastStoreIdx = idx;
-
-    candidates.push({ storeName, discount: line, cardName });
-  });
-
-  return candidates;
+  return guessCouponsByBackwardScan(lines, cardName);
 }
 
 function renderCouponOcrCandidates(candidates) {
@@ -461,7 +501,7 @@ function renderCouponOcrCandidates(candidates) {
             <li class="ocr-candidate-item">
               <div class="ocr-candidate-row">
                 <input type="checkbox" checked data-index="${i}" class="ocr-candidate-check">
-                <input type="text" value="${escapeHtml(c.storeName)}" data-index="${i}" class="ocr-candidate-store-input" aria-label="店名">
+                <input type="text" value="${escapeHtml(c.storeName)}" placeholder="店名を入力" data-index="${i}" class="ocr-candidate-store-input" aria-label="店名">
               </div>
               <div class="item-note">${escapeHtml(c.discount)}${c.cardName ? ` ・ ${escapeHtml(c.cardName)}` : ''}</div>
             </li>`
@@ -497,7 +537,7 @@ function renderCouponOcrCandidates(candidates) {
 async function preprocessImageForOcr(file) {
   try {
     const bitmap = await createImageBitmap(file);
-    const targetWidth = Math.min(Math.max(bitmap.width * 2, 1600), 3600);
+    const targetWidth = Math.min(Math.max(bitmap.width * 2, 1600), 4500);
     const scale = targetWidth / bitmap.width;
     const targetHeight = Math.round(bitmap.height * scale);
 
@@ -540,11 +580,19 @@ async function runCouponOcr(file) {
     await loadTesseractScript();
     status.textContent = '画像を読み取り中...(初回は数十秒かかります)';
 
+    // 高精度版(jpnbest)や明示的なPSM指定も試したが、実際にテスト画像で比較したところ
+    // このアプリの前処理(拡大+コントラスト強調)との相性が悪く、文字間に不要な
+    // スペースが入ったり軽量版より誤読が増える結果になったため、軽量版(jpn)のまま
+    // にしている。DPI指定だけは(悪化は確認されず、理論的にも妥当なため)残す。
     const worker = await Tesseract.createWorker('jpn', 1, {
       workerPath: 'vendor/tesseract/worker.min.js',
       corePath: 'vendor/tesseract/tesseract-core-simd-lstm.wasm.js',
       langPath: 'vendor/tesseract/',
       gzip: true,
+    });
+    await worker.setParameters({
+      // canvasで生成したPNGはDPI情報を持たず低DPI相当に解釈されてしまうため、明示的に指定する。
+      user_defined_dpi: '300',
     });
     const processedImage = await preprocessImageForOcr(file);
     const {
@@ -571,7 +619,13 @@ async function runCouponOcr(file) {
       if (c.storeName && !storeInput.value) storeInput.value = c.storeName;
       if (c.discount && !discountInput.value) discountInput.value = c.discount;
       if (c.cardName && !cardInput.value) cardInput.value = c.cardName;
-      status.textContent = '読み取り結果を自動入力しました。違っていたら書き換えてください。';
+      if (c.storeName) {
+        status.textContent = '読み取り結果を自動入力しました。違っていたら書き換えてください。';
+      } else {
+        // 割引は読めたが店名は読み取れなかった場合、入力欄にフォーカスして手入力を促す
+        status.textContent = '割引だけ読み取れました。店名を入力してください。';
+        storeInput.focus();
+      }
     } else {
       // 1枚に複数のクーポンが写っている場合(クーポン一覧のスクショ等)は選んで一括登録できるようにする
       renderCouponOcrCandidates(candidates);
