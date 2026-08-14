@@ -35,31 +35,19 @@
       <datalist id="store-suggestions"></datalist>
     </div>
     <div id="search-history" class="chip-row"></div>
-    <p id="search-hint" class="hint">店名またはカテゴリを入力すると、各カードの還元率が高い順に表示されます。</p>
+    <p id="search-hint" class="hint">店名またはカテゴリを入力すると、各カードの還元率が高い順に表示されます。何も入力しなければカテゴリから探せます。</p>
     <div id="category-stores"></div>
+    <div id="store-category-nav"></div>
     <ul id="result-list" class="result-list"></ul>
+    <ul id="store-list" class="store-list"></ul>
   </section>
 
   <section id="tab-cards" class="tab-panel">
     <ul id="card-list" class="card-list"></ul>
   </section>
 
-  <section id="tab-stores" class="tab-panel">
-    <div class="search-box">
-      <input
-        id="store-filter-input"
-        type="search"
-        enterkeyhint="search"
-        placeholder="店舗を絞り込む"
-        autocomplete="off"
-      >
-    </div>
-    <div id="store-category-nav"></div>
-    <ul id="store-list" class="store-list"></ul>
-  </section>
-
   <section id="tab-coupons" class="tab-panel">
-    <p class="hint">お店で会計する前にひと目でわかるよう、知っているクーポンを登録しておけます(福利厚生サービス等のクーポンはログインが必要で自動取得できないため、手入力用です)。登録した店を検索すると自動で表示されます。</p>
+    <p class="hint">お店で会計する前にひと目でわかるよう、クーポンや「このお店はこのカードで◯%還元」といったお得情報を登録しておけます(福利厚生サービス等はログインが必要で自動取得できないため、手入力用です)。登録した店を検索すると自動で表示されます。</p>
     <form id="coupon-add-form" class="coupon-add-box">
       <label for="coupon-image-input" class="btn-secondary coupon-ocr-btn">
         📷 スクショから読み取る
@@ -67,9 +55,11 @@
       </label>
       <p id="coupon-ocr-status" class="coupon-ocr-status"></p>
       <input id="coupon-store-input" type="text" list="store-suggestions" placeholder="店名(例: 鎌倉パスタ)" autocomplete="off" required>
-      <input id="coupon-discount-input" type="text" placeholder="割引内容(例: 10%引き)" autocomplete="off" required>
+      <input id="coupon-discount-input" type="text" placeholder="内容(例: 10%引き、〇〇カードで5%還元)" autocomplete="off" required>
+      <input id="coupon-card-input" type="text" list="card-suggestions" placeholder="カード名(任意、画像から読み取れなかった時だけ)" autocomplete="off">
+      <datalist id="card-suggestions"></datalist>
       <input id="coupon-source-input" type="text" placeholder="入手元(任意、例: ベネフィット・ワン)" autocomplete="off">
-      <button type="submit" class="btn-primary">クーポンを追加</button>
+      <button type="submit" class="btn-primary">追加</button>
     </form>
     <ul id="coupon-list" class="result-list"></ul>
   </section>
@@ -83,10 +73,6 @@
   <button class="tab-btn" data-tab="cards" role="tab" aria-selected="false">
     <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2.5"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
     <span>カード一覧</span>
-  </button>
-  <button class="tab-btn" data-tab="stores" role="tab" aria-selected="false">
-    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"></path><path d="M3 9a2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0"></path><path d="M5 9v10h14V9"></path></svg>
-    <span>店舗一覧</span>
   </button>
   <button class="tab-btn" data-tab="coupons" role="tab" aria-selected="false">
     <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41 12 22l-9-9V4a1 1 0 0 1 1-1h9l7.59 7.59a2 2 0 0 1 0 2.82z"></path><circle cx="7.5" cy="7.5" r="1.5"></circle></svg>

@@ -206,11 +206,12 @@ function saveCoupons() {
   localStorage.setItem(COUPONS_KEY, JSON.stringify(state.coupons));
 }
 
-function addCoupon(storeName, discount, source) {
+function addCoupon(storeName, discount, cardName, source) {
   state.coupons.push({
     id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
     storeName,
     discount,
+    cardName: cardName || null,
     source: source || null,
   });
   saveCoupons();
@@ -240,10 +241,11 @@ function renderCouponList() {
   state.coupons.forEach((coupon) => {
     const li = document.createElement('li');
     li.className = 'result-item';
+    const meta = [coupon.cardName, coupon.source].filter(Boolean).join(' ・ ');
     li.innerHTML = `
       <div>
         <span class="item-name">${escapeHtml(coupon.storeName)}</span>
-        <div class="item-note">${escapeHtml(coupon.discount)}${coupon.source ? ` ・ ${escapeHtml(coupon.source)}` : ''}</div>
+        <div class="item-note">${escapeHtml(coupon.discount)}${meta ? ` ・ ${escapeHtml(meta)}` : ''}</div>
       </div>
       <button type="button" class="coupon-delete-btn" data-id="${coupon.id}" aria-label="削除">×</button>
     `;
@@ -259,14 +261,16 @@ function initCouponForm() {
     e.preventDefault();
     const storeInput = document.getElementById('coupon-store-input');
     const discountInput = document.getElementById('coupon-discount-input');
+    const cardInput = document.getElementById('coupon-card-input');
     const sourceInput = document.getElementById('coupon-source-input');
 
     const storeName = storeInput.value.trim();
     const discount = discountInput.value.trim();
+    const cardName = cardInput.value.trim();
     const source = sourceInput.value.trim();
     if (!storeName || !discount) return;
 
-    addCoupon(storeName, discount, source);
+    addCoupon(storeName, discount, cardName, source);
     form.reset();
     storeInput.focus();
   });
@@ -298,22 +302,35 @@ function loadTesseractScript() {
   return tesseractLoadPromise;
 }
 
-// OCRの生テキストから「店名らしき行」「割引らしき行」を推測する。あくまで下書きなので、
-// 精度が完璧でなくても、抽出した全文はステータス欄に残して手で直せるようにしてある。
+// OCRの生テキストから「店名らしき行」「割引・還元率らしき行」「カード名」を推測する。
+// あくまで下書きなので、精度が完璧でなくても、抽出した全文はステータス欄に残して
+// 手で直せるようにしてある。カード名は自由記述だと表記ゆれで検索にヒットしにくいので、
+// アプリが知っているカード名がテキスト中にそのまま含まれていないかを優先的に探す。
 function guessCouponFieldsFromOcrText(text) {
   const lines = text
     .split('\n')
     .map((l) => l.trim())
     .filter(Boolean);
-  const discountLine = lines.find((l) => /[0-9０-９]+\s*[%％]|円引き|円[Oo][Ff][Ff]|円オフ|無料/.test(l));
-  const storeLine = lines.find((l) => l !== discountLine) || '';
-  return { storeName: storeLine, discount: discountLine || '' };
+  const hasNumber = /[0-9０-９]/;
+  const discountLine = lines.find(
+    (l) =>
+      /[0-9０-９]+\s*[%％]|円引き|円[Oo][Ff][Ff]|円オフ|無料/.test(l) ||
+      (hasNumber.test(l) && /還元|ポイント|倍/.test(l))
+  );
+
+  const normalizedFullText = normalizeText(text);
+  const matchedCard = state.cards.find((c) => normalizedFullText.includes(normalizeText(c.name)));
+
+  const storeLine =
+    lines.find((l) => l !== discountLine && (!matchedCard || l !== matchedCard.name)) || '';
+  return { storeName: storeLine, discount: discountLine || '', cardName: matchedCard ? matchedCard.name : '' };
 }
 
 async function runCouponOcr(file) {
   const status = document.getElementById('coupon-ocr-status');
   const storeInput = document.getElementById('coupon-store-input');
   const discountInput = document.getElementById('coupon-discount-input');
+  const cardInput = document.getElementById('coupon-card-input');
 
   status.textContent = 'OCRを準備中...';
   try {
@@ -334,9 +351,10 @@ async function runCouponOcr(file) {
     const guess = guessCouponFieldsFromOcrText(text);
     if (guess.storeName && !storeInput.value) storeInput.value = guess.storeName;
     if (guess.discount && !discountInput.value) discountInput.value = guess.discount;
+    if (guess.cardName && !cardInput.value) cardInput.value = guess.cardName;
 
     status.textContent = text.trim()
-      ? `読み取り結果(店名・割引欄を自動入力しました。違っていたら書き換えてください): ${text.trim().replace(/\n/g, ' / ')}`
+      ? `読み取り結果(自動入力しました。違っていたら書き換えてください): ${text.trim().replace(/\n/g, ' / ')}`
       : '文字を読み取れませんでした。手入力してください。';
   } catch (err) {
     status.textContent = `読み取りに失敗しました: ${err.message}`;
@@ -397,14 +415,23 @@ function renderResults(query) {
 
   const ownedCards = state.cards.filter((card) => state.ownedCardIds.has(card.id));
 
-  if (ownedCards.length === 0) {
-    list.innerHTML = '<li class="empty-state">「カード一覧」で持っているカードを選んでください</li>';
+  if (!query) {
+    // 何も入力していない時は「店舗一覧」を吸収したカテゴリ絞り込みを見せる
+    // (検索とカテゴリ閲覧は結局同じ「店を探す」機能なので、タブを分けずに1つにまとめてある)。
     renderCategoryStores('');
+    renderStoreCategoryNav();
+    renderStoreList();
+    if (ownedCards.length === 0) {
+      list.innerHTML = '<li class="empty-state">「カード一覧」で持っているカードを選んでください</li>';
+    }
     return;
   }
 
-  if (!query) {
-    list.innerHTML = '<li class="empty-state">店名やカテゴリを入力してください</li>';
+  document.getElementById('store-category-nav').innerHTML = '';
+  document.getElementById('store-list').innerHTML = '';
+
+  if (ownedCards.length === 0) {
+    list.innerHTML = '<li class="empty-state">「カード一覧」で持っているカードを選んでください</li>';
     renderCategoryStores('');
     return;
   }
@@ -419,13 +446,17 @@ function renderResults(query) {
 
   const coupon = findCouponForStore(normalizedQuery);
   if (coupon) {
+    const metaText = [coupon.cardName, coupon.source].filter(Boolean).map(escapeHtml).join(' ・ ');
+    const noteLine = coupon.cardName
+      ? `${escapeHtml(coupon.storeName)}に登録したお得情報${metaText ? ` ・ ${metaText}` : ''}`
+      : `${escapeHtml(coupon.storeName)}のクーポン${metaText ? `(${metaText})` : ''} ・ カード還元と併用できる場合があります`;
     const couponLi = document.createElement('li');
     couponLi.className = 'coupon-banner';
     couponLi.innerHTML = `
       <span class="coupon-banner-icon" aria-hidden="true">🎫</span>
       <div>
         <div class="coupon-banner-title">${escapeHtml(coupon.discount)}</div>
-        <div class="coupon-banner-note">${escapeHtml(coupon.storeName)}のクーポン${coupon.source ? `(${escapeHtml(coupon.source)})` : ''} ・ カード還元と併用できる場合があります</div>
+        <div class="coupon-banner-note">${noteLine}</div>
       </div>
     `;
     list.appendChild(couponLi);
@@ -583,13 +614,6 @@ function getCategoryCounts() {
 function renderStoreCategoryNav() {
   const nav = document.getElementById('store-category-nav');
   if (!nav) return;
-  const filterQuery = document.getElementById('store-filter-input').value.trim();
-
-  // 文字検索中はカテゴリ選択より全件横断検索を優先する
-  if (filterQuery) {
-    nav.innerHTML = '';
-    return;
-  }
 
   if (state.storeCategoryFilter === null) {
     const sorted = [...getCategoryCounts().entries()].sort((a, b) => b[1] - a[1]);
@@ -624,22 +648,14 @@ function renderStoreCategoryNav() {
   }
 }
 
-function renderStoreList(filterQuery = '') {
+function renderStoreList() {
   const list = document.getElementById('store-list');
   list.innerHTML = '';
 
-  const normalizedFilter = normalizeText(filterQuery);
-  let stores;
-  if (normalizedFilter) {
-    stores = state.stores.filter((s) => normalizeText(s.name).includes(normalizedFilter));
-  } else if (state.storeCategoryFilter === null) {
-    stores = []; // カテゴリ選択待ち(上のnavにカテゴリ一覧が出ている)
-  } else {
-    stores = state.stores.filter((s) => (s.category || '未分類') === state.storeCategoryFilter);
-  }
+  if (state.storeCategoryFilter === null) return; // カテゴリ選択待ち(上のnavにカテゴリ一覧が出ている)
+  const stores = state.stores.filter((s) => (s.category || '未分類') === state.storeCategoryFilter);
 
   if (stores.length === 0) {
-    if (!normalizedFilter && state.storeCategoryFilter === null) return;
     list.innerHTML = '<li class="empty-state">該当する店舗がありません</li>';
     return;
   }
@@ -667,6 +683,11 @@ function renderStoreList(filterQuery = '') {
 function populateSuggestions() {
   const datalist = document.getElementById('store-suggestions');
   datalist.innerHTML = state.stores.map((s) => `<option value="${escapeHtml(s.name)}">`).join('');
+
+  const cardDatalist = document.getElementById('card-suggestions');
+  if (cardDatalist) {
+    cardDatalist.innerHTML = state.cards.map((c) => `<option value="${escapeHtml(c.name)}">`).join('');
+  }
 }
 
 function switchTab(tabName) {
@@ -709,15 +730,6 @@ function initSearch() {
   });
 }
 
-function initStoreFilter() {
-  const input = document.getElementById('store-filter-input');
-  if (!input) return;
-  input.addEventListener('input', () => {
-    renderStoreCategoryNav();
-    renderStoreList(input.value.trim());
-  });
-}
-
 function showLoadError() {
   const main = document.querySelector('main');
   main.innerHTML = `
@@ -749,13 +761,10 @@ async function main() {
 
   initTabs();
   initSearch();
-  initStoreFilter();
   initCouponForm();
   populateSuggestions();
   computeCardOrder();
   renderCardList();
-  renderStoreCategoryNav();
-  renderStoreList();
   renderResults('');
   renderSearchHistory();
   renderCouponList();
