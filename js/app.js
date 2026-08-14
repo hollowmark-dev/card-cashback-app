@@ -371,6 +371,15 @@ function isOcrChromeLine(line) {
   return OCR_CHROME_BLOCKLIST.some((w) => line.includes(w));
 }
 
+// 割引文言は「数字1〜2桁+%」がちょうど1回だけ出現する形が正常。%が2回出たり
+// 数字が4桁以上連続しているのはOCRの誤読(例:「10%OFF」→「109%%OFF」)の可能性が高い。
+function isCleanDiscountText(line) {
+  const percentCount = (line.match(/[%％]/g) || []).length;
+  if (percentCount > 1) return false;
+  if (/[0-9０-９]{4,}/.test(line)) return false;
+  return true;
+}
+
 function guessCouponsFromOcrText(text) {
   const lines = text
     .split('\n')
@@ -388,6 +397,19 @@ function guessCouponsFromOcrText(text) {
   lines.forEach((line, idx) => {
     if (!isOcrDiscountLine(line)) return;
 
+    // 小見出し+強調見出しの二重表示(1つのクーポンに割引文言が2回連続で出る)対策。
+    // 直前の行がすでに割引行として処理済みなら、これは同じクーポンの2回目の表示。
+    // 店名として拾わず、2回のうちOCRノイズが少なそうな方を割引文言として採用する
+    // (1回目より2回目の方が綺麗に読めていることもあるため、常に1回目を使うわけではない)。
+    const prevLine = lines[idx - 1];
+    if (prevLine && isOcrDiscountLine(prevLine) && candidates.length > 0) {
+      const last = candidates[candidates.length - 1];
+      if (isCleanDiscountText(line) && !isCleanDiscountText(last.discount)) {
+        last.discount = line;
+      }
+      return;
+    }
+
     // ステータスバーやURLバー、ヘッダー、タブ、並び替えメニューなど、店名の前に
     // 何行もチラつくことがあるため、少し広めに遡って最初の「まともな行」を探す。
     let storeName = '';
@@ -402,10 +424,14 @@ function guessCouponsFromOcrText(text) {
     }
     if (!storeName) return; // 店名が特定できないものは誤登録防止のため候補に出さない
 
-    // 小見出し+強調見出しの二重表示(1つのクーポンに割引文言が2回出る)対策。
-    // OCRの読み取りゆれで文言が微妙に変わることがあるため、割引文言の完全一致ではなく
-    // 「直前に採用した店名行と同じ店名が近い行数以内で再登場したか」で重複判定する。
-    if (storeName === lastStoreName && idx - lastStoreIdx <= 4) return;
+    // 店名が離れた行数で同じ割引文言と再度組み合わさった場合も、上と同じ重複表示のはず。
+    if (storeName === lastStoreName && idx - lastStoreIdx <= 4) {
+      const last = candidates[candidates.length - 1];
+      if (last && isCleanDiscountText(line) && !isCleanDiscountText(last.discount)) {
+        last.discount = line;
+      }
+      return;
+    }
     lastStoreName = storeName;
     lastStoreIdx = idx;
 
@@ -463,6 +489,43 @@ function renderCouponOcrCandidates(candidates) {
   });
 }
 
+// LINE等のアプリ経由で共有されたスクショは再圧縮されていることが多く、解像度が低いまま
+// OCRにかけると「%」と「9」、「O」と「0/6」のような紛らわしい文字を誤読しやすい
+// (実際に「10%OFF」が「1096OFF」と誤読される事例が発生)。認識前に画像を拡大し、
+// グレースケール化とコントラスト強調をかけることで文字の輪郭をはっきりさせ、
+// 誤読を減らす。
+async function preprocessImageForOcr(file) {
+  try {
+    const bitmap = await createImageBitmap(file);
+    const targetWidth = Math.min(Math.max(bitmap.width * 2, 1600), 3600);
+    const scale = targetWidth / bitmap.width;
+    const targetHeight = Math.round(bitmap.height * scale);
+
+    const canvas = document.createElement('canvas');
+    canvas.width = targetWidth;
+    canvas.height = targetHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(bitmap, 0, 0, targetWidth, targetHeight);
+
+    const imageData = ctx.getImageData(0, 0, targetWidth, targetHeight);
+    const data = imageData.data;
+    const contrast = 1.35;
+    for (let i = 0; i < data.length; i += 4) {
+      const gray = data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114;
+      const adjusted = Math.min(255, Math.max(0, (gray - 128) * contrast + 128));
+      data[i] = data[i + 1] = data[i + 2] = adjusted;
+    }
+    ctx.putImageData(imageData, 0, 0);
+
+    const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
+    return blob || file;
+  } catch (err) {
+    return file; // 前処理に失敗しても元画像でOCRを続行する
+  }
+}
+
 async function runCouponOcr(file) {
   const status = document.getElementById('coupon-ocr-status');
   const rawTextEl = document.getElementById('coupon-ocr-raw');
@@ -483,9 +546,10 @@ async function runCouponOcr(file) {
       langPath: 'vendor/tesseract/',
       gzip: true,
     });
+    const processedImage = await preprocessImageForOcr(file);
     const {
       data: { text },
-    } = await worker.recognize(file);
+    } = await worker.recognize(processedImage);
     await worker.terminate();
 
     // 自動判定(店名・割引・カード名の推測)が外れることは珍しくないので、
