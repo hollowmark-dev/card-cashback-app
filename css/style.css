@@ -428,6 +428,31 @@ main.is-loading .tab-panel {
   min-height: 1em;
 }
 
+.coupon-ocr-raw:empty {
+  display: none;
+}
+
+.coupon-ocr-raw {
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+}
+
+.coupon-ocr-raw summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.coupon-ocr-raw pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0.4rem 0 0;
+  font-family: inherit;
+}
+
 .ocr-candidate-list {
   list-style: none;
   margin: 0 0 0.6rem;
@@ -444,18 +469,33 @@ main.is-loading .tab-panel {
   padding: 0.6rem 0.75rem;
 }
 
-.ocr-candidate-item label {
+.ocr-candidate-row {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.6rem;
-  cursor: pointer;
 }
 
-.ocr-candidate-item input[type="checkbox"] {
-  margin-top: 0.2rem;
+.ocr-candidate-check {
   width: 18px;
   height: 18px;
   flex-shrink: 0;
+}
+
+.ocr-candidate-store-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.ocr-candidate-item .item-note {
+  margin-top: 0.4rem;
+  margin-left: calc(18px + 0.6rem);
 }
 
 .coupon-add-box .btn-primary {
