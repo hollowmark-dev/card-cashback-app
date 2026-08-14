@@ -302,28 +302,114 @@ function loadTesseractScript() {
   return tesseractLoadPromise;
 }
 
-// OCRの生テキストから「店名らしき行」「割引・還元率らしき行」「カード名」を推測する。
-// あくまで下書きなので、精度が完璧でなくても、抽出した全文はステータス欄に残して
-// 手で直せるようにしてある。カード名は自由記述だと表記ゆれで検索にヒットしにくいので、
-// アプリが知っているカード名がテキスト中にそのまま含まれていないかを優先的に探す。
-function guessCouponFieldsFromOcrText(text) {
+// ベネフィット・ワン等のクーポン一覧画面は1枚のスクショに複数件並んでいることが多く、
+// タブ名や並び替えメニュー・件数表示のようなUI装飾テキストも大量に混ざる。そのため
+// 「1件だけ」前提ではなく、割引・還元率らしき行を全部拾い、それぞれの直前数行から
+// 店名らしき行を探す方式にしている。店名が特定できなかったものは(誤登録を避けるため)
+// 候補に出さない。カード名はアプリが知っているカード名がテキスト中にそのまま
+// 含まれていないかを画像全体から探す。
+const OCR_CHROME_BLOCKLIST = [
+  'マイクーポン', 'デジタルチケット', 'デジタルクーポン', '会員証クーポン',
+  '取得日', '件中', '表示', '削除', '有効期限', 'メニューNo', 'メニュー No',
+];
+
+function isOcrDiscountLine(line) {
+  const hasNumber = /[0-9０-９]/;
+  return (
+    /[0-9０-９]+\s*[%％]|円引き|円[Oo][Ff][Ff]|円オフ|無料/.test(line) ||
+    (hasNumber.test(line) && /還元|ポイント|倍/.test(line))
+  );
+}
+
+function isOcrChromeLine(line) {
+  if (!line) return true;
+  if (/^[\[【].*[\]】]$/.test(line)) return true; // [メニューNo.xxxx] のような行
+  if (/^[0-9０-９]+$/.test(line)) return true; // 数字だけの行
+  return OCR_CHROME_BLOCKLIST.some((w) => line.includes(w));
+}
+
+function guessCouponsFromOcrText(text) {
   const lines = text
     .split('\n')
     .map((l) => l.trim())
     .filter(Boolean);
-  const hasNumber = /[0-9０-９]/;
-  const discountLine = lines.find(
-    (l) =>
-      /[0-9０-９]+\s*[%％]|円引き|円[Oo][Ff][Ff]|円オフ|無料/.test(l) ||
-      (hasNumber.test(l) && /還元|ポイント|倍/.test(l))
-  );
 
   const normalizedFullText = normalizeText(text);
   const matchedCard = state.cards.find((c) => normalizedFullText.includes(normalizeText(c.name)));
+  const cardName = matchedCard ? matchedCard.name : '';
 
-  const storeLine =
-    lines.find((l) => l !== discountLine && (!matchedCard || l !== matchedCard.name)) || '';
-  return { storeName: storeLine, discount: discountLine || '', cardName: matchedCard ? matchedCard.name : '' };
+  const candidates = [];
+  let lastStoreName = null;
+  let lastStoreIdx = -Infinity;
+
+  lines.forEach((line, idx) => {
+    if (!isOcrDiscountLine(line)) return;
+
+    let storeName = '';
+    for (let back = 1; back <= 3; back++) {
+      const candidate = lines[idx - back];
+      if (candidate && !isOcrChromeLine(candidate) && !isOcrDiscountLine(candidate)) {
+        storeName = candidate;
+        break;
+      }
+    }
+    if (!storeName) return; // 店名が特定できないものは誤登録防止のため候補に出さない
+
+    // 小見出し+強調見出しの二重表示(1つのクーポンに割引文言が2回出る)対策。
+    // OCRの読み取りゆれで文言が微妙に変わることがあるため、割引文言の完全一致ではなく
+    // 「直前に採用した店名行と同じ店名が近い行数以内で再登場したか」で重複判定する。
+    if (storeName === lastStoreName && idx - lastStoreIdx <= 4) return;
+    lastStoreName = storeName;
+    lastStoreIdx = idx;
+
+    candidates.push({ storeName, discount: line, cardName });
+  });
+
+  return candidates;
+}
+
+function renderCouponOcrCandidates(candidates) {
+  const container = document.getElementById('coupon-ocr-candidates');
+  if (!container) return;
+
+  if (candidates.length === 0) {
+    container.innerHTML = '';
+    return;
+  }
+
+  container.innerHTML = `
+    <p class="hint">${candidates.length}件見つかりました。登録したいものだけチェックしてください。</p>
+    <ul class="ocr-candidate-list">
+      ${candidates
+        .map(
+          (c, i) => `
+            <li class="ocr-candidate-item">
+              <label>
+                <input type="checkbox" checked data-index="${i}">
+                <span>
+                  <span class="item-name">${escapeHtml(c.storeName)}</span>
+                  <div class="item-note">${escapeHtml(c.discount)}${c.cardName ? ` ・ ${escapeHtml(c.cardName)}` : ''}</div>
+                </span>
+              </label>
+            </li>`
+        )
+        .join('')}
+    </ul>
+    <button type="button" id="coupon-ocr-add-selected" class="btn-primary">選んだものを追加</button>
+  `;
+
+  document.getElementById('coupon-ocr-add-selected').addEventListener('click', () => {
+    const checkboxes = [...container.querySelectorAll('input[type="checkbox"]')];
+    let addedCount = 0;
+    checkboxes.forEach((cb) => {
+      if (!cb.checked) return;
+      const c = candidates[Number(cb.dataset.index)];
+      addCoupon(c.storeName, c.discount, c.cardName, '');
+      addedCount += 1;
+    });
+    container.innerHTML = '';
+    document.getElementById('coupon-ocr-status').textContent = `${addedCount}件登録しました。`;
+  });
 }
 
 async function runCouponOcr(file) {
@@ -331,6 +417,7 @@ async function runCouponOcr(file) {
   const storeInput = document.getElementById('coupon-store-input');
   const discountInput = document.getElementById('coupon-discount-input');
   const cardInput = document.getElementById('coupon-card-input');
+  document.getElementById('coupon-ocr-candidates').innerHTML = '';
 
   status.textContent = 'OCRを準備中...';
   try {
@@ -348,14 +435,24 @@ async function runCouponOcr(file) {
     } = await worker.recognize(file);
     await worker.terminate();
 
-    const guess = guessCouponFieldsFromOcrText(text);
-    if (guess.storeName && !storeInput.value) storeInput.value = guess.storeName;
-    if (guess.discount && !discountInput.value) discountInput.value = guess.discount;
-    if (guess.cardName && !cardInput.value) cardInput.value = guess.cardName;
+    const candidates = guessCouponsFromOcrText(text);
 
-    status.textContent = text.trim()
-      ? `読み取り結果(自動入力しました。違っていたら書き換えてください): ${text.trim().replace(/\n/g, ' / ')}`
-      : '文字を読み取れませんでした。手入力してください。';
+    if (candidates.length === 0) {
+      status.textContent = text.trim()
+        ? `店名や割引を特定できませんでした。手入力してください。(読み取り結果: ${text.trim().replace(/\n/g, ' / ')})`
+        : '文字を読み取れませんでした。手入力してください。';
+    } else if (candidates.length === 1) {
+      // 1件だけならそのままフォームに入れる
+      const c = candidates[0];
+      if (c.storeName && !storeInput.value) storeInput.value = c.storeName;
+      if (c.discount && !discountInput.value) discountInput.value = c.discount;
+      if (c.cardName && !cardInput.value) cardInput.value = c.cardName;
+      status.textContent = '読み取り結果を自動入力しました。違っていたら書き換えてください。';
+    } else {
+      // 1枚に複数のクーポンが写っている場合(クーポン一覧のスクショ等)は選んで一括登録できるようにする
+      renderCouponOcrCandidates(candidates);
+      status.textContent = '';
+    }
   } catch (err) {
     status.textContent = `読み取りに失敗しました: ${err.message}`;
   }
