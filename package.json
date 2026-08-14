@@ -7,7 +7,8 @@
     "update-data": "node scripts/update-data.js"
   },
   "dependencies": {
-    "cheerio": "^1.0.0"
+    "cheerio": "^1.0.0",
+    "tesseract.js": "^7.0.0"
   },
   "devDependencies": {
     "playwright": "^1.62.1",

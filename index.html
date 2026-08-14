@@ -61,6 +61,11 @@
   <section id="tab-coupons" class="tab-panel">
     <p class="hint">お店で会計する前にひと目でわかるよう、知っているクーポンを登録しておけます(福利厚生サービス等のクーポンはログインが必要で自動取得できないため、手入力用です)。登録した店を検索すると自動で表示されます。</p>
     <form id="coupon-add-form" class="coupon-add-box">
+      <label for="coupon-image-input" class="btn-secondary coupon-ocr-btn">
+        📷 スクショから読み取る
+        <input id="coupon-image-input" type="file" accept="image/*" class="visually-hidden">
+      </label>
+      <p id="coupon-ocr-status" class="coupon-ocr-status"></p>
       <input id="coupon-store-input" type="text" list="store-suggestions" placeholder="店名(例: 鎌倉パスタ)" autocomplete="off" required>
       <input id="coupon-discount-input" type="text" placeholder="割引内容(例: 10%引き)" autocomplete="off" required>
       <input id="coupon-source-input" type="text" placeholder="入手元(任意、例: ベネフィット・ワン)" autocomplete="off">

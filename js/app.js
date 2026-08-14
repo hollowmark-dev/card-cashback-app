@@ -270,6 +270,77 @@ function initCouponForm() {
     form.reset();
     storeInput.focus();
   });
+
+  const imageInput = document.getElementById('coupon-image-input');
+  if (imageInput) {
+    imageInput.addEventListener('change', () => {
+      const file = imageInput.files?.[0];
+      if (file) runCouponOcr(file);
+      imageInput.value = ''; // 同じ画像を選び直した時も change が発火するようにする
+    });
+  }
+}
+
+// Tesseract.js本体(~8MB)は初回のOCR利用時にだけ読み込む(通常利用では取得しない)。
+// CDNではなく自前ホスト(vendor/tesseract/)のファイルだけを使うので、外部通信は発生しない。
+let tesseractLoadPromise = null;
+function loadTesseractScript() {
+  if (window.Tesseract) return Promise.resolve();
+  if (!tesseractLoadPromise) {
+    tesseractLoadPromise = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'vendor/tesseract/tesseract.min.js';
+      script.onload = resolve;
+      script.onerror = () => reject(new Error('Tesseractの読み込みに失敗しました'));
+      document.head.appendChild(script);
+    });
+  }
+  return tesseractLoadPromise;
+}
+
+// OCRの生テキストから「店名らしき行」「割引らしき行」を推測する。あくまで下書きなので、
+// 精度が完璧でなくても、抽出した全文はステータス欄に残して手で直せるようにしてある。
+function guessCouponFieldsFromOcrText(text) {
+  const lines = text
+    .split('\n')
+    .map((l) => l.trim())
+    .filter(Boolean);
+  const discountLine = lines.find((l) => /[0-9０-９]+\s*[%％]|円引き|円[Oo][Ff][Ff]|円オフ|無料/.test(l));
+  const storeLine = lines.find((l) => l !== discountLine) || '';
+  return { storeName: storeLine, discount: discountLine || '' };
+}
+
+async function runCouponOcr(file) {
+  const status = document.getElementById('coupon-ocr-status');
+  const storeInput = document.getElementById('coupon-store-input');
+  const discountInput = document.getElementById('coupon-discount-input');
+
+  status.textContent = 'OCRを準備中...';
+  try {
+    await loadTesseractScript();
+    status.textContent = '画像を読み取り中...(初回は数十秒かかります)';
+
+    const worker = await Tesseract.createWorker('jpn', 1, {
+      workerPath: 'vendor/tesseract/worker.min.js',
+      corePath: 'vendor/tesseract/tesseract-core-simd-lstm.wasm.js',
+      langPath: 'vendor/tesseract/',
+      gzip: true,
+    });
+    const {
+      data: { text },
+    } = await worker.recognize(file);
+    await worker.terminate();
+
+    const guess = guessCouponFieldsFromOcrText(text);
+    if (guess.storeName && !storeInput.value) storeInput.value = guess.storeName;
+    if (guess.discount && !discountInput.value) discountInput.value = guess.discount;
+
+    status.textContent = text.trim()
+      ? `読み取り結果(店名・割引欄を自動入力しました。違っていたら書き換えてください): ${text.trim().replace(/\n/g, ' / ')}`
+      : '文字を読み取れませんでした。手入力してください。';
+  } catch (err) {
+    status.textContent = `読み取りに失敗しました: ${err.message}`;
+  }
 }
 
 function rateForCard(card, normalizedQuery, normalizedCategory, isSpecificStoreQuery) {
