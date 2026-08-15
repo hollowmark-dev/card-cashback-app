@@ -544,14 +544,53 @@ main.is-loading .tab-panel {
   margin-top: 0.15rem;
 }
 
+.coupon-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  flex-shrink: 0;
+}
+
+.coupon-edit-btn,
 .coupon-delete-btn {
   background: none;
   border: none;
   color: var(--muted);
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   line-height: 1;
-  padding: 0.2rem 0.4rem;
+  padding: 0.3rem 0.5rem;
   cursor: pointer;
+}
+
+.coupon-delete-btn {
+  font-size: 1.3rem;
+}
+
+.coupon-edit-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.coupon-edit-form input {
+  padding: 0.5rem 0.6rem;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.coupon-edit-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.coupon-edit-actions button {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 0.85rem;
 }
 
 .card-top-stores-note {
