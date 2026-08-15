@@ -224,6 +224,14 @@ function deleteCoupon(id) {
   renderCouponList();
 }
 
+function updateCoupon(id, updates) {
+  const coupon = state.coupons.find((c) => c.id === id);
+  if (!coupon) return;
+  Object.assign(coupon, updates);
+  saveCoupons();
+  renderCouponList();
+}
+
 // 文字数だけ比較する簡易編集距離(レーベンシュタイン距離)。OCR由来の店名は
 // 1〜2文字だけ読み違えることがあるため、完全一致だけだと拾い漏れる。
 function levenshteinDistance(a, b) {
@@ -278,17 +286,49 @@ function renderCouponList() {
   state.coupons.forEach((coupon) => {
     const li = document.createElement('li');
     li.className = 'result-item';
-    const meta = [coupon.cardName, coupon.source].filter(Boolean).join(' ・ ');
-    li.innerHTML = `
-      <div>
-        <span class="item-name">${escapeHtml(coupon.storeName)}</span>
-        <div class="item-note">${escapeHtml(coupon.discount)}${meta ? ` ・ ${escapeHtml(meta)}` : ''}</div>
-      </div>
-      <button type="button" class="coupon-delete-btn" data-id="${coupon.id}" aria-label="削除">×</button>
-    `;
-    li.querySelector('.coupon-delete-btn').addEventListener('click', () => deleteCoupon(coupon.id));
+    renderCouponListItem(li, coupon);
     list.appendChild(li);
   });
+}
+
+function renderCouponListItem(li, coupon) {
+  const meta = [coupon.cardName, coupon.source].filter(Boolean).join(' ・ ');
+  li.innerHTML = `
+    <div>
+      <span class="item-name">${escapeHtml(coupon.storeName)}</span>
+      <div class="item-note">${escapeHtml(coupon.discount)}${meta ? ` ・ ${escapeHtml(meta)}` : ''}</div>
+    </div>
+    <div class="coupon-item-actions">
+      <button type="button" class="coupon-edit-btn" aria-label="編集">✎</button>
+      <button type="button" class="coupon-delete-btn" aria-label="削除">×</button>
+    </div>
+  `;
+  li.querySelector('.coupon-delete-btn').addEventListener('click', () => deleteCoupon(coupon.id));
+  li.querySelector('.coupon-edit-btn').addEventListener('click', () => renderCouponEditForm(li, coupon));
+}
+
+function renderCouponEditForm(li, coupon) {
+  li.innerHTML = `
+    <div class="coupon-edit-form">
+      <input type="text" class="coupon-edit-store" value="${escapeHtml(coupon.storeName)}" placeholder="店名" aria-label="店名">
+      <input type="text" class="coupon-edit-discount" value="${escapeHtml(coupon.discount)}" placeholder="内容(例: 10%OFF)" aria-label="割引内容">
+      <input type="text" class="coupon-edit-card" list="card-suggestions" value="${escapeHtml(coupon.cardName || '')}" placeholder="カード名(任意)" aria-label="カード名">
+      <input type="text" class="coupon-edit-source" value="${escapeHtml(coupon.source || '')}" placeholder="入手元(任意)" aria-label="入手元">
+      <div class="coupon-edit-actions">
+        <button type="button" class="btn-primary coupon-edit-save">保存</button>
+        <button type="button" class="btn-secondary coupon-edit-cancel">キャンセル</button>
+      </div>
+    </div>
+  `;
+  li.querySelector('.coupon-edit-save').addEventListener('click', () => {
+    const storeName = li.querySelector('.coupon-edit-store').value.trim();
+    const discount = li.querySelector('.coupon-edit-discount').value.trim();
+    const cardName = li.querySelector('.coupon-edit-card').value.trim();
+    const source = li.querySelector('.coupon-edit-source').value.trim();
+    if (!storeName || !discount) return;
+    updateCoupon(coupon.id, { storeName, discount, cardName: cardName || null, source: source || null });
+  });
+  li.querySelector('.coupon-edit-cancel').addEventListener('click', () => renderCouponListItem(li, coupon));
 }
 
 function initCouponForm() {
