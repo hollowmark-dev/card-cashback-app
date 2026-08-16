@@ -31,7 +31,7 @@
     "name": "PayPayカード",
     "baseRate": 1,
     "color": "#ff0033",
-    "updatedAt": "2026-08-13",
+    "updatedAt": "2026-08-16",
     "rates": {
       "stores": {
         "toreta+": {
@@ -2187,7 +2187,7 @@
     "name": "エポスカード",
     "baseRate": 0.5,
     "color": "#e60027",
-    "updatedAt": "2026-08-13",
+    "updatedAt": "2026-08-16",
     "rates": {
       "stores": {
         "ioPLAZA": {
@@ -2220,10 +2220,6 @@
         },
         "アカチャンホンポ Online Shop": {
           "rate": 1.5,
-          "channel": "mall"
-        },
-        "アガルートアカデミー": {
-          "rate": 6.5,
           "channel": "mall"
         },
         "アキレスウェブショップ": {
@@ -2275,7 +2271,7 @@
           "channel": "mall"
         },
         "Apple公式サイト": {
-          "rate": 1,
+          "rate": 1.5,
           "channel": "mall"
         },
         "Apple Books": {
@@ -2292,6 +2288,10 @@
         },
         "atmos公式オンラインショップ": {
           "rate": 1.5,
+          "channel": "mall"
+        },
+        "Adobe Creative Cloud": {
+          "rate": 15,
           "channel": "mall"
         },
         "anatae": {
@@ -2363,7 +2363,7 @@
           "channel": "mall"
         },
         "e87.com（千趣会　イイハナ）": {
-          "rate": 9,
+          "rate": 6.5,
           "channel": "mall"
         },
         "おうちでイオン イオンショップ": {
@@ -2459,7 +2459,7 @@
           "channel": "mall"
         },
         "EXETIME": {
-          "rate": 3,
+          "rate": 5.5,
           "channel": "mall"
         },
         "「SKE48の大富豪はおわらない！」アプリペイストア": {
@@ -2531,7 +2531,7 @@
           "channel": "mall"
         },
         "airalo": {
-          "rate": 3,
+          "rate": 9,
           "channel": "mall"
         },
         "L.L.Beanオンラインショップ": {
@@ -2543,11 +2543,11 @@
           "channel": "mall"
         },
         "【ANA公式】 ANAトラベラーズホテル＆レンタカー": {
-          "rate": 2,
+          "rate": 1,
           "channel": "mall"
         },
         "ANAの国内・海外ツアー【ANAトラベラーズ】": {
-          "rate": 2,
+          "rate": 1,
           "channel": "mall"
         },
         "「AKB48のどっぼーん！ひとりじめ！」アプリペイストア": {
@@ -2738,6 +2738,10 @@
           "rate": 1,
           "channel": "mall"
         },
+        "クラランスオンラインショッピング": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
         "クリニーク公式 オンライン ショップ": {
           "rate": 2,
           "channel": "mall"
@@ -2763,7 +2767,7 @@
           "channel": "mall"
         },
         "グンゼストア": {
-          "rate": 3.5,
+          "rate": 2.5,
           "channel": "mall"
         },
         "GOOPASS": {
@@ -2887,7 +2891,7 @@
           "channel": "mall"
         },
         "Samsungオンラインショップ": {
-          "rate": 1.5,
+          "rate": 2,
           "channel": "mall"
         },
         "サムソナイト公式オンラインストア": {
@@ -2919,7 +2923,7 @@
           "channel": "mall"
         },
         "資生堂オンラインストア": {
-          "rate": 6.5,
+          "rate": 9,
           "channel": "mall"
         },
         "資生堂パーラーオンラインショップ": {
@@ -2959,7 +2963,11 @@
           "channel": "mall"
         },
         "SHEIN": {
-          "rate": 2.5,
+          "rate": 3.5,
+          "channel": "mall"
+        },
+        "JRE MALL ショッピング": {
+          "rate": 1.5,
           "channel": "mall"
         },
         "JAタウン": {
@@ -3063,7 +3071,7 @@
           "channel": "mall"
         },
         "すかいらーくの宅配": {
-          "rate": 2,
+          "rate": 1.5,
           "channel": "mall"
         },
         "SQUARE ENIX　e-STORE": {
@@ -3339,7 +3347,7 @@
           "channel": "mall"
         },
         "Traveloka（ホテル予約）": {
-          "rate": 2,
+          "rate": 5,
           "channel": "mall"
         },
         "Trip.com（遊び・体験）": {
@@ -3387,7 +3395,7 @@
           "channel": "mall"
         },
         "ドクターシーラボ公式オンラインショップ": {
-          "rate": 2,
+          "rate": 15,
           "channel": "mall"
         },
         "Dorry Doll公式オンラインストア": {
@@ -3415,7 +3423,7 @@
           "channel": "mall"
         },
         "NARS公式オンラインショップ": {
-          "rate": 2,
+          "rate": 9,
           "channel": "mall"
         },
         "nishikawa（西川）公式オンラインショップ": {
@@ -3464,6 +3472,10 @@
         },
         "ノートンストア": {
           "rate": 15,
+          "channel": "mall"
+        },
+        "ハウスオブローゼ　オンラインショップ本店／化粧品": {
+          "rate": 2.5,
           "channel": "mall"
         },
         "HAPPY PLUS STORE": {
@@ -3563,7 +3575,7 @@
           "channel": "mall"
         },
         "ピザハットオンライン": {
-          "rate": 2,
+          "rate": 7,
           "channel": "mall"
         },
         "PEACH JOHN": {
@@ -3719,7 +3731,7 @@
           "channel": "mall"
         },
         "ポーラ公式オンラインストア": {
-          "rate": 2.5,
+          "rate": 1.5,
           "channel": "mall"
         },
         "Paul Smithオンラインショップ": {
@@ -3842,7 +3854,7 @@
           "rate": 9,
           "channel": "mall"
         },
-        "UNITED ARROWS LTD. ONLINE STORE": {
+        "UNITED ARROWS ONLINE（ユナイテッドアローズ）": {
           "rate": 1.5,
           "channel": "mall"
         },
@@ -3855,7 +3867,7 @@
           "channel": "mall"
         },
         "UGREEN NAS": {
-          "rate": 3,
+          "rate": 5.5,
           "channel": "mall"
         },
         "Udemy": {
