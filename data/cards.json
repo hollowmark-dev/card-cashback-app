@@ -31,7 +31,7 @@
     "name": "PayPayカード",
     "baseRate": 1,
     "color": "#ff0033",
-    "updatedAt": "2026-08-23",
+    "updatedAt": "2026-08-25",
     "rates": {
       "stores": {
         "toreta+": {
@@ -205,7 +205,7 @@
     "name": "dカード",
     "baseRate": 1,
     "color": "#cc0033",
-    "updatedAt": "2026-08-13",
+    "updatedAt": "2026-08-25",
     "rates": {
       "stores": {
         "マクドナルド": {
@@ -233,7 +233,7 @@
           "channel": "mall"
         },
         "AOKI公式オンラインショップ": {
-          "rate": 10,
+          "rate": 10.5,
           "channel": "mall"
         },
         "青山花茂本店　オンラインショップ": {
@@ -293,7 +293,7 @@
           "channel": "mall"
         },
         "Apple公式サイト": {
-          "rate": 0.5,
+          "rate": 1,
           "channel": "mall"
         },
         "Apple Books": {
@@ -310,6 +310,10 @@
         },
         "atmos公式オンラインショップ": {
           "rate": 1,
+          "channel": "mall"
+        },
+        "Adobe Creative Cloud": {
+          "rate": 15,
           "channel": "mall"
         },
         "anatae": {
@@ -385,11 +389,11 @@
           "channel": "mall"
         },
         "e87.com（千趣会　イイハナ）": {
-          "rate": 7.5,
+          "rate": 7,
           "channel": "mall"
         },
         "おうちでイオン イオンショップ": {
-          "rate": 3,
+          "rate": 5,
           "channel": "mall"
         },
         "石橋楽器店": {
@@ -489,7 +493,7 @@
           "channel": "mall"
         },
         "EXETIME": {
-          "rate": 2.5,
+          "rate": 4.5,
           "channel": "mall"
         },
         "「SKE48の大富豪はおわらない！」アプリペイストア": {
@@ -553,7 +557,7 @@
           "channel": "mall"
         },
         "airalo": {
-          "rate": 2.5,
+          "rate": 7.5,
           "channel": "mall"
         },
         "L.L.Beanオンラインショップ": {
@@ -565,11 +569,11 @@
           "channel": "mall"
         },
         "【ANA公式】 ANAトラベラーズホテル＆レンタカー": {
-          "rate": 1.5,
+          "rate": 0.5,
           "channel": "mall"
         },
         "ANAの国内・海外ツアー【ANAトラベラーズ】": {
-          "rate": 1.5,
+          "rate": 0.5,
           "channel": "mall"
         },
         "「AKB48のどっぼーん！ひとりじめ！」アプリペイストア": {
@@ -661,7 +665,7 @@
           "channel": "mall"
         },
         "CAGUUU": {
-          "rate": 2.5,
+          "rate": 5,
           "channel": "mall"
         },
         "【カゴメの通信販売】カゴメ健康直送便": {
@@ -780,6 +784,10 @@
           "rate": 0.5,
           "channel": "mall"
         },
+        "クラランスオンラインショッピング": {
+          "rate": 2,
+          "channel": "mall"
+        },
         "クリニーク公式 オンライン ショップ": {
           "rate": 1.5,
           "channel": "mall"
@@ -805,11 +813,11 @@
           "channel": "mall"
         },
         "グンゼストア": {
-          "rate": 3,
+          "rate": 2,
           "channel": "mall"
         },
         "GOOPASS": {
-          "rate": 3.5,
+          "rate": 5,
           "channel": "mall"
         },
         "京王百貨店ネットショップ": {
@@ -897,7 +905,7 @@
           "channel": "mall"
         },
         "コンタクトレンズ通販 レンズアップル": {
-          "rate": 3,
+          "rate": 5,
           "channel": "mall"
         },
         "コンビ公式ブランドストア": {
@@ -937,7 +945,7 @@
           "channel": "mall"
         },
         "Samsungオンラインショップ": {
-          "rate": 0.5,
+          "rate": 1.5,
           "channel": "mall"
         },
         "サムソナイト公式オンラインストア": {
@@ -957,7 +965,7 @@
           "channel": "mall"
         },
         "サンワダイレクト": {
-          "rate": 1.5,
+          "rate": 6.5,
           "channel": "mall"
         },
         "サーモスオンラインショップ": {
@@ -965,7 +973,7 @@
           "channel": "mall"
         },
         "雑誌のオンライン書店／~＼Fujisan.co.jp　【雑誌の富士山】": {
-          "rate": 2.5,
+          "rate": 5,
           "channel": "mall"
         },
         "SHEL'TTER WEB STORE": {
@@ -973,7 +981,7 @@
           "channel": "mall"
         },
         "資生堂オンラインストア": {
-          "rate": 5,
+          "rate": 8,
           "channel": "mall"
         },
         "資生堂パーラーオンラインショップ": {
@@ -993,7 +1001,7 @@
           "channel": "mall"
         },
         "ショップジャパン": {
-          "rate": 6,
+          "rate": 6.5,
           "channel": "mall"
         },
         "ショップチャンネル": {
@@ -1013,7 +1021,11 @@
           "channel": "mall"
         },
         "SHEIN": {
-          "rate": 2,
+          "rate": 3,
+          "channel": "mall"
+        },
+        "JRE MALL ショッピング": {
+          "rate": 1,
           "channel": "mall"
         },
         "JAタウン": {
@@ -1113,7 +1125,7 @@
           "channel": "mall"
         },
         "すかいらーくの宅配": {
-          "rate": 1.5,
+          "rate": 1,
           "channel": "mall"
         },
         "SQUARE ENIX　e-STORE": {
@@ -1369,7 +1381,7 @@
           "channel": "mall"
         },
         "【DEPACO】大丸松坂屋コスメオンラインストア": {
-          "rate": 1.5,
+          "rate": 5,
           "channel": "mall"
         },
         "devirock": {
@@ -1421,7 +1433,7 @@
           "channel": "mall"
         },
         "Traveloka（ホテル予約）": {
-          "rate": 1.5,
+          "rate": 4,
           "channel": "mall"
         },
         "Trip.com（遊び・体験）": {
@@ -1469,7 +1481,7 @@
           "channel": "mall"
         },
         "ドクターシーラボ公式オンラインショップ": {
-          "rate": 1.5,
+          "rate": 12.5,
           "channel": "mall"
         },
         "Dorry Doll公式オンラインストア": {
@@ -1493,7 +1505,7 @@
           "channel": "mall"
         },
         "NARS公式オンラインショップ": {
-          "rate": 1.5,
+          "rate": 7.5,
           "channel": "mall"
         },
         "nishikawa（西川）公式オンラインショップ": {
@@ -1544,6 +1556,10 @@
           "rate": 15,
           "channel": "mall"
         },
+        "ハウスオブローゼ　オンラインショップ本店／化粧品": {
+          "rate": 2,
+          "channel": "mall"
+        },
         "HAPPY PLUS STORE": {
           "rate": 1,
           "channel": "mall"
@@ -1577,11 +1593,11 @@
           "channel": "mall"
         },
         "HABA ONLINE": {
-          "rate": 3.5,
+          "rate": 5,
           "channel": "mall"
         },
         "VAIOストア": {
-          "rate": 3,
+          "rate": 3.5,
           "channel": "mall"
         },
         "BUYMA TRAVEL": {
@@ -1657,7 +1673,7 @@
           "channel": "mall"
         },
         "ピザハットオンライン": {
-          "rate": 1.5,
+          "rate": 6,
           "channel": "mall"
         },
         "PEACH JOHN": {
@@ -1669,7 +1685,7 @@
           "channel": "mall"
         },
         "ファイブフォックス オンラインストア": {
-          "rate": 1.5,
+          "rate": 5,
           "channel": "mall"
         },
         "ファンケル": {
@@ -1825,7 +1841,7 @@
           "channel": "mall"
         },
         "ポーラ公式オンラインストア": {
-          "rate": 2,
+          "rate": 1,
           "channel": "mall"
         },
         "Paul Smithオンラインショップ": {
@@ -1853,7 +1869,7 @@
           "channel": "mall"
         },
         "マウスコンピューター": {
-          "rate": 1.5,
+          "rate": 2.5,
           "channel": "mall"
         },
         "マカフィーストア": {
@@ -1957,10 +1973,10 @@
           "channel": "mall"
         },
         "山田養蜂場オンラインショップ": {
-          "rate": 7.5,
+          "rate": 10,
           "channel": "mall"
         },
-        "UNITED ARROWS LTD. ONLINE STORE": {
+        "UNITED ARROWS ONLINE（ユナイテッドアローズ）": {
           "rate": 1,
           "channel": "mall"
         },
@@ -1969,7 +1985,7 @@
           "channel": "mall"
         },
         "UGREEN NAS": {
-          "rate": 2.5,
+          "rate": 4.5,
           "channel": "mall"
         },
         "洋服の青山オンラインストア": {
@@ -2187,7 +2203,7 @@
     "name": "エポスカード",
     "baseRate": 0.5,
     "color": "#e60027",
-    "updatedAt": "2026-08-23",
+    "updatedAt": "2026-08-25",
     "rates": {
       "stores": {
         "ioPLAZA": {
@@ -2207,7 +2223,7 @@
           "channel": "mall"
         },
         "AOKI公式オンラインショップ": {
-          "rate": 12.5,
+          "rate": 13,
           "channel": "mall"
         },
         "青山花茂本店　オンラインショップ": {
@@ -2363,11 +2379,11 @@
           "channel": "mall"
         },
         "e87.com（千趣会　イイハナ）": {
-          "rate": 6.5,
+          "rate": 8.5,
           "channel": "mall"
         },
         "おうちでイオン イオンショップ": {
-          "rate": 3.5,
+          "rate": 6.5,
           "channel": "mall"
         },
         "イソップオンラインストア": {
@@ -2627,7 +2643,7 @@
           "channel": "mall"
         },
         "CAGUUU": {
-          "rate": 3,
+          "rate": 6.5,
           "channel": "mall"
         },
         "【カゴメの通信販売】カゴメ健康直送便": {
@@ -2771,7 +2787,7 @@
           "channel": "mall"
         },
         "GOOPASS": {
-          "rate": 4.5,
+          "rate": 6.5,
           "channel": "mall"
         },
         "「けものフレンズ3」アプリペイストア": {
@@ -2847,7 +2863,7 @@
           "channel": "mall"
         },
         "コンタクトレンズ通販 レンズアップル": {
-          "rate": 3.5,
+          "rate": 6.5,
           "channel": "mall"
         },
         "コンビ公式ブランドストア": {
@@ -2911,7 +2927,7 @@
           "channel": "mall"
         },
         "サンワダイレクト": {
-          "rate": 2,
+          "rate": 7.5,
           "channel": "mall"
         },
         "サーモスオンラインショップ": {
@@ -2923,7 +2939,7 @@
           "channel": "mall"
         },
         "資生堂オンラインストア": {
-          "rate": 9,
+          "rate": 9.5,
           "channel": "mall"
         },
         "資生堂パーラーオンラインショップ": {
@@ -2947,7 +2963,7 @@
           "channel": "mall"
         },
         "ショップジャパン": {
-          "rate": 7,
+          "rate": 7.5,
           "channel": "mall"
         },
         "Shoplist": {
@@ -3499,11 +3515,11 @@
           "channel": "mall"
         },
         "HABA ONLINE": {
-          "rate": 4.5,
+          "rate": 6.5,
           "channel": "mall"
         },
         "VAIOストア": {
-          "rate": 3.5,
+          "rate": 4.5,
           "channel": "mall"
         },
         "BUYMA TRAVEL": {
@@ -3759,7 +3775,7 @@
           "channel": "mall"
         },
         "マウスコンピューター": {
-          "rate": 2,
+          "rate": 3,
           "channel": "mall"
         },
         "マカフィーストア": {
@@ -3851,7 +3867,7 @@
           "channel": "mall"
         },
         "山田養蜂場オンラインショップ": {
-          "rate": 9,
+          "rate": 12.5,
           "channel": "mall"
         },
         "UNITED ARROWS ONLINE（ユナイテッドアローズ）": {
@@ -4078,7 +4094,7 @@
     "name": "JCBカード",
     "baseRate": 0.5,
     "color": "#00913a",
-    "updatedAt": "2026-08-13",
+    "updatedAt": "2026-08-25",
     "rates": {
       "stores": {
         "ioPLAZA": {
@@ -4130,7 +4146,7 @@
           "channel": "mall"
         },
         "Apple公式サイト": {
-          "rate": 1,
+          "rate": 1.5,
           "channel": "mall"
         },
         "アップルワールド ホテルオンライン予約＜JCBトラベル＞": {
@@ -4147,6 +4163,10 @@
         },
         "atmos公式オンラインショップ": {
           "rate": 1.5,
+          "channel": "mall"
+        },
+        "Adobe Creative Cloud": {
+          "rate": 10,
           "channel": "mall"
         },
         "anatae": {
@@ -4186,11 +4206,11 @@
           "channel": "mall"
         },
         "e87.com（千趣会　イイハナ）": {
-          "rate": 8,
+          "rate": 7.5,
           "channel": "mall"
         },
         "おうちでイオン イオンショップ": {
-          "rate": 3.5,
+          "rate": 5.5,
           "channel": "mall"
         },
         "ISETAN BEAUTY online": {
@@ -4314,7 +4334,7 @@
           "channel": "mall"
         },
         "ANAの国内・海外ツアー【ANAトラベラーズ】": {
-          "rate": 2,
+          "rate": 1,
           "channel": "mall"
         },
         "「AKB48のどっぼーん！ひとりじめ！」アプリペイストア": {
@@ -4397,12 +4417,12 @@
           "rate": 1.5,
           "channel": "mall"
         },
-        "Samsungオンラインショップ": {
-          "rate": 1,
+        "Dell（個人向け）": {
+          "rate": 2.5,
           "channel": "mall"
         },
         "SHEIN": {
-          "rate": 2.5,
+          "rate": 3.5,
           "channel": "mall"
         },
         "ベルメゾン": {
@@ -4421,12 +4441,12 @@
           "rate": 1,
           "channel": "mall"
         },
-        "Qoo10": {
-          "rate": 1.5,
-          "channel": "mall"
-        },
         "Yahoo!ショッピング": {
           "rate": 1,
+          "channel": "mall"
+        },
+        "Qoo10": {
+          "rate": 1.5,
           "channel": "mall"
         },
         "海外現地ツアーオンライン予約＜JCBトラベル＞": {
@@ -4505,6 +4525,10 @@
           "rate": 1,
           "channel": "mall"
         },
+        "クラランスオンラインショッピング": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
         "クリニーク公式 オンライン ショップ": {
           "rate": 2,
           "channel": "mall"
@@ -4526,11 +4550,11 @@
           "channel": "mall"
         },
         "グンゼストア": {
-          "rate": 3.5,
+          "rate": 2.5,
           "channel": "mall"
         },
         "GOOPASS": {
-          "rate": 4,
+          "rate": 5.5,
           "channel": "mall"
         },
         "KNT国内ツアーオンライン予約＜JCBトラベル＞": {
@@ -4590,7 +4614,7 @@
           "channel": "mall"
         },
         "コンタクトレンズ通販 レンズアップル": {
-          "rate": 3.5,
+          "rate": 5.5,
           "channel": "mall"
         },
         "coen ONLINE STORE": {
@@ -4625,6 +4649,10 @@
           "rate": 3,
           "channel": "mall"
         },
+        "Samsungオンラインショップ": {
+          "rate": 2,
+          "channel": "mall"
+        },
         "サムソナイト公式オンラインストア": {
           "rate": 1.5,
           "channel": "mall"
@@ -4646,7 +4674,7 @@
           "channel": "mall"
         },
         "サンワダイレクト": {
-          "rate": 2,
+          "rate": 7,
           "channel": "mall"
         },
         "サーモスオンラインショップ": {
@@ -4654,11 +4682,11 @@
           "channel": "mall"
         },
         "雑誌のオンライン書店／~＼Fujisan.co.jp　【雑誌の富士山】": {
-          "rate": 3,
+          "rate": 5.5,
           "channel": "mall"
         },
         "資生堂オンラインストア": {
-          "rate": 5.5,
+          "rate": 8.5,
           "channel": "mall"
         },
         "シャディ　ギフトモール": {
@@ -4674,7 +4702,7 @@
           "channel": "mall"
         },
         "ショップジャパン": {
-          "rate": 6.5,
+          "rate": 7,
           "channel": "mall"
         },
         "ショップチャンネル": {
@@ -4686,6 +4714,10 @@
           "channel": "mall"
         },
         "白樺リゾート 池の平ホテル【THE LAKE RESORT】長野県": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "JRE MALL ショッピング": {
           "rate": 1.5,
           "channel": "mall"
         },
@@ -4957,10 +4989,6 @@
           "rate": 3,
           "channel": "mall"
         },
-        "Dell（個人向け）": {
-          "rate": 2.5,
-          "channel": "mall"
-        },
         "Dell（法人向け）": {
           "rate": 2.5,
           "channel": "mall"
@@ -4994,7 +5022,7 @@
           "channel": "mall"
         },
         "Traveloka（ホテル予約）": {
-          "rate": 2,
+          "rate": 4.5,
           "channel": "mall"
         },
         "Trip.com（遊び・体験）": {
@@ -5026,7 +5054,7 @@
           "channel": "mall"
         },
         "ドクターシーラボ公式オンラインショップ": {
-          "rate": 2,
+          "rate": 10,
           "channel": "mall"
         },
         "ナチュラム": {
@@ -5038,7 +5066,7 @@
           "channel": "mall"
         },
         "NARS公式オンラインショップ": {
-          "rate": 2,
+          "rate": 8,
           "channel": "mall"
         },
         "nishikawa（西川）公式オンラインショップ": {
@@ -5073,6 +5101,10 @@
           "rate": 10,
           "channel": "mall"
         },
+        "ハウスオブローゼ　オンラインショップ本店／化粧品": {
+          "rate": 2.5,
+          "channel": "mall"
+        },
         "HAPPY PLUS STORE": {
           "rate": 1.5,
           "channel": "mall"
@@ -5102,11 +5134,11 @@
           "channel": "mall"
         },
         "HABA ONLINE": {
-          "rate": 4,
+          "rate": 5.5,
           "channel": "mall"
         },
         "VAIOストア": {
-          "rate": 3.5,
+          "rate": 4,
           "channel": "mall"
         },
         "BARNEYS NEW YORK": {
@@ -5150,7 +5182,7 @@
           "channel": "mall"
         },
         "ピザハットオンライン": {
-          "rate": 2,
+          "rate": 6.5,
           "channel": "mall"
         },
         "ファンケル": {
@@ -5254,7 +5286,7 @@
           "channel": "mall"
         },
         "マウスコンピューター": {
-          "rate": 2,
+          "rate": 3,
           "channel": "mall"
         },
         "マカフィーストア": {
@@ -5330,10 +5362,10 @@
           "channel": "mall"
         },
         "山田養蜂場オンラインショップ": {
-          "rate": 8,
+          "rate": 10,
           "channel": "mall"
         },
-        "UNITED ARROWS LTD. ONLINE STORE": {
+        "UNITED ARROWS ONLINE（ユナイテッドアローズ）": {
           "rate": 1.5,
           "channel": "mall"
         },
@@ -5342,7 +5374,7 @@
           "channel": "mall"
         },
         "UGREEN NAS": {
-          "rate": 3,
+          "rate": 5,
           "channel": "mall"
         },
         "洋服の青山オンラインストア": {
@@ -5814,7 +5846,7 @@
     "name": "オリコカード",
     "baseRate": 0.5,
     "color": "#009fe8",
-    "updatedAt": "2026-08-13",
+    "updatedAt": "2026-08-25",
     "rates": {
       "stores": {
         "ioPLAZA": {
@@ -5830,7 +5862,7 @@
           "channel": "mall"
         },
         "AOKI公式オンラインショップ": {
-          "rate": 10,
+          "rate": 10.5,
           "channel": "mall"
         },
         "青山花茂本店　オンラインショップ": {
@@ -5894,7 +5926,7 @@
           "channel": "mall"
         },
         "Apple公式サイト": {
-          "rate": 0.5,
+          "rate": 1,
           "channel": "mall"
         },
         "adidas ONLINE SHOP": {
@@ -5954,11 +5986,11 @@
           "channel": "mall"
         },
         "e87.com（千趣会　イイハナ）": {
-          "rate": 7.5,
+          "rate": 7,
           "channel": "mall"
         },
         "おうちでイオン イオンショップ": {
-          "rate": 3,
+          "rate": 5,
           "channel": "mall"
         },
         "ISETAN BEAUTY online": {
@@ -6046,7 +6078,7 @@
           "channel": "mall"
         },
         "EXETIME": {
-          "rate": 2.5,
+          "rate": 4.5,
           "channel": "mall"
         },
         "エスティローダー公式オンライン ショップ": {
@@ -6114,11 +6146,11 @@
           "channel": "mall"
         },
         "【ANA公式】 ANAトラベラーズホテル＆レンタカー": {
-          "rate": 1.5,
+          "rate": 0.5,
           "channel": "mall"
         },
         "ANAの国内・海外ツアー【ANAトラベラーズ】": {
-          "rate": 1.5,
+          "rate": 0.5,
           "channel": "mall"
         },
         "ABC-MARTオンラインストア": {
@@ -6190,7 +6222,7 @@
           "channel": "mall"
         },
         "CAGUUU": {
-          "rate": 2.5,
+          "rate": 5,
           "channel": "mall"
         },
         "【カゴメの通信販売】カゴメ健康直送便": {
@@ -6314,11 +6346,11 @@
           "channel": "mall"
         },
         "グンゼストア": {
-          "rate": 3,
+          "rate": 2,
           "channel": "mall"
         },
         "GOOPASS": {
-          "rate": 3.5,
+          "rate": 5,
           "channel": "mall"
         },
         "京王百貨店ネットショップ": {
@@ -6378,7 +6410,7 @@
           "channel": "mall"
         },
         "コンタクトレンズ通販 レンズアップル": {
-          "rate": 3,
+          "rate": 5,
           "channel": "mall"
         },
         "コンビ公式ブランドストア": {
@@ -6414,7 +6446,7 @@
           "channel": "mall"
         },
         "Samsungオンラインショップ": {
-          "rate": 0.5,
+          "rate": 1.5,
           "channel": "mall"
         },
         "サムソナイト公式オンラインストア": {
@@ -6438,7 +6470,7 @@
           "channel": "mall"
         },
         "サンワダイレクト": {
-          "rate": 1.5,
+          "rate": 6.5,
           "channel": "mall"
         },
         "サーモスオンラインショップ": {
@@ -6446,7 +6478,7 @@
           "channel": "mall"
         },
         "雑誌のオンライン書店／~＼Fujisan.co.jp　【雑誌の富士山】": {
-          "rate": 2.5,
+          "rate": 5,
           "channel": "mall"
         },
         "SHEL'TTER WEB STORE": {
@@ -6454,7 +6486,7 @@
           "channel": "mall"
         },
         "資生堂オンラインストア": {
-          "rate": 5,
+          "rate": 8,
           "channel": "mall"
         },
         "SHIPS": {
@@ -6474,7 +6506,7 @@
           "channel": "mall"
         },
         "ショップジャパン": {
-          "rate": 6,
+          "rate": 6.5,
           "channel": "mall"
         },
         "ショップチャンネル": {
@@ -6569,8 +6601,12 @@
           "rate": 1,
           "channel": "mall"
         },
+        "スカイチケット（国内格安レンタカー予約）": {
+          "rate": 1,
+          "channel": "mall"
+        },
         "すかいらーくの宅配": {
-          "rate": 1.5,
+          "rate": 1,
           "channel": "mall"
         },
         "SQUARE ENIX　e-STORE": {
@@ -6578,6 +6614,10 @@
           "channel": "mall"
         },
         "Stylora Store（スタイロラ ストア）": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
+        "STUDIOUSオンラインショップ": {
           "rate": 1.5,
           "channel": "mall"
         },
@@ -6790,7 +6830,7 @@
           "channel": "mall"
         },
         "【DEPACO】大丸松坂屋コスメオンラインストア": {
-          "rate": 1.5,
+          "rate": 5,
           "channel": "mall"
         },
         "Dell（法人向け）": {
@@ -6854,7 +6894,7 @@
           "channel": "mall"
         },
         "ドクターシーラボ公式オンラインショップ": {
-          "rate": 1.5,
+          "rate": 12.5,
           "channel": "mall"
         },
         "Dorry Doll公式オンラインストア": {
@@ -6878,7 +6918,7 @@
           "channel": "mall"
         },
         "NARS公式オンラインショップ": {
-          "rate": 1.5,
+          "rate": 7.5,
           "channel": "mall"
         },
         "ニッセンオンライン": {
@@ -6950,11 +6990,11 @@
           "channel": "mall"
         },
         "HABA ONLINE": {
-          "rate": 3.5,
+          "rate": 5,
           "channel": "mall"
         },
         "VAIOストア": {
-          "rate": 3,
+          "rate": 3.5,
           "channel": "mall"
         },
         "BUYMA TRAVEL": {
@@ -7014,7 +7054,7 @@
           "channel": "mall"
         },
         "ピザハットオンライン": {
-          "rate": 1.5,
+          "rate": 6,
           "channel": "mall"
         },
         "PEACH JOHN": {
@@ -7026,7 +7066,7 @@
           "channel": "mall"
         },
         "ファイブフォックス オンラインストア": {
-          "rate": 1.5,
+          "rate": 5,
           "channel": "mall"
         },
         "ファンケル": {
@@ -7190,7 +7230,7 @@
           "channel": "mall"
         },
         "マウスコンピューター": {
-          "rate": 2,
+          "rate": 2.5,
           "channel": "mall"
         },
         "マカフィーストア": {
@@ -7226,6 +7266,10 @@
           "channel": "mall"
         },
         "みんなのチケット【楽天市場】": {
+          "rate": 0.5,
+          "channel": "mall"
+        },
+        "無印良品ネットストア": {
           "rate": 0.5,
           "channel": "mall"
         },
@@ -7274,10 +7318,10 @@
           "channel": "mall"
         },
         "山田養蜂場オンラインショップ": {
-          "rate": 7.5,
+          "rate": 10,
           "channel": "mall"
         },
-        "UNITED ARROWS LTD. ONLINE STORE": {
+        "UNITED ARROWS ONLINE（ユナイテッドアローズ）": {
           "rate": 1,
           "channel": "mall"
         },
@@ -7287,6 +7331,10 @@
         },
         "洋服の青山オンラインストア": {
           "rate": 4.5,
+          "channel": "mall"
+        },
+        "よかもーる": {
+          "rate": 1,
           "channel": "mall"
         },
         "楽天市場": {
@@ -7473,7 +7521,7 @@
     "name": "JCB CARD W",
     "baseRate": 1,
     "color": "#00a99d",
-    "updatedAt": "2026-08-13",
+    "updatedAt": "2026-08-25",
     "rates": {
       "stores": {
         "ioPLAZA": {
@@ -7525,7 +7573,7 @@
           "channel": "mall"
         },
         "Apple公式サイト": {
-          "rate": 2,
+          "rate": 3,
           "channel": "mall"
         },
         "アップルワールド ホテルオンライン予約＜JCBトラベル＞": {
@@ -7542,6 +7590,10 @@
         },
         "atmos公式オンラインショップ": {
           "rate": 3,
+          "channel": "mall"
+        },
+        "Adobe Creative Cloud": {
+          "rate": 20,
           "channel": "mall"
         },
         "anatae": {
@@ -7581,11 +7633,11 @@
           "channel": "mall"
         },
         "e87.com（千趣会　イイハナ）": {
-          "rate": 16,
+          "rate": 15,
           "channel": "mall"
         },
         "おうちでイオン イオンショップ": {
-          "rate": 7,
+          "rate": 11,
           "channel": "mall"
         },
         "ISETAN BEAUTY online": {
@@ -7709,7 +7761,7 @@
           "channel": "mall"
         },
         "ANAの国内・海外ツアー【ANAトラベラーズ】": {
-          "rate": 4,
+          "rate": 2,
           "channel": "mall"
         },
         "「AKB48のどっぼーん！ひとりじめ！」アプリペイストア": {
@@ -7792,12 +7844,12 @@
           "rate": 3,
           "channel": "mall"
         },
-        "Samsungオンラインショップ": {
-          "rate": 2,
+        "Dell（個人向け）": {
+          "rate": 5,
           "channel": "mall"
         },
         "SHEIN": {
-          "rate": 5,
+          "rate": 7,
           "channel": "mall"
         },
         "ベルメゾン": {
@@ -7816,12 +7868,12 @@
           "rate": 2,
           "channel": "mall"
         },
-        "Qoo10": {
-          "rate": 3,
-          "channel": "mall"
-        },
         "Yahoo!ショッピング": {
           "rate": 2,
+          "channel": "mall"
+        },
+        "Qoo10": {
+          "rate": 3,
           "channel": "mall"
         },
         "海外現地ツアーオンライン予約＜JCBトラベル＞": {
@@ -7900,6 +7952,10 @@
           "rate": 2,
           "channel": "mall"
         },
+        "クラランスオンラインショッピング": {
+          "rate": 5,
+          "channel": "mall"
+        },
         "クリニーク公式 オンライン ショップ": {
           "rate": 4,
           "channel": "mall"
@@ -7921,11 +7977,11 @@
           "channel": "mall"
         },
         "グンゼストア": {
-          "rate": 7,
+          "rate": 5,
           "channel": "mall"
         },
         "GOOPASS": {
-          "rate": 8,
+          "rate": 11,
           "channel": "mall"
         },
         "KNT国内ツアーオンライン予約＜JCBトラベル＞": {
@@ -7985,7 +8041,7 @@
           "channel": "mall"
         },
         "コンタクトレンズ通販 レンズアップル": {
-          "rate": 7,
+          "rate": 11,
           "channel": "mall"
         },
         "coen ONLINE STORE": {
@@ -8020,6 +8076,10 @@
           "rate": 6,
           "channel": "mall"
         },
+        "Samsungオンラインショップ": {
+          "rate": 4,
+          "channel": "mall"
+        },
         "サムソナイト公式オンラインストア": {
           "rate": 3,
           "channel": "mall"
@@ -8041,7 +8101,7 @@
           "channel": "mall"
         },
         "サンワダイレクト": {
-          "rate": 4,
+          "rate": 14,
           "channel": "mall"
         },
         "サーモスオンラインショップ": {
@@ -8049,11 +8109,11 @@
           "channel": "mall"
         },
         "雑誌のオンライン書店／~＼Fujisan.co.jp　【雑誌の富士山】": {
-          "rate": 6,
+          "rate": 11,
           "channel": "mall"
         },
         "資生堂オンラインストア": {
-          "rate": 11,
+          "rate": 17,
           "channel": "mall"
         },
         "シャディ　ギフトモール": {
@@ -8069,7 +8129,7 @@
           "channel": "mall"
         },
         "ショップジャパン": {
-          "rate": 13,
+          "rate": 14,
           "channel": "mall"
         },
         "ショップチャンネル": {
@@ -8081,6 +8141,10 @@
           "channel": "mall"
         },
         "白樺リゾート 池の平ホテル【THE LAKE RESORT】長野県": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "JRE MALL ショッピング": {
           "rate": 3,
           "channel": "mall"
         },
@@ -8352,10 +8416,6 @@
           "rate": 6,
           "channel": "mall"
         },
-        "Dell（個人向け）": {
-          "rate": 5,
-          "channel": "mall"
-        },
         "Dell（法人向け）": {
           "rate": 5,
           "channel": "mall"
@@ -8389,7 +8449,7 @@
           "channel": "mall"
         },
         "Traveloka（ホテル予約）": {
-          "rate": 4,
+          "rate": 9,
           "channel": "mall"
         },
         "Trip.com（遊び・体験）": {
@@ -8421,7 +8481,7 @@
           "channel": "mall"
         },
         "ドクターシーラボ公式オンラインショップ": {
-          "rate": 4,
+          "rate": 20,
           "channel": "mall"
         },
         "ナチュラム": {
@@ -8433,7 +8493,7 @@
           "channel": "mall"
         },
         "NARS公式オンラインショップ": {
-          "rate": 4,
+          "rate": 16,
           "channel": "mall"
         },
         "nishikawa（西川）公式オンラインショップ": {
@@ -8468,6 +8528,10 @@
           "rate": 20,
           "channel": "mall"
         },
+        "ハウスオブローゼ　オンラインショップ本店／化粧品": {
+          "rate": 5,
+          "channel": "mall"
+        },
         "HAPPY PLUS STORE": {
           "rate": 3,
           "channel": "mall"
@@ -8497,11 +8561,11 @@
           "channel": "mall"
         },
         "HABA ONLINE": {
-          "rate": 8,
+          "rate": 11,
           "channel": "mall"
         },
         "VAIOストア": {
-          "rate": 7,
+          "rate": 8,
           "channel": "mall"
         },
         "BARNEYS NEW YORK": {
@@ -8545,7 +8609,7 @@
           "channel": "mall"
         },
         "ピザハットオンライン": {
-          "rate": 4,
+          "rate": 13,
           "channel": "mall"
         },
         "ファンケル": {
@@ -8649,7 +8713,7 @@
           "channel": "mall"
         },
         "マウスコンピューター": {
-          "rate": 4,
+          "rate": 6,
           "channel": "mall"
         },
         "マカフィーストア": {
@@ -8725,10 +8789,10 @@
           "channel": "mall"
         },
         "山田養蜂場オンラインショップ": {
-          "rate": 16,
+          "rate": 20,
           "channel": "mall"
         },
-        "UNITED ARROWS LTD. ONLINE STORE": {
+        "UNITED ARROWS ONLINE（ユナイテッドアローズ）": {
           "rate": 3,
           "channel": "mall"
         },
@@ -8737,7 +8801,7 @@
           "channel": "mall"
         },
         "UGREEN NAS": {
-          "rate": 6,
+          "rate": 10,
           "channel": "mall"
         },
         "洋服の青山オンラインストア": {
@@ -8968,9 +9032,13 @@
     "name": "ライフカード",
     "baseRate": 0.5,
     "color": "#8bc34a",
-    "updatedAt": "2026-08-13",
+    "updatedAt": "2026-08-25",
     "rates": {
       "stores": {
+        "ドクターシーラボ公式オンラインショップ": {
+          "rate": 12.5,
+          "channel": "mall"
+        },
         "ノートンストア": {
           "rate": 12.5,
           "channel": "mall"
@@ -8991,7 +9059,15 @@
           "rate": 10.5,
           "channel": "mall"
         },
-        "e87.com（千趣会　イイハナ）": {
+        "山田養蜂場オンラインショップ": {
+          "rate": 10.5,
+          "channel": "mall"
+        },
+        "資生堂オンラインストア": {
+          "rate": 8.5,
+          "channel": "mall"
+        },
+        "airalo": {
           "rate": 8,
           "channel": "mall"
         },
@@ -8999,8 +9075,12 @@
           "rate": 8,
           "channel": "mall"
         },
-        "山田養蜂場オンラインショップ": {
+        "NARS公式オンラインショップ": {
           "rate": 8,
+          "channel": "mall"
+        },
+        "e87.com（千趣会　イイハナ）": {
+          "rate": 7.5,
           "channel": "mall"
         },
         "イヴ・サンローラン・ボーテ公式オンラインブティック": {
@@ -9015,6 +9095,14 @@
           "rate": 7.5,
           "channel": "mall"
         },
+        "サンワダイレクト": {
+          "rate": 7,
+          "channel": "mall"
+        },
+        "ショップジャパン": {
+          "rate": 7,
+          "channel": "mall"
+        },
         "イソップオンラインストア": {
           "rate": 6.5,
           "channel": "mall"
@@ -9027,11 +9115,11 @@
           "rate": 6.5,
           "channel": "mall"
         },
-        "ショップジャパン": {
+        "Daniel Wellington JP": {
           "rate": 6.5,
           "channel": "mall"
         },
-        "Daniel Wellington JP": {
+        "ピザハットオンライン": {
           "rate": 6.5,
           "channel": "mall"
         },
@@ -9055,7 +9143,23 @@
           "rate": 5.5,
           "channel": "mall"
         },
+        "おうちでイオン イオンショップ": {
+          "rate": 5.5,
+          "channel": "mall"
+        },
+        "CAGUUU": {
+          "rate": 5.5,
+          "channel": "mall"
+        },
         "カタログギフトのリンベル": {
+          "rate": 5.5,
+          "channel": "mall"
+        },
+        "GOOPASS": {
+          "rate": 5.5,
+          "channel": "mall"
+        },
+        "コンタクトレンズ通販 レンズアップル": {
           "rate": 5.5,
           "channel": "mall"
         },
@@ -9067,7 +9171,7 @@
           "rate": 5.5,
           "channel": "mall"
         },
-        "資生堂オンラインストア": {
+        "雑誌のオンライン書店／~＼Fujisan.co.jp　【雑誌の富士山】": {
           "rate": 5.5,
           "channel": "mall"
         },
@@ -9079,7 +9183,19 @@
           "rate": 5.5,
           "channel": "mall"
         },
+        "【DEPACO】大丸松坂屋コスメオンラインストア": {
+          "rate": 5.5,
+          "channel": "mall"
+        },
+        "HABA ONLINE": {
+          "rate": 5.5,
+          "channel": "mall"
+        },
         "日比谷花壇": {
+          "rate": 5.5,
+          "channel": "mall"
+        },
+        "ファイブフォックス オンラインストア": {
           "rate": 5.5,
           "channel": "mall"
         },
@@ -9095,6 +9211,10 @@
           "rate": 5.5,
           "channel": "mall"
         },
+        "EXETIME": {
+          "rate": 5,
+          "channel": "mall"
+        },
         "aimerfeel(エメフィール）公式通販サイト": {
           "rate": 5,
           "channel": "mall"
@@ -9108,6 +9228,10 @@
           "channel": "mall"
         },
         "セルフジェルネイル「ohora」": {
+          "rate": 4.5,
+          "channel": "mall"
+        },
+        "Traveloka（ホテル予約）": {
           "rate": 4.5,
           "channel": "mall"
         },
@@ -9131,7 +9255,7 @@
           "rate": 4.5,
           "channel": "mall"
         },
-        "HABA ONLINE": {
+        "VAIOストア": {
           "rate": 4,
           "channel": "mall"
         },
@@ -9155,19 +9279,11 @@
           "rate": 3.5,
           "channel": "mall"
         },
-        "おうちでイオン イオンショップ": {
-          "rate": 3.5,
-          "channel": "mall"
-        },
-        "グンゼストア": {
+        "SHEIN": {
           "rate": 3.5,
           "channel": "mall"
         },
         "ジャルパック　海外ツアー": {
-          "rate": 3.5,
-          "channel": "mall"
-        },
-        "VAIOストア": {
           "rate": 3.5,
           "channel": "mall"
         },
@@ -9188,6 +9304,10 @@
           "channel": "mall"
         },
         "［タカラトミー公式］タカラトミーモール": {
+          "rate": 3,
+          "channel": "mall"
+        },
+        "マウスコンピューター": {
           "rate": 3,
           "channel": "mall"
         },
@@ -9219,27 +9339,11 @@
           "rate": 2.5,
           "channel": "mall"
         },
-        "ポーラ公式オンラインストア": {
-          "rate": 2.5,
-          "channel": "mall"
-        },
-        "マウスコンピューター": {
-          "rate": 2.5,
-          "channel": "mall"
-        },
         "カタログ通販ベルーナ（Belluna）": {
           "rate": 2,
           "channel": "mall"
         },
-        "【ANA公式】 ANAトラベラーズホテル＆レンタカー": {
-          "rate": 2,
-          "channel": "mall"
-        },
-        "ANAの国内・海外ツアー【ANAトラベラーズ】": {
-          "rate": 2,
-          "channel": "mall"
-        },
-        "すかいらーくの宅配": {
+        "Samsungオンラインショップ": {
           "rate": 2,
           "channel": "mall"
         },
@@ -9253,6 +9357,10 @@
         },
         "ビックカメラ.com": {
           "rate": 2,
+          "channel": "mall"
+        },
+        "Apple公式サイト": {
+          "rate": 1.5,
           "channel": "mall"
         },
         "HISオンライン予約": {
@@ -9279,7 +9387,7 @@
     "name": "TS CUBICカード",
     "baseRate": 0.5,
     "color": "#333f8f",
-    "updatedAt": "2026-08-13",
+    "updatedAt": "2026-08-25",
     "rates": {
       "stores": {
         "ioPLAZA": {
@@ -9316,10 +9424,6 @@
         },
         "アカチャンホンポ Online Shop": {
           "rate": 0.75,
-          "channel": "mall"
-        },
-        "アガルートアカデミー": {
-          "rate": 3,
           "channel": "mall"
         },
         "アキレスウェブショップ": {
@@ -9362,6 +9466,10 @@
           "rate": 1.5,
           "channel": "mall"
         },
+        "アットコンタクト": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
         "【海外・国内航空券】旅行予約のエクスペディア": {
           "rate": 0.75,
           "channel": "mall"
@@ -9383,7 +9491,7 @@
           "channel": "mall"
         },
         "CAGUUU": {
-          "rate": 2,
+          "rate": 3,
           "channel": "mall"
         },
         "【カゴメの通信販売】カゴメ健康直送便": {
@@ -9447,7 +9555,7 @@
           "channel": "mall"
         },
         "Samsungオンラインショップ": {
-          "rate": 0.75,
+          "rate": 1.5,
           "channel": "mall"
         },
         "サムソナイト公式オンラインストア": {
@@ -9471,7 +9579,7 @@
           "channel": "mall"
         },
         "サンワダイレクト": {
-          "rate": 1.5,
+          "rate": 4,
           "channel": "mall"
         },
         "サーモスオンラインショップ": {
@@ -9479,7 +9587,7 @@
           "channel": "mall"
         },
         "雑誌のオンライン書店／~＼Fujisan.co.jp　【雑誌の富士山】": {
-          "rate": 2,
+          "rate": 3,
           "channel": "mall"
         },
         "SHEL'TTER WEB STORE": {
@@ -9487,7 +9595,7 @@
           "channel": "mall"
         },
         "資生堂オンラインストア": {
-          "rate": 3,
+          "rate": 4.5,
           "channel": "mall"
         },
         "資生堂パーラーオンラインショップ": {
@@ -9599,7 +9707,7 @@
           "channel": "mall"
         },
         "NARS公式オンラインショップ": {
-          "rate": 1.5,
+          "rate": 4.5,
           "channel": "mall"
         },
         "nishikawa（西川）公式オンラインショップ": {
@@ -9642,6 +9750,10 @@
           "rate": 5,
           "channel": "mall"
         },
+        "ハウスオブローゼ　オンラインショップ本店／化粧品": {
+          "rate": 1.5,
+          "channel": "mall"
+        },
         "HAPPY PLUS STORE": {
           "rate": 0.75,
           "channel": "mall"
@@ -9675,11 +9787,11 @@
           "channel": "mall"
         },
         "HABA ONLINE": {
-          "rate": 2.5,
+          "rate": 3,
           "channel": "mall"
         },
         "VAIOストア": {
-          "rate": 2,
+          "rate": 2.5,
           "channel": "mall"
         },
         "BARNEYS NEW YORK": {
@@ -9714,10 +9826,6 @@
           "rate": 2.5,
           "channel": "mall"
         },
-        "ビックカメラ.com": {
-          "rate": 1.5,
-          "channel": "mall"
-        },
         "My Kao Mall": {
           "rate": 0.75,
           "channel": "mall"
@@ -9739,7 +9847,7 @@
           "channel": "mall"
         },
         "マウスコンピューター": {
-          "rate": 1.5,
+          "rate": 2,
           "channel": "mall"
         },
         "マカフィーストア": {
@@ -9811,15 +9919,15 @@
           "channel": "mall"
         },
         "山田養蜂場オンラインショップ": {
-          "rate": 4.5,
+          "rate": 5,
           "channel": "mall"
         },
-        "UNITED ARROWS LTD. ONLINE STORE": {
+        "UNITED ARROWS ONLINE（ユナイテッドアローズ）": {
           "rate": 0.75,
           "channel": "mall"
         },
         "UGREEN NAS": {
-          "rate": 2,
+          "rate": 3,
           "channel": "mall"
         },
         "Udemy": {
@@ -9991,5 +10099,211 @@
     },
     "notes": {},
     "type": "barcode"
+  },
+  {
+    "id": "au-pay",
+    "name": "au PAY",
+    "baseRate": 0.5,
+    "color": "#f39800",
+    "updatedAt": "2026-08-25",
+    "rates": {
+      "stores": {
+        "キッチン オリジン": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "オリジン デリカ": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "オリジン弁当": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "れんげ食堂 Toshu": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "中華 東秀": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "武蔵野うどん小麦晴れ": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "不二家": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "つぼ八": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "茜どき": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "伊藤課長": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "新八": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "牛たん ささ川": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "焼肉の達人": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "喫茶室ルノアール": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "Cafe Renoir": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "NEW YORKER'S Cafe": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "ミヤマ珈琲": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "BAKERY HINATA": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "Cafe Miyama": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "上島珈琲店": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "UCCカフェプラザ": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "Cafe Lounge Gate 53": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "VIE DE FRANCE": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "Delifrance": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "VIE DE FRANCE Rêve de Paris": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "Deli & Bread VIE DE FRANCE": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "V・ドラッグ": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "エディオン": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "ノジマ": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "ウジエスーパー": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "アート引越センター": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "ジャンボエンチョー": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "ホームアシスト": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "SWEN": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "ズースクエア": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "casa": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "チャリロト": {
+          "rate": 1,
+          "channel": "store"
+        },
+        "TIPSTAR": {
+          "rate": 1,
+          "channel": "store"
+        }
+      },
+      "categories": {}
+    },
+    "notes": {
+      "キッチン オリジン": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "オリジン デリカ": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "オリジン弁当": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "れんげ食堂 Toshu": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "中華 東秀": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "武蔵野うどん小麦晴れ": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "不二家": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "つぼ八": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "茜どき": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "伊藤課長": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "新八": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "牛たん ささ川": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "焼肉の達人": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "喫茶室ルノアール": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "Cafe Renoir": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "NEW YORKER'S Cafe": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "ミヤマ珈琲": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "BAKERY HINATA": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "Cafe Miyama": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "上島珈琲店": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "UCCカフェプラザ": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "Cafe Lounge Gate 53": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "VIE DE FRANCE": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "Delifrance": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "VIE DE FRANCE Rêve de Paris": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "Deli & Bread VIE DE FRANCE": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "V・ドラッグ": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "エディオン": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "ノジマ": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "ウジエスーパー": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "アート引越センター": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "ジャンボエンチョー": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "ホームアシスト": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "SWEN": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "ズースクエア": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "casa": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "チャリロト": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)",
+      "TIPSTAR": "au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)"
+    },
+    "type": "barcode",
+    "source": "auto"
   }
 ]

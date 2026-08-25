@@ -2570,7 +2570,7 @@
   },
   {
     "name": "TIPSTAR",
-    "category": "ネット通販",
+    "category": "娯楽",
     "source": "auto"
   },
   {
@@ -2991,6 +2991,186 @@
   {
     "name": "UNITED ARROWS ONLINE（ユナイテッドアローズ）",
     "category": "ネット通販",
+    "source": "auto"
+  },
+  {
+    "name": "キッチン オリジン",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "オリジン デリカ",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "オリジン弁当",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "れんげ食堂 Toshu",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "中華 東秀",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "武蔵野うどん小麦晴れ",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "不二家",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "つぼ八",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "茜どき",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "伊藤課長",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "新八",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "牛たん ささ川",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "焼肉の達人",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "喫茶室ルノアール",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "Cafe Renoir",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "NEW YORKER'S Cafe",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "ミヤマ珈琲",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "BAKERY HINATA",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "Cafe Miyama",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "上島珈琲店",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "UCCカフェプラザ",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "Cafe Lounge Gate 53",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "VIE DE FRANCE",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "Delifrance",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "VIE DE FRANCE Rêve de Paris",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "Deli & Bread VIE DE FRANCE",
+    "category": "飲食",
+    "source": "auto"
+  },
+  {
+    "name": "V・ドラッグ",
+    "category": "ドラッグストア",
+    "source": "auto"
+  },
+  {
+    "name": "エディオン",
+    "category": "家電量販店",
+    "source": "auto"
+  },
+  {
+    "name": "ノジマ",
+    "category": "家電量販店",
+    "source": "auto"
+  },
+  {
+    "name": "ウジエスーパー",
+    "category": "スーパー",
+    "source": "auto"
+  },
+  {
+    "name": "アート引越センター",
+    "category": "暮らし",
+    "source": "auto"
+  },
+  {
+    "name": "ジャンボエンチョー",
+    "category": "暮らし",
+    "source": "auto"
+  },
+  {
+    "name": "ホームアシスト",
+    "category": "暮らし",
+    "source": "auto"
+  },
+  {
+    "name": "SWEN",
+    "category": "暮らし",
+    "source": "auto"
+  },
+  {
+    "name": "ズースクエア",
+    "category": "暮らし",
+    "source": "auto"
+  },
+  {
+    "name": "casa",
+    "category": "暮らし",
     "source": "auto"
   }
 ]
