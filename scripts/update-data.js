@@ -247,6 +247,45 @@ async function scrapeDcardMall() {
   return stores;
 }
 
+// au PAY: au PAY Pontaアップ店 (https://aupay.auone.jp/contents/lp/pontaup/)
+// コード払いの基本還元率0.5%(200円ごとに1P)に対して、対象店舗では「通常の2〜3倍」の
+// Pontaポイントが付くと案内されているが、店舗ごとの正確な倍率は公開されていない
+// (エポス/JCB等のモール型ASPと違い、店名一覧のみで数値までは出ていない)。
+// そのため控えめな2倍(1.0%)を表示レートとし、実際の倍率が変動する旨をnoteで案内する。
+// 対象店舗はページ内で5カテゴリ(飲食/ドラッグストア/家電・スーパー/暮らし/エンタメ)に
+// 分類されているので、店舗一覧側のカテゴリもここから引き継ぐ(guessCategoryの
+// キーワード推定より正確なため)。
+const AU_PAY_URL = 'https://aupay.auone.jp/contents/lp/pontaup/';
+const AU_PAY_BASE_RATE = 0.5;
+const AU_PAY_BOOST_MULTIPLIER = 2;
+const AU_PAY_NOTE = 'au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)';
+
+function guessAuPayCategory(sectionLabel, name) {
+  if (sectionLabel === '家電・スーパー') return /スーパー/.test(name) ? 'スーパー' : '家電量販店';
+  if (sectionLabel === 'エンタメ') return '娯楽';
+  return sectionLabel; // 飲食・ドラッグストア・暮らし はそのまま流用
+}
+
+async function scrapeAuPayPontaUp() {
+  const html = await fetchHtml(AU_PAY_URL);
+  const $ = cheerio.load(html);
+  const stores = {};
+  const notes = {};
+  const categoryHints = {};
+
+  $('ul.category li[data-category]').each((_, el) => {
+    const sectionLabel = $(el).attr('data-category');
+    const name = $(el).find('img').first().attr('alt')?.trim();
+    if (!name || !sectionLabel) return;
+
+    stores[name] = { rate: Math.round(AU_PAY_BASE_RATE * AU_PAY_BOOST_MULTIPLIER * 100) / 100, channel: 'store' };
+    notes[name] = AU_PAY_NOTE;
+    categoryHints[name] = guessAuPayCategory(sectionLabel, name);
+  });
+
+  return { stores, notes, categoryHints };
+}
+
 function mergeCardRates(cards, cardId, storesRates, notes = {}, { preserveManual = false } = {}) {
   const card = cards.find((c) => c.id === cardId);
   if (!card) throw new Error(`card not found: ${cardId}`);
@@ -292,14 +331,14 @@ function guessCategory(name) {
 // 丸ごと入れ替えるのではなく「まだ無いものだけ追加する」方式にしている
 // (取り下げられた店舗がstores.jsonに残り続ける可能性はあるが、実害は小さい)。
 // カテゴリだけは、ルールを改善した時に既存分にも反映されるよう毎回再計算する。
-function mergeDiscoveredStores(stores, newStoreNames) {
+function mergeDiscoveredStores(stores, newStoreNames, categoryHints = {}) {
   const recategorized = stores.map((s) =>
-    s.source === 'auto' ? { ...s, category: guessCategory(s.name) } : s
+    s.source === 'auto' ? { ...s, category: categoryHints[s.name] || guessCategory(s.name) } : s
   );
   const existingNames = new Set(recategorized.map((s) => s.name));
   const additions = [...new Set(newStoreNames)]
     .filter((name) => !existingNames.has(name))
-    .map((name) => ({ name, category: guessCategory(name), source: 'auto' }));
+    .map((name) => ({ name, category: categoryHints[name] || guessCategory(name), source: 'auto' }));
   return [...recategorized, ...additions];
 }
 
@@ -313,6 +352,7 @@ const SOURCES = [
   { name: 'dカードモール', cardId: 'd-card', scrape: scrapeDcardMall, preserveManual: true },
   { name: 'ライフカード', cardId: 'life-card', scrape: scrapeLifeCardMall },
   { name: 'TS CUBICカード', cardId: 'ts3-card', scrape: scrapeTs3Mall },
+  { name: 'au PAY', cardId: 'au-pay', scrape: scrapeAuPayPontaUp },
 ];
 
 // JCB CARD Wは通常のJCBカードと同じJ-POINTモールを使うが、基本還元率が0.5%ではなく
@@ -331,6 +371,7 @@ async function main() {
   const stores = JSON.parse(fs.readFileSync(STORES_PATH, 'utf8'));
 
   const allNewStoreNames = [];
+  const allCategoryHints = {};
   const failures = [];
   let jcbStoresRates = null;
 
@@ -343,6 +384,7 @@ async function main() {
       console.log(`  -> ${Object.keys(storesRates).length}件取得`);
       mergeCardRates(cards, source.cardId, storesRates, notes, { preserveManual: source.preserveManual });
       allNewStoreNames.push(...Object.keys(storesRates));
+      Object.assign(allCategoryHints, result.categoryHints || {});
       if (source.cardId === 'jcb-card') jcbStoresRates = storesRates;
     } catch (err) {
       console.error(`  ! ${source.name}の取得に失敗しました: ${err.message}`);
@@ -355,7 +397,7 @@ async function main() {
     console.log('JCB CARD W: jcb-cardの結果から2倍換算で更新しました。');
   }
 
-  const updatedStores = mergeDiscoveredStores(stores, allNewStoreNames);
+  const updatedStores = mergeDiscoveredStores(stores, allNewStoreNames, allCategoryHints);
 
   fs.writeFileSync(CARDS_PATH, JSON.stringify(cards, null, 2) + '\n');
   fs.writeFileSync(STORES_PATH, JSON.stringify(updatedStores, null, 2) + '\n');
