@@ -251,14 +251,25 @@ async function scrapeDcardMall() {
 // コード払いの基本還元率0.5%(200円ごとに1P)に対して、対象店舗では「通常の2〜3倍」の
 // Pontaポイントが付くと案内されているが、店舗ごとの正確な倍率は公開されていない
 // (エポス/JCB等のモール型ASPと違い、店名一覧のみで数値までは出ていない)。
-// そのため控えめな2倍(1.0%)を表示レートとし、実際の倍率が変動する旨をnoteで案内する。
+// そのため控えめな2倍を採用し、実際の倍率が変動する旨をnoteで案内する。
 // 対象店舗はページ内で5カテゴリ(飲食/ドラッグストア/家電・スーパー/暮らし/エンタメ)に
 // 分類されているので、店舗一覧側のカテゴリもここから引き継ぐ(guessCategoryの
 // キーワード推定より正確なため)。
+//
+// このアプリの利用者はau PAY残高をau PAYゴールドカードのオートチャージで補充しており、
+// ポイントアップリワードの全条件(auじぶん銀行口座・auでんき・家族カード・ETCカード年1回)を
+// 満たしているため、チャージ側で最大5%のPontaポイントが別途付与される
+// (月間1,000ポイント=充当2万円分が上限、公式: kddi-fs.com/function/point_up/)。
+// これは「どの店で払うか」に関係ない定額ボーナスなので、店舗別の2〜3倍は
+// 支払い時還元率(0.5%)側にだけ掛けて、チャージ分はどの店でも一律で加算する。
+// 個人利用前提のアプリなので、この値は汎用スクレイパーというより利用者本人の
+// カード構成に合わせた設定値として直接埋め込んでいる。
 const AU_PAY_URL = 'https://aupay.auone.jp/contents/lp/pontaup/';
-const AU_PAY_BASE_RATE = 0.5;
+const AU_PAY_PAYMENT_BASE_RATE = 0.5;
 const AU_PAY_BOOST_MULTIPLIER = 2;
-const AU_PAY_NOTE = 'au PAY Pontaアップ店(通常の2〜3倍相当。正確な倍率は店舗により異なります)';
+const AU_PAY_CHARGE_BONUS = 5.0;
+const AU_PAY_CHARGE_NOTE = 'au PAYゴールドカードのオートチャージ(条件達成で最大5%)+利用時0.5%の合算。月間1,000ポイント(充当2万円分)が上限で、それ以降は還元率が下がります';
+const AU_PAY_STORE_NOTE = `${AU_PAY_CHARGE_NOTE} / この店はさらにPontaアップ対象(通常の2〜3倍相当。正確な倍率は店舗により異なります)`;
 
 function guessAuPayCategory(sectionLabel, name) {
   if (sectionLabel === '家電・スーパー') return /スーパー/.test(name) ? 'スーパー' : '家電量販店';
@@ -278,8 +289,9 @@ async function scrapeAuPayPontaUp() {
     const name = $(el).find('img').first().attr('alt')?.trim();
     if (!name || !sectionLabel) return;
 
-    stores[name] = { rate: Math.round(AU_PAY_BASE_RATE * AU_PAY_BOOST_MULTIPLIER * 100) / 100, channel: 'store' };
-    notes[name] = AU_PAY_NOTE;
+    const rate = AU_PAY_CHARGE_BONUS + AU_PAY_PAYMENT_BASE_RATE * AU_PAY_BOOST_MULTIPLIER;
+    stores[name] = { rate: Math.round(rate * 100) / 100, channel: 'store' };
+    notes[name] = AU_PAY_STORE_NOTE;
     categoryHints[name] = guessAuPayCategory(sectionLabel, name);
   });
 
