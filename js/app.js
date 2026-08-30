@@ -694,12 +694,12 @@ function rateForCard(card, normalizedQuery, normalizedCategory, isSpecificStoreQ
     // (対象外の可能性が高いので)このカテゴリ推定値は使わずbaseRateへ進む。
     // 「コンビニ」のような曖昧なカテゴリ語で検索した時だけ、参考値として表示する。
     if (isSpecificStoreQuery && sourceStore !== null) {
-      return { rate: card.baseRate, channel: 'store', note: null, matched: 'base' };
+      return { rate: card.baseRate, channel: 'store', note: card.baseNote || null, matched: 'base' };
     }
     const note = sourceStore ? `${sourceStore}などの一部店舗が対象(店舗ごとに異なる場合があります)` : null;
     return { rate, channel: 'store', note, matched: 'category' };
   }
-  return { rate: card.baseRate, channel: 'store', note: null, matched: 'base' };
+  return { rate: card.baseRate, channel: 'store', note: card.baseNote || null, matched: 'base' };
 }
 
 function renderCategoryStores(normalizedCategory) {
@@ -894,6 +894,7 @@ function renderCardList() {
           <span class="card-swatch" style="background:${card.color}"></span>
           <span class="item-name">${escapeHtml(card.name)}</span>
           <div class="item-note">基本還元率 ${card.baseRate.toFixed(1)}% ・ ${escapeHtml(card.updatedAt || '')}更新(${sourceLabel})</div>
+          ${card.baseNote ? `<div class="item-note card-base-note">${escapeHtml(card.baseNote)}</div>` : ''}
         </button>
         <label class="owned-switch">
           <input type="checkbox" data-card-id="${card.id}" ${owned ? 'checked' : ''}>
