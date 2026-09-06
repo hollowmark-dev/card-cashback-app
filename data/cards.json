@@ -31,7 +31,7 @@
     "name": "PayPayカード",
     "baseRate": 1,
     "color": "#ff0033",
-    "updatedAt": "2026-08-30",
+    "updatedAt": "2026-09-06",
     "rates": {
       "stores": {
         "toreta+": {
@@ -2204,7 +2204,7 @@
     "name": "エポスカード",
     "baseRate": 0.5,
     "color": "#e60027",
-    "updatedAt": "2026-08-30",
+    "updatedAt": "2026-09-06",
     "rates": {
       "stores": {
         "ioPLAZA": {
@@ -2224,7 +2224,7 @@
           "channel": "mall"
         },
         "AOKI公式オンラインショップ": {
-          "rate": 13,
+          "rate": 12.5,
           "channel": "mall"
         },
         "青山花茂本店　オンラインショップ": {
@@ -2336,7 +2336,7 @@
           "channel": "mall"
         },
         "AliExpress": {
-          "rate": 3,
+          "rate": 2,
           "channel": "mall"
         },
         "Alinoma（アリノマ）": {
@@ -2380,11 +2380,11 @@
           "channel": "mall"
         },
         "e87.com（千趣会　イイハナ）": {
-          "rate": 8.5,
+          "rate": 9,
           "channel": "mall"
         },
         "おうちでイオン イオンショップ": {
-          "rate": 6.5,
+          "rate": 3.5,
           "channel": "mall"
         },
         "イソップオンラインストア": {
@@ -2400,7 +2400,7 @@
           "channel": "mall"
         },
         "IPSA 公式サイト": {
-          "rate": 1.5,
+          "rate": 9.5,
           "channel": "mall"
         },
         "印鑑・はんこ専門店ハンコヤドットコム": {
@@ -2468,7 +2468,7 @@
           "channel": "mall"
         },
         "HP Directplus": {
-          "rate": 1.5,
+          "rate": 3.5,
           "channel": "mall"
         },
         "「18TRIP（エイティーントリップ）」アプリペイストア": {
@@ -2476,7 +2476,7 @@
           "channel": "mall"
         },
         "EXETIME": {
-          "rate": 5.5,
+          "rate": 3,
           "channel": "mall"
         },
         "「SKE48の大富豪はおわらない！」アプリペイストア": {
@@ -2548,7 +2548,7 @@
           "channel": "mall"
         },
         "airalo": {
-          "rate": 9,
+          "rate": 3,
           "channel": "mall"
         },
         "L.L.Beanオンラインショップ": {
@@ -2560,11 +2560,11 @@
           "channel": "mall"
         },
         "【ANA公式】 ANAトラベラーズホテル＆レンタカー": {
-          "rate": 1,
+          "rate": 2,
           "channel": "mall"
         },
         "ANAの国内・海外ツアー【ANAトラベラーズ】": {
-          "rate": 1,
+          "rate": 2,
           "channel": "mall"
         },
         "「AKB48のどっぼーん！ひとりじめ！」アプリペイストア": {
@@ -2623,6 +2623,10 @@
           "rate": 6.5,
           "channel": "mall"
         },
+        "overE 公式オンラインショップ": {
+          "rate": 3,
+          "channel": "mall"
+        },
         "【海外・国内航空券】旅行予約のエクスペディア": {
           "rate": 1,
           "channel": "mall"
@@ -2644,7 +2648,7 @@
           "channel": "mall"
         },
         "CAGUUU": {
-          "rate": 6.5,
+          "rate": 3,
           "channel": "mall"
         },
         "【カゴメの通信販売】カゴメ健康直送便": {
@@ -2724,7 +2728,7 @@
           "channel": "mall"
         },
         "KEEN公式オンラインストア": {
-          "rate": 7,
+          "rate": 6.5,
           "channel": "mall"
         },
         "祇園辻利": {
@@ -2788,7 +2792,7 @@
           "channel": "mall"
         },
         "GOOPASS": {
-          "rate": 6.5,
+          "rate": 4.5,
           "channel": "mall"
         },
         "「けものフレンズ3」アプリペイストア": {
@@ -2864,7 +2868,7 @@
           "channel": "mall"
         },
         "コンタクトレンズ通販 レンズアップル": {
-          "rate": 6.5,
+          "rate": 3.5,
           "channel": "mall"
         },
         "コンビ公式ブランドストア": {
@@ -2876,7 +2880,7 @@
           "channel": "mall"
         },
         "COLE HAAN 公式オンラインストア": {
-          "rate": 6.5,
+          "rate": 4.5,
           "channel": "mall"
         },
         "ゴディバ（GODIVA）公式オンラインショップ": {
@@ -2928,7 +2932,7 @@
           "channel": "mall"
         },
         "サンワダイレクト": {
-          "rate": 7.5,
+          "rate": 2,
           "channel": "mall"
         },
         "サーモスオンラインショップ": {
@@ -2940,11 +2944,11 @@
           "channel": "mall"
         },
         "資生堂オンラインストア": {
-          "rate": 9.5,
+          "rate": 7,
           "channel": "mall"
         },
         "資生堂パーラーオンラインショップ": {
-          "rate": 3.5,
+          "rate": 4.5,
           "channel": "mall"
         },
         "SHIPS": {
@@ -2964,7 +2968,7 @@
           "channel": "mall"
         },
         "ショップジャパン": {
-          "rate": 7.5,
+          "rate": 7,
           "channel": "mall"
         },
         "Shoplist": {
@@ -2976,11 +2980,11 @@
           "channel": "mall"
         },
         "白鳩/京都発インナーショップ": {
-          "rate": 2,
+          "rate": 6.5,
           "channel": "mall"
         },
         "SHEIN": {
-          "rate": 3.5,
+          "rate": 2.5,
           "channel": "mall"
         },
         "JRE MALL ショッピング": {
@@ -3188,7 +3192,7 @@
           "channel": "mall"
         },
         "［タカラトミー公式］タカラトミーモール": {
-          "rate": 3,
+          "rate": 1.5,
           "channel": "mall"
         },
         "匠本舗 かに本舗": {
@@ -3304,7 +3308,7 @@
           "channel": "mall"
         },
         "DHCオンラインショップ": {
-          "rate": 2.5,
+          "rate": 1,
           "channel": "mall"
         },
         "DCMオンライン": {
@@ -3364,7 +3368,7 @@
           "channel": "mall"
         },
         "Traveloka（ホテル予約）": {
-          "rate": 5,
+          "rate": 2,
           "channel": "mall"
         },
         "Trip.com（遊び・体験）": {
@@ -3388,7 +3392,7 @@
           "channel": "mall"
         },
         "トリー バーチ 公式オンラインストア": {
-          "rate": 5,
+          "rate": 1.5,
           "channel": "mall"
         },
         "トレンドマイクロ・オンラインショップ": {
@@ -3412,7 +3416,7 @@
           "channel": "mall"
         },
         "ドクターシーラボ公式オンラインショップ": {
-          "rate": 15,
+          "rate": 12.5,
           "channel": "mall"
         },
         "Dorry Doll公式オンラインストア": {
@@ -3440,7 +3444,7 @@
           "channel": "mall"
         },
         "NARS公式オンラインショップ": {
-          "rate": 9,
+          "rate": 2,
           "channel": "mall"
         },
         "nishikawa（西川）公式オンラインショップ": {
@@ -3516,11 +3520,11 @@
           "channel": "mall"
         },
         "HABA ONLINE": {
-          "rate": 6.5,
+          "rate": 5,
           "channel": "mall"
         },
         "VAIOストア": {
-          "rate": 4.5,
+          "rate": 3.5,
           "channel": "mall"
         },
         "BUYMA TRAVEL": {
@@ -3568,7 +3572,7 @@
           "channel": "mall"
         },
         "ビックカメラ.com": {
-          "rate": 2,
+          "rate": 1,
           "channel": "mall"
         },
         "ビッグホリデースキーツアー＆スノボツアー予約サイト": {
@@ -3676,7 +3680,7 @@
           "channel": "mall"
         },
         "プチバトーオンラインブティック": {
-          "rate": 3.5,
+          "rate": 2,
           "channel": "mall"
         },
         "PLST 公式通販サイト": {
@@ -3744,7 +3748,7 @@
           "channel": "mall"
         },
         "ポケトーク公式オンラインストア": {
-          "rate": 3,
+          "rate": 3.5,
           "channel": "mall"
         },
         "ポーラ公式オンラインストア": {
@@ -3776,7 +3780,7 @@
           "channel": "mall"
         },
         "マウスコンピューター": {
-          "rate": 3,
+          "rate": 2,
           "channel": "mall"
         },
         "マカフィーストア": {
@@ -3824,7 +3828,7 @@
           "channel": "mall"
         },
         "無印良品ネットストア": {
-          "rate": 2,
+          "rate": 1,
           "channel": "mall"
         },
         "ムラサキスポーツ【楽天市場】": {
@@ -3868,7 +3872,7 @@
           "channel": "mall"
         },
         "山田養蜂場オンラインショップ": {
-          "rate": 12.5,
+          "rate": 9,
           "channel": "mall"
         },
         "UNITED ARROWS ONLINE（ユナイテッドアローズ）": {
@@ -3892,11 +3896,11 @@
           "channel": "mall"
         },
         "洋服の青山オンラインストア": {
-          "rate": 5.5,
+          "rate": 6.5,
           "channel": "mall"
         },
         "よかもーる": {
-          "rate": 1.5,
+          "rate": 4.5,
           "channel": "mall"
         },
         "楽天市場": {
@@ -10106,7 +10110,7 @@
     "name": "au PAY",
     "baseRate": 5.5,
     "color": "#f39800",
-    "updatedAt": "2026-08-30",
+    "updatedAt": "2026-09-06",
     "rates": {
       "stores": {
         "キッチン オリジン": {
