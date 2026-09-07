@@ -12,10 +12,6 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="app-header">
-  <h1>カード還元率チェッカー</h1>
-</header>
-
 <main class="is-loading">
   <div id="loading-state" class="loading-state">
     <div class="spinner" aria-hidden="true"></div>
@@ -34,12 +30,9 @@
       >
       <datalist id="store-suggestions"></datalist>
     </div>
-    <div id="search-history" class="chip-row"></div>
-    <p id="search-hint" class="hint">店名またはカテゴリを入力すると、各カードの還元率が高い順に表示されます。何も入力しなければカテゴリから探せます。</p>
+    <div id="store-chips" class="store-chip-groups"></div>
     <div id="category-stores"></div>
-    <div id="store-category-nav"></div>
-    <ul id="result-list" class="result-list"></ul>
-    <ul id="store-list" class="store-list"></ul>
+    <div id="result-list" class="result-list"></div>
   </section>
 
   <section id="tab-cards" class="tab-panel">
@@ -48,21 +41,28 @@
 
   <section id="tab-coupons" class="tab-panel">
     <p class="hint">お店で会計する前にひと目でわかるよう、クーポンや「このお店はこのカードで◯%還元」といったお得情報を登録しておけます(福利厚生サービス等はログインが必要で自動取得できないため、手入力用です)。登録した店を検索すると自動で表示されます。</p>
-    <form id="coupon-add-form" class="coupon-add-box">
-      <label for="coupon-image-input" class="btn-secondary coupon-ocr-btn">
-        📷 スクショから読み取る
-        <input id="coupon-image-input" type="file" accept="image/*" class="visually-hidden">
-      </label>
-      <p id="coupon-ocr-status" class="coupon-ocr-status"></p>
-      <div id="coupon-ocr-candidates"></div>
-      <details id="coupon-ocr-raw" class="coupon-ocr-raw"></details>
-      <input id="coupon-store-input" type="text" list="store-suggestions" placeholder="店名(例: 鎌倉パスタ)" autocomplete="off" required>
-      <input id="coupon-discount-input" type="text" placeholder="内容(例: 10%引き、〇〇カードで5%還元)" autocomplete="off" required>
-      <input id="coupon-card-input" type="text" list="card-suggestions" placeholder="カード名(任意、画像から読み取れなかった時だけ)" autocomplete="off">
-      <datalist id="card-suggestions"></datalist>
-      <input id="coupon-source-input" type="text" placeholder="入手元(任意、例: ベネフィット・ワン)" autocomplete="off">
-      <button type="submit" class="btn-primary">追加</button>
-    </form>
+    <div class="coupon-import-box">
+      <p class="hint">ベネフィット・ワン等からコピーしたテキストを、1行1件で貼り付けてください(区切りは「|」「,」タブ・全角スペースのいずれでも可)。</p>
+      <textarea id="coupon-import-textarea" rows="5" placeholder="鎌倉パスタ | 10%OFF | ベネフィット・ワン&#10;ワンカルビ | 店内飲食の会計10%OFF&#10;SAP日野ボウル | 一般ゲーム料金を会員料金 | ベネフィット・ワン"></textarea>
+      <div class="coupon-import-mode" role="radiogroup" aria-label="取り込み方法">
+        <label><input type="radio" name="coupon-import-mode" value="append" checked> 追加する</label>
+        <label><input type="radio" name="coupon-import-mode" value="replace"> 既存を全部置き換える</label>
+      </div>
+      <button type="button" id="coupon-import-btn" class="btn-primary">取り込む</button>
+      <p id="coupon-import-status" class="coupon-form-status"></p>
+    </div>
+
+    <details class="coupon-manual-entry">
+      <summary>1件だけ手入力する</summary>
+      <form id="coupon-add-form" class="coupon-add-box">
+        <input id="coupon-store-input" type="text" list="store-suggestions" placeholder="店名(例: 鎌倉パスタ)" autocomplete="off" required>
+        <input id="coupon-discount-input" type="text" placeholder="内容(例: 10%引き、〇〇カードで5%還元)" autocomplete="off" required>
+        <input id="coupon-card-input" type="text" list="card-suggestions" placeholder="カード名(任意)" autocomplete="off">
+        <datalist id="card-suggestions"></datalist>
+        <input id="coupon-source-input" type="text" placeholder="入手元(任意、例: ベネフィット・ワン)" autocomplete="off">
+        <button type="submit" class="btn-primary">追加</button>
+      </form>
+    </details>
     <ul id="coupon-list" class="result-list"></ul>
   </section>
 </main>
