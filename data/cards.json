@@ -31,7 +31,7 @@
     "name": "PayPayカード",
     "baseRate": 1,
     "color": "#ff0033",
-    "updatedAt": "2026-09-06",
+    "updatedAt": "2026-09-13",
     "rates": {
       "stores": {
         "toreta+": {
@@ -2204,7 +2204,7 @@
     "name": "エポスカード",
     "baseRate": 0.5,
     "color": "#e60027",
-    "updatedAt": "2026-09-06",
+    "updatedAt": "2026-09-13",
     "rates": {
       "stores": {
         "ioPLAZA": {
@@ -10110,7 +10110,7 @@
     "name": "au PAY",
     "baseRate": 5.5,
     "color": "#f39800",
-    "updatedAt": "2026-09-06",
+    "updatedAt": "2026-09-13",
     "rates": {
       "stores": {
         "キッチン オリジン": {
