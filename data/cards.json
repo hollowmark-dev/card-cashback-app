@@ -31,173 +31,15 @@
     "name": "PayPayカード",
     "baseRate": 1,
     "color": "#ff0033",
-    "updatedAt": "2026-09-13",
+    "updatedAt": "2026-09-20",
     "rates": {
-      "stores": {
-        "toreta+": {
-          "rate": 2,
-          "channel": "store"
-        },
-        "WINTICKET": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "薬王堂": {
-          "rate": 2,
-          "channel": "store"
-        },
-        "Betimo": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "ゼンハイザーヒアリング公式ストア": {
-          "rate": 10.5,
-          "channel": "store"
-        },
-        "DiDi": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "Prize On": {
-          "rate": 3,
-          "channel": "store"
-        },
-        "大賀薬局（Bibicaアプリ決済）アプリ限定": {
-          "rate": 2,
-          "channel": "store"
-        },
-        "シロクオンラインショップ": {
-          "rate": 2,
-          "channel": "store"
-        },
-        "ココデカウ": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "富澤商店（町田本店限定）": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "クリーニングWAKO": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "クリーニングタイムリー": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "KENNANクリーニングセンター": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "TIPSTAR": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "Google Play": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "京北スーパー": {
-          "rate": 2,
-          "channel": "store"
-        },
-        "池袋ショッピングパーク": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "ヨドバシ建物": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "山田養蜂場": {
-          "rate": 1.8,
-          "channel": "store"
-        },
-        "コジマネット": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "MARK IS 静岡": {
-          "rate": 2,
-          "channel": "store"
-        },
-        "マツキヨココカラオンライン": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "京急ショッピングプラザウィング": {
-          "rate": 4,
-          "channel": "store"
-        },
-        "ビルディ": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "Zoffオンラインストア": {
-          "rate": 4,
-          "channel": "store"
-        },
-        "モンテアプリアプリ限定": {
-          "rate": 4,
-          "channel": "store"
-        },
-        "新生堂薬局": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "エディオンネットショップ": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "モアーズシティ": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "紀伊國屋書店": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "丸善ジュンク堂書店": {
-          "rate": 1.5,
-          "channel": "store"
-        },
-        "伊藤園アプリ「CHACOCO」": {
-          "rate": 6,
-          "channel": "store"
-        }
-      },
+      "stores": {},
       "categories": {
         "ネット通販": 1,
         "コンビニ": 1
       }
     },
-    "notes": {
-      "toreta+": "2026年5月21日（木）0:00開始",
-      "薬王堂": "100円（税抜）ごとに1ポイント付与",
-      "Betimo": "2026年7月1日（水）10:00開始",
-      "ゼンハイザーヒアリング公式ストア": "2026年7月1日（水）10:00開始",
-      "DiDi": "2026年6月10日（水）10:00開始",
-      "Prize On": "2026年9月30日（水）23:59終了予定",
-      "Google Play": "9・19・29日 / 2026年6月1日（月） 0:00開始",
-      "京北スーパー": "火・水・木曜",
-      "池袋ショッピングパーク": "火曜",
-      "ヨドバシ建物": "火曜",
-      "山田養蜂場": "8・18・28日",
-      "コジマネット": "火・水曜",
-      "MARK IS 静岡": "金曜 / 2026年9月25日（金）23:59終了予定",
-      "マツキヨココカラオンライン": "日・月曜 / 付与上限：100pt／回",
-      "京急ショッピングプラザウィング": "25日",
-      "ビルディ": "土・日曜",
-      "Zoffオンラインストア": "日曜最大 / 付与上限：500pt／回",
-      "モンテアプリアプリ限定": "20代",
-      "新生堂薬局": "日・月曜",
-      "エディオンネットショップ": "60歳以上15~17日",
-      "モアーズシティ": "木曜",
-      "紀伊國屋書店": "15日",
-      "丸善ジュンク堂書店": "金曜",
-      "伊藤園アプリ「CHACOCO」": "水曜"
-    },
+    "notes": {},
     "source": "auto",
     "type": "barcode"
   },
@@ -10110,7 +9952,7 @@
     "name": "au PAY",
     "baseRate": 5.5,
     "color": "#f39800",
-    "updatedAt": "2026-09-13",
+    "updatedAt": "2026-09-20",
     "rates": {
       "stores": {
         "キッチン オリジン": {
