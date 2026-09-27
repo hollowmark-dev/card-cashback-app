@@ -31,7 +31,7 @@
     "name": "PayPayカード",
     "baseRate": 1,
     "color": "#ff0033",
-    "updatedAt": "2026-09-20",
+    "updatedAt": "2026-09-27",
     "rates": {
       "stores": {},
       "categories": {
@@ -9952,7 +9952,7 @@
     "name": "au PAY",
     "baseRate": 5.5,
     "color": "#f39800",
-    "updatedAt": "2026-09-20",
+    "updatedAt": "2026-09-27",
     "rates": {
       "stores": {
         "キッチン オリジン": {
