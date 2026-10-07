@@ -8,7 +8,9 @@ const state = {
   searchCounts: new Map(), // normalized store名 -> {name, count} (「よく使う店」の算出に使う)
   storeIndex: new Map(), // normalized name -> {name, category}
   categoryToStores: new Map(), // normalized category -> [store, ...]
-  coupons: [], // ユーザーが手入力したクーポン {id, storeName, discount, source}
+  coupons: [], // {id, storeName, discount, cardName, source, expiresAt?, origin?('sync'なら自動同期分)}
+  couponSync: { status: 'none' }, // 自動同期の状態(none / no-key / bad-key / ok)
+  campaigns: [], // 期間中の期間限定キャンペーン(data/campaigns.json)
 };
 
 const TOP_STORES_LIMIT = 30;
@@ -18,6 +20,11 @@ const OWNERSHIP_KEY = 'cardOwnership';
 const LEGACY_OWNED_CARDS_KEY = 'ownedCardIds';
 const SEARCH_HISTORY_KEY = 'searchHistory'; // 中身は「直近の検索語配列」→「検索回数」に形式変更済み(下記loadSearchCountsで移行)
 const COUPONS_KEY = 'coupons';
+const COUPON_SYNC_KEY_STORAGE = 'couponSyncKey';
+const COUPON_SYNC_META_KEY = 'couponSyncMeta';
+// PCが起動していない・ログインが切れている等で同期が止まっていることに気付けるよう、
+// これより古ければ警告を出す(同期自体は週1回の想定)。
+const COUPON_SYNC_STALE_DAYS = 14;
 // レジ前でよく使う実店舗のカテゴリを優先表示する順序。ここに無いカテゴリ
 // (「ネット通販」等)は店舗数が多い順に後ろへ回す。
 const CATEGORY_DISPLAY_PRIORITY = ['コンビニ', '飲食', 'スーパー', '家電量販店', 'ドラッグストア', 'ガソリンスタンド', '娯楽'];
@@ -223,17 +230,191 @@ function updateCoupon(id, updates) {
   renderCouponList();
 }
 
+function todayString() {
+  return new Date().toLocaleDateString('sv-SE'); // ローカル時刻の YYYY-MM-DD
+}
+
+// 自動同期のクーポンには有効期限が付いてくるので、切れたものは画面に出さない
+// (同期が止まっている間に期限切れのクーポンを案内してしまうのを防ぐ)。
+function getActiveCoupons() {
+  const today = todayString();
+  return state.coupons.filter((c) => !c.expiresAt || c.expiresAt >= today);
+}
+
+// --- ベネフィット・ワンのクーポン自動同期 ---
+// PC側(scripts/coupon-sync.js + 定期実行タスク)がログイン済みのChromeでマイクーポンを読み、
+// AES-GCMで暗号化した data/coupons.enc.json をリポジトリにpushする。リポジトリと
+// GitHub Pagesは公開されているため、福利厚生の加入事実やクーポン内容が読めないよう
+// 暗号文だけを置き、鍵は端末にだけ持たせる。
+
+// PCに表示されるQRコードのURLの#以降に鍵が入っている。#以降(フラグメント)は
+// サーバーに送信されないので、鍵がGitHub Pagesのアクセスログ等に残らない。
+// 保存したらすぐURLから消し、画面共有やスクショで鍵が写り込まないようにする。
+function captureSyncKeyFromUrl() {
+  const match = location.hash.match(/sync-key=([A-Za-z0-9_-]+)/);
+  if (!match) return false;
+  localStorage.setItem(COUPON_SYNC_KEY_STORAGE, match[1]);
+  history.replaceState(null, '', location.pathname + location.search);
+  return true;
+}
+
+function base64UrlToBytes(s) {
+  const b64 = s.replace(/-/g, '+').replace(/_/g, '/');
+  const padded = b64 + '='.repeat((4 - (b64.length % 4)) % 4);
+  return Uint8Array.from(atob(padded), (ch) => ch.charCodeAt(0));
+}
+
+async function decryptCouponSync(payload, keyText) {
+  const key = await crypto.subtle.importKey('raw', base64UrlToBytes(keyText), 'AES-GCM', false, ['decrypt']);
+  const plain = await crypto.subtle.decrypt(
+    { name: 'AES-GCM', iv: base64UrlToBytes(payload.iv) },
+    key,
+    base64UrlToBytes(payload.ct)
+  );
+  return JSON.parse(new TextDecoder().decode(plain));
+}
+
+function loadCouponSyncMeta() {
+  try {
+    const raw = localStorage.getItem(COUPON_SYNC_META_KEY);
+    if (raw) return { status: 'ok', ...JSON.parse(raw) };
+  } catch {
+    // ignore malformed value
+  }
+  return { status: 'none' };
+}
+
+// 自動同期分(origin: 'sync')だけを丸ごと入れ替え、手入力・貼り付けで登録したものは残す。
+// 通信できない時やファイルがまだ無い時は何もしない(前回同期した分がlocalStorageに残っている)。
+async function syncCouponsFromServer() {
+  let res;
+  try {
+    res = await fetch('data/coupons.enc.json', { cache: 'no-store' });
+  } catch {
+    return;
+  }
+  if (!res.ok) return;
+
+  const keyText = localStorage.getItem(COUPON_SYNC_KEY_STORAGE);
+  if (!keyText) {
+    state.couponSync = { status: 'no-key' };
+  } else {
+    try {
+      const data = await decryptCouponSync(await res.json(), keyText);
+      const synced = (data.coupons || []).map((c, i) => ({
+        id: `sync-${i}`,
+        storeName: c.storeName,
+        discount: c.discount,
+        cardName: null,
+        source: data.source || null,
+        expiresAt: c.expiresAt || null,
+        origin: 'sync',
+      }));
+      state.coupons = [...state.coupons.filter((c) => c.origin !== 'sync'), ...synced];
+      saveCoupons();
+      const today = todayString();
+      const meta = { syncedAt: data.syncedAt, count: synced.filter((c) => !c.expiresAt || c.expiresAt >= today).length };
+      localStorage.setItem(COUPON_SYNC_META_KEY, JSON.stringify(meta));
+      state.couponSync = { status: 'ok', ...meta };
+    } catch {
+      state.couponSync = { status: 'bad-key' };
+    }
+  }
+
+  renderCouponSyncStatus();
+  renderCouponList();
+  renderResults(state.lastQuery);
+}
+
+function renderCouponSyncStatus() {
+  const el = document.getElementById('coupon-sync-status');
+  if (!el) return;
+  const sync = state.couponSync;
+  if (sync.status === 'none') {
+    el.innerHTML = '';
+    return;
+  }
+  if (sync.status === 'no-key') {
+    el.innerHTML = '<p class="sync-status sync-status-warn">ベネフィット・ワンの自動同期データがあります。PCに表示される同期用QRコードをこのスマホで読み取ると反映されます。</p>';
+    return;
+  }
+  if (sync.status === 'bad-key') {
+    el.innerHTML = '<p class="sync-status sync-status-warn">自動同期データを読めませんでした。PCで同期用QRコードを表示して、もう一度読み取ってください。</p>';
+    return;
+  }
+  const syncedDate = new Date(sync.syncedAt);
+  const days = Math.floor((Date.now() - syncedDate.getTime()) / 86400000);
+  const label = `${syncedDate.getMonth() + 1}/${syncedDate.getDate()}`;
+  const stale = days >= COUPON_SYNC_STALE_DAYS;
+  el.innerHTML = `
+    <p class="sync-status${stale ? ' sync-status-warn' : ''}">
+      🔄 ベネフィット・ワン自動同期: ${label}更新(${sync.count}件)
+      ${stale ? `<br>${days}日間更新されていません。PCでベネフィット・ワンにログインした状態でClaudeアプリを開くと更新されます。` : ''}
+    </p>`;
+}
+
+// --- 期間限定キャンペーン(data/campaigns.json) ---
+// クラウドの定期タスクが各社の公式サイトを調べて書き出す。AIが調べた情報なので、
+// 還元率の順位(答え)には混ぜず、出典URLと期限付きの「参考情報」として添えるだけにする。
+async function loadCampaigns() {
+  try {
+    const res = await fetch('data/campaigns.json', { cache: 'no-store' });
+    if (!res.ok) return;
+    const data = await res.json();
+    const today = todayString();
+    state.campaigns = (data.campaigns || []).filter((c) => c.cardId && c.start <= today && today <= c.end);
+  } catch {
+    return;
+  }
+  renderResults(state.lastQuery);
+  renderCardList();
+}
+
+function isSafeUrl(url) {
+  return typeof url === 'string' && /^https?:\/\//.test(url);
+}
+
+function campaignMatchesStore(campaign, normalizedStoreName) {
+  return (campaign.stores || []).some((s) => {
+    const n = normalizeText(s);
+    return n !== '' && (n === normalizedStoreName || n.includes(normalizedStoreName) || normalizedStoreName.includes(n));
+  });
+}
+
+// 持っているカードのキャンペーンのうち、その店が対象のもの
+function getCampaignsForStore(normalizedStoreName) {
+  if (!normalizedStoreName) return [];
+  return state.campaigns.filter(
+    (c) => state.ownedCardIds.has(c.cardId) && campaignMatchesStore(c, normalizedStoreName)
+  );
+}
+
+function renderCampaignItemHtml(campaign, { showCardName }) {
+  const card = state.cards.find((c) => c.id === campaign.cardId);
+  const end = campaign.end.slice(5).replace('-', '/');
+  const link = isSafeUrl(campaign.url)
+    ? ` <a href="${escapeHtml(campaign.url)}" target="_blank" rel="noopener noreferrer">詳細</a>`
+    : '';
+  return `
+    <div class="campaign-item">
+      📣 ${showCardName && card ? `<strong>${escapeHtml(card.name)}</strong> ` : ''}${escapeHtml(campaign.title)}
+      <span class="campaign-end">〜${escapeHtml(end)}</span>${link}
+      ${campaign.conditions ? `<div class="item-note">${escapeHtml(campaign.conditions)}</div>` : ''}
+    </div>`;
+}
+
 // 完全一致するクーポンがあればそれを優先し、無ければ部分一致で探す。
 // テキスト貼り付けで登録するため店名は正確な表記が入る前提で、あいまい一致
 // (編集距離による救済)は不要になった。
 function findCouponForStore(normalizedStoreName) {
   if (!normalizedStoreName) return null;
+  const coupons = getActiveCoupons();
 
-  const exact = state.coupons.find((c) => normalizeText(c.storeName) === normalizedStoreName);
+  const exact = coupons.find((c) => normalizeText(c.storeName) === normalizedStoreName);
   if (exact) return exact;
 
   return (
-    state.coupons.find((c) => {
+    coupons.find((c) => {
       const n = normalizeText(c.storeName);
       return n !== '' && (n.includes(normalizedStoreName) || normalizedStoreName.includes(n));
     }) || null
@@ -245,12 +426,13 @@ function renderCouponList() {
   if (!list) return;
   list.innerHTML = '';
 
-  if (state.coupons.length === 0) {
+  const coupons = getActiveCoupons();
+  if (coupons.length === 0) {
     list.innerHTML = '<li class="empty-state">登録済みのクーポンはまだありません</li>';
     return;
   }
 
-  state.coupons.forEach((coupon) => {
+  coupons.forEach((coupon) => {
     const li = document.createElement('li');
     li.className = 'result-item';
     renderCouponListItem(li, coupon);
@@ -258,18 +440,25 @@ function renderCouponList() {
   });
 }
 
+// 自動同期分は次の同期で丸ごと入れ替わるため、編集・削除しても元に戻ってしまう。
+// 混乱を避けるため操作ボタンは出さず、「自動同期」の表示だけにする。
 function renderCouponListItem(li, coupon) {
-  const meta = [coupon.cardName, coupon.source].filter(Boolean).join(' ・ ');
+  const isSynced = coupon.origin === 'sync';
+  const expires = coupon.expiresAt ? `〜${coupon.expiresAt.slice(5).replace('-', '/')}` : '';
+  const meta = [coupon.cardName, coupon.source, expires].filter(Boolean).join(' ・ ');
   li.innerHTML = `
     <div>
       <span class="item-name">${escapeHtml(coupon.storeName)}</span>
+      ${isSynced ? '<span class="sync-tag">自動同期</span>' : ''}
       <div class="item-note">${escapeHtml(coupon.discount)}${meta ? ` ・ ${escapeHtml(meta)}` : ''}</div>
     </div>
-    <div class="coupon-item-actions">
-      <button type="button" class="coupon-edit-btn" aria-label="編集">✎</button>
-      <button type="button" class="coupon-delete-btn" aria-label="削除">×</button>
-    </div>
+    ${isSynced ? '' : `
+      <div class="coupon-item-actions">
+        <button type="button" class="coupon-edit-btn" aria-label="編集">✎</button>
+        <button type="button" class="coupon-delete-btn" aria-label="削除">×</button>
+      </div>`}
   `;
+  if (isSynced) return;
   li.querySelector('.coupon-delete-btn').addEventListener('click', () => deleteCoupon(coupon.id));
   li.querySelector('.coupon-edit-btn').addEventListener('click', () => renderCouponEditForm(li, coupon));
 }
@@ -362,7 +551,8 @@ function parseCouponImportText(text) {
 }
 
 function importCoupons(items, mode) {
-  if (mode === 'replace') state.coupons = [];
+  // 「置き換える」は手入力・貼り付け分だけが対象。自動同期分は同期側で管理しているので残す。
+  if (mode === 'replace') state.coupons = state.coupons.filter((c) => c.origin === 'sync');
   items.forEach((item) => {
     state.coupons.push({
       id: makeCouponId(),
@@ -463,7 +653,7 @@ function renderStoreChips() {
   const container = document.getElementById('store-chips');
   if (!container) return;
 
-  const couponStoreNames = [...new Set(state.coupons.map((c) => c.storeName))];
+  const couponStoreNames = [...new Set(getActiveCoupons().map((c) => c.storeName))];
   const couponKeySet = new Set(couponStoreNames.map((n) => normalizeText(n)));
   const shownKeys = new Set();
 
@@ -515,9 +705,14 @@ function renderStoreChips() {
           <p class="chip-group-label">${escapeHtml(g.label)}</p>
           <div class="chip-row">
             ${g.items
-              .map(
-                (it) => `<button type="button" class="chip${it.hasCoupon ? ' chip-coupon' : ''}" data-query="${escapeHtml(it.name)}">${it.hasCoupon ? '🎫 ' : ''}${escapeHtml(it.name)}</button>`
-              )
+              .map((it) => {
+                // 持っているカードの期間限定キャンペーンがある店も、クーポンと同様に目印を付けて
+                // 「検索しないと気付かない」状態を避ける。
+                const hasCampaign = getCampaignsForStore(normalizeText(it.name)).length > 0;
+                const marks = `${it.hasCoupon ? '🎫' : ''}${hasCampaign ? '📣' : ''}`;
+                const cls = `chip${it.hasCoupon ? ' chip-coupon' : ''}${hasCampaign ? ' chip-campaign' : ''}`;
+                return `<button type="button" class="${cls}" data-query="${escapeHtml(it.name)}">${marks ? `${marks} ` : ''}${escapeHtml(it.name)}</button>`;
+              })
               .join('')}
           </div>
         </div>`
@@ -575,12 +770,16 @@ function renderAnswerCardHtml({ card, rate, note, matched }, coupon) {
   `;
 }
 
-function renderAnswerBlock(query, shown, coupon) {
+function renderAnswerBlock(query, shown, coupon, campaigns) {
   const wrap = document.createElement('div');
   wrap.className = 'answer-block';
+  const campaignHtml = campaigns.length > 0
+    ? `<div class="campaign-list">${campaigns.map((c) => renderCampaignItemHtml(c, { showCardName: true })).join('')}</div>`
+    : '';
   wrap.innerHTML = `
     <p class="answer-store-name">${escapeHtml(query)}</p>
     <div class="answer-cards">${shown.map((r) => renderAnswerCardHtml(r, coupon)).join('')}</div>
+    ${campaignHtml}
   `;
   return wrap;
 }
@@ -686,7 +885,7 @@ function renderResults(query) {
   const shownIds = new Set(shown.map((r) => r.card.id));
   const rest = results.filter((r) => !shownIds.has(r.card.id));
 
-  list.appendChild(renderAnswerBlock(query, shown, coupon));
+  list.appendChild(renderAnswerBlock(query, shown, coupon, getCampaignsForStore(normalizedQuery)));
 
   if (rest.length > 0) {
     list.appendChild(renderOtherCardsDetails(rest));
@@ -706,9 +905,14 @@ function cardTopStores(card) {
 }
 
 function renderCardTopStoresHtml(card) {
+  // 店舗を限定しない全店対象のキャンペーン等は検索結果に出す場所が無いため、カードの詳細に出す。
+  const campaigns = state.campaigns.filter((c) => c.cardId === card.id);
+  const campaignHtml = campaigns.length > 0
+    ? `<div class="campaign-list"><p class="card-top-stores-title">開催中のキャンペーン</p>${campaigns.map((c) => renderCampaignItemHtml(c, { showCardName: false })).join('')}</div>`
+    : '';
   const entries = cardTopStores(card);
   if (entries.length === 0) {
-    return '<div class="card-top-stores"><p class="empty-state">店舗別の優待データはまだありません</p></div>';
+    return `<div class="card-top-stores">${campaignHtml}<p class="empty-state">店舗別の優待データはまだありません</p></div>`;
   }
   const hasMall = entries.some((e) => e.channel === 'mall');
   const rows = entries
@@ -722,6 +926,7 @@ function renderCardTopStoresHtml(card) {
     .join('');
   return `
     <div class="card-top-stores">
+      ${campaignHtml}
       <p class="card-top-stores-title">還元率が高い店(上位${entries.length}件)</p>
       ${hasMall ? '<p class="card-top-stores-note">※「モール」は先にポイントモール経由でアクセスしないと対象外です</p>' : ''}
       <ul class="card-top-stores-list">${rows}</ul>
@@ -878,6 +1083,8 @@ async function main() {
   state.searchCounts = loadSearchCounts();
   saveSearchCounts();
   state.coupons = loadCoupons();
+  captureSyncKeyFromUrl();
+  state.couponSync = loadCouponSyncMeta();
 
   initTabs();
   initSearch();
@@ -888,6 +1095,17 @@ async function main() {
   renderCardList();
   renderResults('');
   renderCouponList();
+  renderCouponSyncStatus();
+
+  // 同期済みクーポン・キャンペーンは補助情報なので、画面を先に出してから裏で取りに行く
+  // (読み込み失敗やオフラインでも、メインの還元率表示には影響させない)。
+  syncCouponsFromServer();
+  loadCampaigns();
+  // アプリを開いたままQRコードのURLを開くと、#以降だけが変わってページは再読み込みされない。
+  // その場合も鍵を受け取ってすぐ同期する。
+  window.addEventListener('hashchange', () => {
+    if (captureSyncKeyFromUrl()) syncCouponsFromServer();
+  });
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js').catch(() => {});

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'card-cashback-v7';
+const CACHE_NAME = 'card-cashback-v8';
 const ASSETS = [
   './',
   './index.html',
