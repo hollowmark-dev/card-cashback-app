@@ -1,4 +1,25 @@
 {
-  "updatedAt": null,
-  "campaigns": []
+  "updatedAt": "2026-10-07",
+  "campaigns": [
+    {
+      "id": "au-pay-doutor-night-2608",
+      "cardId": "au-pay",
+      "title": "17時以降はPontaポイント2倍(実質1%還元)",
+      "stores": ["ドトールコーヒー"],
+      "start": "2026-08-01",
+      "end": "2026-10-31",
+      "url": "https://media.aupay.wallet.auone.jp/articles/5177",
+      "conditions": "17:00〜23:59限定・1回200円(税込)以上・コード支払い・エントリー不要・一部店舗対象外"
+    },
+    {
+      "id": "au-pay-biccamera-coupon-2610",
+      "cardId": "au-pay",
+      "title": "1万円以上で1,000円割引クーポン",
+      "stores": ["ビックカメラ"],
+      "start": "2026-10-02",
+      "end": "2026-10-26",
+      "url": "https://media.aupay.wallet.auone.jp/articles/5289",
+      "conditions": "週末4期間(10/2-5, 9-13, 16-19, 23-26)で対象店舗が異なる・事前にau PAYアプリでクーポン取得・1回10,000円(税込)以上のコード支払い・ネット通販は対象外"
+    }
+  ]
 }
