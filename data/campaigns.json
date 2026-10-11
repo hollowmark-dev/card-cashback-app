@@ -1,11 +1,13 @@
 {
-  "updatedAt": "2026-10-07",
+  "updatedAt": "2026-10-11",
   "campaigns": [
     {
       "id": "au-pay-doutor-night-2608",
       "cardId": "au-pay",
       "title": "17時以降はPontaポイント2倍(実質1%還元)",
-      "stores": ["ドトールコーヒー"],
+      "stores": [
+        "ドトールコーヒー"
+      ],
       "start": "2026-08-01",
       "end": "2026-10-31",
       "url": "https://media.aupay.wallet.auone.jp/articles/5177",
@@ -15,11 +17,39 @@
       "id": "au-pay-biccamera-coupon-2610",
       "cardId": "au-pay",
       "title": "1万円以上で1,000円割引クーポン",
-      "stores": ["ビックカメラ"],
+      "stores": [
+        "ビックカメラ"
+      ],
       "start": "2026-10-02",
       "end": "2026-10-26",
       "url": "https://media.aupay.wallet.auone.jp/articles/5289",
       "conditions": "週末4期間(10/2-5, 9-13, 16-19, 23-26)で対象店舗が異なる・事前にau PAYアプリでクーポン取得・1回10,000円(税込)以上のコード支払い・ネット通販は対象外"
+    },
+    {
+      "id": "au-pay-ok-doutor-lottery-2610",
+      "cardId": "au-pay",
+      "title": "抽選で100Pontaポイント(はずれても3ポイント)",
+      "stores": [
+        "オーケー",
+        "ドトールコーヒー",
+        "エクセルシオールカフェ"
+      ],
+      "start": "2026-10-01",
+      "end": "2026-10-31",
+      "url": "https://media.aupay.wallet.auone.jp/articles/5270",
+      "conditions": "1回200円(税込)以上のコード支払い・1 au IDにつき抽選1回・1,000名に当選・一部店舗対象外・オーケーは一部地域のみ"
+    },
+    {
+      "id": "d-barai-lawson-lottery-2610",
+      "cardId": "d-barai",
+      "title": "dポイント最大777倍の抽選(d払いで当選確率77倍)",
+      "stores": [
+        "ローソン"
+      ],
+      "start": "2026-10-01",
+      "end": "2026-10-31",
+      "url": "https://dpoint.docomo.ne.jp/cp_7/lawson_261001_7814/index.html",
+      "conditions": "要エントリー・dポイントカード提示で200円(税抜)以上の買物・d払い利用は必須ではなく当選確率が上がる条件・上限1等10,000pt/2・3等3,000pt"
     }
   ]
 }
