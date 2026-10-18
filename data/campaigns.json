@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-11",
+  "updatedAt": "2026-10-18",
   "campaigns": [
     {
       "id": "au-pay-doutor-night-2608",
@@ -50,6 +50,36 @@
       "end": "2026-10-31",
       "url": "https://dpoint.docomo.ne.jp/cp_7/lawson_261001_7814/index.html",
       "conditions": "要エントリー・dポイントカード提示で200円(税抜)以上の買物・d払い利用は必須ではなく当選確率が上がる条件・上限1等10,000pt/2・3等3,000pt"
+    },
+    {
+      "id": "merpay-3kai-discount-2610",
+      "cardId": "merpay",
+      "title": "3回払うごとに10〜999円値引き(ランダム)",
+      "stores": [],
+      "start": "2026-10-15",
+      "end": "2026-12-15",
+      "url": "https://jp.merpay.com/news/2026/10/20261015_merpay_cpn/",
+      "conditions": "1回50円(税込)以上の対象決済でスタンプ獲得・3個ごとに次回決済で自動値引き・エントリー不要・未使用の値引きは期間終了で失効・早期終了の可能性あり"
+    },
+    {
+      "id": "au-pay-card-autocharge-2607",
+      "cardId": "au-pay-card",
+      "title": "オートチャージ利用で1億Pontaポイント山分け(抽選)",
+      "stores": [],
+      "start": "2026-07-01",
+      "end": "2026-10-31",
+      "url": "https://www.kddi-fs.com/campaign/2607shopping_ac/",
+      "conditions": "au PAY カードからau PAY残高へのオートチャージ(事前設定)・au/UQ mobile/povo1.0回線が必要・エントリー不要・1人上限200pt"
+    },
+    {
+      "id": "orico-card-autumn-20pct-2609",
+      "cardId": "orico-card",
+      "title": "秋の最大20%還元(抽選500名)",
+      "stores": [],
+      "start": "2026-09-01",
+      "end": "2026-10-31",
+      "url": "https://www.orico.co.jp/creditcard/for/member/orico/2609011031-point_20return/",
+      "conditions": "eオリコでエントリー必須・期間中合計3万円(税込)以上の利用・当選で利用額の20%(上限10,000pt)"
     }
   ]
 }
