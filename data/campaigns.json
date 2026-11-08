@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01",
+  "updatedAt": "2026-11-08",
   "campaigns": [
     {
       "id": "merpay-3kai-discount-2610",
@@ -10,6 +10,21 @@
       "end": "2026-12-15",
       "url": "https://jp.merpay.com/news/2026/10/20261015_merpay_cpn/",
       "conditions": "1回50円(税込)以上の対象決済でスタンプ獲得・3個ごとに次回決済で自動値引き・エントリー不要・未使用の値引きは期間終了で失効・早期終了の可能性あり"
+    },
+    {
+      "id": "au-pay-ponta-pass-matsuri-2611",
+      "cardId": "au-pay",
+      "title": "秋のPontaパス祭 ポイント還元最大7%(対象店のみ)",
+      "stores": [
+        "西友",
+        "くら寿司",
+        "すき家",
+        "かっぱ寿司"
+      ],
+      "start": "2026-11-01",
+      "end": "2026-11-30",
+      "url": "https://www.au.com/information/topic/pontapass/2026-002/",
+      "conditions": "Pontaパス(有料)会員・11月分エントリー必須・Ponta ID連携済み。最大7%は対象店で月15回以上(1回200円以上)利用時。還元上限は月500pt+ステップアップ700pt"
     }
   ]
 }
